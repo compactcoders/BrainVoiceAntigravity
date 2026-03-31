@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brainvoice - Post</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/blog.css">
+  <style>
+    .post-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+    .post-header {
+      margin-bottom: 2rem;
+    }
+    .post-header h1 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      margin: 1rem 0;
+      color: var(--black);
+    }
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .post-author-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #f8fafc, #ffffff);
+      border-radius: 16px;
+      margin: 2rem 0;
+      border: 1px solid var(--border-light);
+    }
+    .post-author-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+    .post-author-info p {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    .post-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-dark);
+    }
+    .post-content h2 {
+      font-size: 1.8rem;
+      margin: 2rem 0 1rem;
+      color: var(--black);
+    }
+    .post-content p {
+      margin-bottom: 1.5rem;
+    }
+    .post-content .intro {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--color-6);
+      border-left: 4px solid var(--color-6);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+    }
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-light);
+      text-decoration: none;
+      margin-bottom: 1rem;
+      transition: all 0.2s;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      cursor: pointer;
+    }
+    .back-button:hover {
+      color: var(--color-6);
+      border-color: var(--color-6);
+      transform: translateX(-4px);
+    }
+    .comments-section {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-light);
+    }
+    .comment-form {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .comment-form input {
+      flex: 1;
+      padding: 1rem;
+      border: 1px solid var(--border-light);
+      border-radius: 50px;
+      font-size: 1rem;
+      min-width: 250px;
+    }
+    .comment-form button {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: 0 2rem;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+    .latest-posts-side {
+      margin-top: 3rem;
+    }
+    .side-post {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: var(--white);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid var(--border-light);
+    }
+    .side-post:hover {
+      transform: translateX(4px);
+      box-shadow: var(--shadow-sm);
+      border-color: var(--color-3);
+    }
+    .side-post-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      flex-shrink: 0;
+    }
+    .side-post-content h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      color: var(--black);
+    }
+    .side-post-content p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+    .loading-spinner,
+    .error-container {
+      text-align: center;
+      padding: 3rem;
+    }
+    .loading-spinner i,
+    .error-container i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--color-6);
+    }
+    .error-container {
+      background: var(--white);
+      border-radius: 24px;
+      border: 1px solid var(--border-light);
+    }
+    @media (max-width: 600px) {
+      .post-header h1 {
+        font-size: 2rem;
+      }
+      .post-author-card,
+      .comment-form {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="logo-container" href="../index.html" aria-label="Brainvoice landing page">
+      <img src="images/BrainVoice-logo.svg" alt="Brainvoice" class="logo-img">
+      <span class="logo-text">BRAINVOICE.<span class="logo-ai">AI</span></span>
+    </a>
+
+    <div class="nav-links">
+      <a href="about.html">About Us</a>
+      <a href="blogs.html" class="active">Blogs</a>
+      <a href="careers.html">Careers</a>
+      <a href="success-stories.html">Success Stories</a>
+      <a href="contactus.html" class="nav-cta">Get Started</a>
+    </div>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <main class="post-container" id="postContainer">
+    <div class="loading-spinner">
+      <i class="fas fa-spinner fa-spin"></i>
+      <p>Loading post...</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand-column">
+        <a class="footer-brand" href="../index.html">
+          <img src="images/BrainVoice-logo.svg" alt="Brainvoice">
+          <span class="footer-brand-text">BRAINVOICE.<span class="logo-ai">AI</span></span>
+        </a>
+        <p class="footer-brand-copy">Brainvoice helps organizations understand conversations through AI, uncovering insights hidden in human speech.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>About Us</h4>
+        <ul>
+          <li><a href="about.html#about-webtech">About WebTech</a></li>
+          <li><a href="about.html#our-team">Our Team</a></li>
+          <li><a href="about.html#mission-values">Mission & Values</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="about.html#community">Community Involvement</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="about.html#services-overview">Software Development</a></li>
+          <li><a href="contactus.html">IT Consulting</a></li>
+          <li><a href="contactus.html">Web Design</a></li>
+          <li><a href="success-stories.html">Digital Transformation</a></li>
+          <li><a href="contactus.html">Project Management</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="success-stories.html">Industry Solutions</a></li>
+          <li><a href="contactus.html">Custom Solutions</a></li>
+          <li><a href="success-stories.html">Case Studies</a></li>
+          <li><a href="success-stories.html">Client Success</a></li>
+          <li><a href="contactus.html">Partnership</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blogs.html">Blog</a></li>
+          <li><a href="blogs.html">Whitepapers</a></li>
+          <li><a href="blogs.html">Webinars</a></li>
+          <li><a href="contactus.html#faq">FAQs</a></li>
+          <li><a href="blogs.html">Knowledge Base</a></li>
+          <li><a href="success-stories.html">Testimonials</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column footer-form-column">
+        <h4>Get Started</h4>
+        <form class="footer-form">
+          <div>
+            <label for="footer-first-name-post">First name*</label>
+            <input id="footer-first-name-post" type="text" placeholder="First name" required>
+          </div>
+          <div>
+            <label for="footer-last-name-post">Last name*</label>
+            <input id="footer-last-name-post" type="text" placeholder="Last name" required>
+          </div>
+          <div>
+            <label for="footer-email-post">Email*</label>
+            <input id="footer-email-post" type="email" placeholder="name@email.com" required>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <span>© 2026 Brainvoice. All Rights Reserved.</span>
+        <div class="footer-copyright">
+          <a class="footer-meta-link" href="#">Terms & conditions</a>
+          <span class="divider">|</span>
+          <a class="footer-meta-link" href="#">Privacy policy</a>
+        </div>
+        <span>Built for Brainvoice AI</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const postId = urlParams.get('id');
+
+      if (!postId) {
+        window.location.href = 'blogs.html';
+        return;
+      }
+
+      const storedPost = sessionStorage.getItem(`post_${postId}`);
+
+      if (storedPost) {
+        const post = JSON.parse(storedPost);
+        renderPost(post);
+        loadLatestPosts(postId);
+      } else {
+        try {
+          const response = await fetch('blog-data.json');
+          const data = await response.json();
+          const post = data.posts.find((entry) => String(entry.id) === String(postId));
+
+          if (post) {
+            renderPost(post);
+            loadLatestPosts(postId);
+          } else {
+            showError('Post not found');
+          }
+        } catch (error) {
+          showError('Unable to load this post right now.');
+        }
+      }
+    });
+
+    function goBackToBlog() {
+      window.location.href = 'blogs.html';
+    }
+
+    function renderPost(post) {
+      const container = document.getElementById('postContainer');
+      const color = post.color || '#13B0CB';
+
+      container.innerHTML = `
+        <button class="back-button" onclick="goBackToBlog()">
+          <i class="fas fa-arrow-left"></i> Back to Blog
+        </button>
+        <article class="post-shell">
+          <header class="post-header">
+            <div class="post-meta">
+              <span>${post.category || 'Insight'}</span>
+              <span>•</span>
+              <span>${post.date || 'Recent'}</span>
+              <span>•</span>
+              <span>${post.readTime || '5 min read'}</span>
+            </div>
+            <h1>${post.title}</h1>
+          </header>
+          <div class="post-author-card">
+            <div class="side-post-img" style="background: linear-gradient(135deg, ${color}, #51C186)">
+              <i class="fas ${post.icon || 'fa-pen-nib'}"></i>
+            </div>
+            <div class="post-author-info">
+              <h3>${post.author || 'Brainvoice Team'}</h3>
+              <p>Brainvoice editorial</p>
+            </div>
+          </div>
+          <div class="post-content">
+            <p class="intro">${post.excerpt || 'A practical look at how modern AI systems can support better decision-making.'}</p>
+            <p>${post.content || post.excerpt || 'This article explores the delivery principles, user experience expectations, and operational foundations that help AI products move from pilot to everyday use.'}</p>
+            <h2>What matters in practice</h2>
+            <p>Successful AI programs balance model performance with workflow fit, team trust, and speed of action. The strongest results usually come from solving one meaningful operational problem well and expanding from there.</p>
+            <h2>Why it works</h2>
+            <p>When insights are easy to find, easy to verify, and connected to an existing process, adoption improves dramatically. That is where thoughtful product design and strong implementation discipline make the difference.</p>
+          </div>
+        </article>
+        <section class="comments-section">
+          <h3>Leave a Comment</h3>
+          <form class="comment-form">
+            <input type="text" placeholder="Share your thoughts">
+            <button type="submit">Post</button>
+          </form>
+          <div class="latest-posts-side">
+            <h3>Latest Posts</h3>
+            <div id="latestPosts"></div>
+          </div>
+        </section>
+      `;
+
+      container.querySelector('.comment-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        showNotification('Thanks for your comment.', 'success');
+        event.target.reset();
+      });
+    }
+
+    function loadLatestPosts(currentId) {
+      fetch('blog-data.json')
+        .then((response) => response.json())
+        .then((data) => {
+          const latestContainer = document.getElementById('latestPosts');
+          if (!latestContainer) return;
+
+          const posts = data.posts.filter((entry) => String(entry.id) !== String(currentId)).slice(0, 3);
+          latestContainer.innerHTML = posts.map((entry) => `
+            <div class="side-post" onclick="openRelatedPost(${entry.id})">
+              <div class="side-post-img" style="background: linear-gradient(135deg, ${entry.color || '#13B0CB'}, #51C186)">
+                <i class="fas ${entry.icon || 'fa-pen-nib'}"></i>
+              </div>
+              <div class="side-post-content">
+                <h4>${entry.title}</h4>
+                <p>${entry.readTime || '5 min read'}</p>
+              </div>
+            </div>
+          `).join('');
+        });
+    }
+
+    function openRelatedPost(postId) {
+      window.location.href = `post.html?id=${postId}`;
+    }
+
+    function showError(message) {
+      document.getElementById('postContainer').innerHTML = `
+        <div class="error-container">
+          <i class="fas fa-exclamation-circle"></i>
+          <h2>${message}</h2>
+          <button class="back-button" onclick="goBackToBlog()">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </button>
+        </div>
+      `;
+    }
+
+    window.goBackToBlog = goBackToBlog;
+    window.openRelatedPost = openRelatedPost;
+  </script>
+</body>
+</html>

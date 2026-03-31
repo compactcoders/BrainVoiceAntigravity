@@ -1,0 +1,814 @@
+/* Careers Page Specific Styles */
+
+/* 🔷 SECTION 1: Careers Intro + Application Form */
+.careers-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f8fafc, #ffffff);
+}
+
+/* 🔹 1. Top Content (Intro Area) */
+.careers-intro {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.careers-intro h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.intro-description {
+  font-size: 1.2rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+}
+
+/* 🔹 2. Application Form Section */
+.application-form-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 24px;
+  padding: 3rem;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+}
+
+.application-form-container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--black);
+}
+
+.form-intro {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.career-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  width: 100%;
+}
+
+.form-row.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-row.full-width {
+  display: block;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+}
+
+.required {
+  color: #ff4444;
+  margin-left: 2px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: var(--white);
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--color-6);
+  box-shadow: 0 0 0 3px rgba(19, 176, 203, 0.1);
+}
+
+/* File Input Styling */
+.file-input-wrapper {
+  position: relative;
+}
+
+.file-input-wrapper input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.file-input-placeholder {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-light);
+}
+
+.file-input-placeholder i {
+  color: var(--color-6);
+}
+
+.file-hint {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: 0.25rem;
+}
+
+/* CAPTCHA Container */
+.captcha-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.recaptcha-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.recaptcha-box i {
+  color: var(--color-6);
+  font-size: 1.2rem;
+}
+
+.privacy-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.privacy-links a {
+  color: var(--color-6);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.privacy-links a:hover {
+  color: var(--color-5);
+}
+
+.privacy-links span {
+  color: var(--text-light);
+}
+
+/* Submit Button */
+.submit-btn {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-colored);
+  gap: 1rem;
+}
+
+.submit-btn i {
+  transition: transform 0.2s;
+}
+
+.submit-btn:hover i {
+  transform: translateX(4px);
+}
+
+/* 🔷 SECTION 2: Careers Content + Internship + Footer */
+
+/* 🔹 1. Banner Image */
+.banner-section {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #13B0CB, #27B6B7, #39BA9F);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.banner-overlay {
+  color: white;
+  padding: 2rem;
+}
+
+.banner-overlay h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.banner-overlay p {
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
+/* 🔹 2. Opportunities Text Block */
+.opportunities-section {
+  padding: 5rem 0;
+  background: var(--white);
+  text-align: center;
+}
+
+.section-label {
+  display: inline-block;
+  background: rgba(19, 176, 203, 0.1);
+  color: var(--color-6);
+  padding: 0.3rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.opportunities-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--black);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.opportunities-description {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.opportunities-section .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+}
+
+/* 🔹 3. Internship Section (Split Layout) */
+.internship-section {
+  padding: 5rem 0;
+  background: var(--bg-light);
+}
+
+.internship-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Left Column - Image */
+.internship-image {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  height: 100%;
+  min-height: 400px;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  background: linear-gradient(135deg, var(--color-6), var(--color-4), var(--color-3));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 5rem;
+  position: relative;
+}
+
+.image-placeholder i {
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
+}
+
+.image-placeholder span {
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: rgba(255,255,255,0.2);
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+}
+
+/* Right Column - Content */
+.internship-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.internship-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--black);
+}
+
+.internship-description {
+  font-size: 1rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin: 0.5rem 0;
+}
+
+.internship-content .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  width: fit-content;
+  margin-top: 0.5rem;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-6);
+  border: 2px solid var(--color-6);
+}
+
+.btn-secondary:hover {
+  background: var(--color-6);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* 🔹 4. Footer Section (already in style.css, but ensuring proper styling) */
+.footer {
+  background: var(--black);
+  color: var(--white);
+  padding: 4rem 0 0;
+  border-top: 1px solid var(--gray-dark);
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2.5rem;
+  border-bottom: 1px solid var(--gray-dark);
+}
+
+.footer-column h4 {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-column h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--gradient-primary);
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-column ul li a {
+  color: var(--gray-lighter);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.footer-column ul li a i {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+.footer-column ul li a:hover {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  background: var(--black-light);
+  padding: 1.5rem 2rem;
+}
+
+.footer-bottom-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo-img {
+  height: 30px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.footer-logo-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-copyright {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--gray-light);
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-copyright .divider {
+  color: var(--color-6);
+}
+
+/* 🔁 Responsive Behavior */
+@media (max-width: 900px) {
+  .form-row.two-columns {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .internship-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .internship-image {
+    min-height: 300px;
+  }
+  
+  .image-placeholder {
+    min-height: 300px;
+  }
+  
+  .banner-overlay h2 {
+    font-size: 2.5rem;
+  }
+  
+  .opportunities-title {
+    font-size: 2rem;
+  }
+  
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .careers-intro h1 {
+    font-size: 2.5rem;
+  }
+  
+  .application-form-container {
+    padding: 1.5rem;
+  }
+  
+  .captcha-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .banner-overlay h2 {
+    font-size: 2rem;
+  }
+  
+  .banner-overlay p {
+    font-size: 1rem;
+  }
+  
+  .opportunities-title {
+    font-size: 1.8rem;
+  }
+  
+  .internship-title {
+    font-size: 2rem;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-copyright .divider {
+    display: none;
+  }
+}
+/* Add to careers.css */
+.g-recaptcha {
+  margin: 0;
+  transform: scale(0.9);
+  transform-origin: 0 0;
+}
+
+/* Dark theme version (if you want) */
+.g-recaptcha.dark {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .g-recaptcha {
+    transform: scale(0.8);
+    transform-origin: 0 0;
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(19, 176, 203, 0.1), transparent 34%),
+    radial-gradient(circle at top left, rgba(81, 193, 134, 0.08), transparent 28%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.navbar,
+.footer {
+  backdrop-filter: blur(14px);
+}
+
+.navbar {
+  padding: 1.15rem 2.25rem !important;
+}
+
+.logo-container,
+.footer-brand {
+  gap: 0.9rem !important;
+}
+
+.logo-img,
+.footer-brand img {
+  height: 44px !important;
+}
+
+.logo-text,
+.footer-brand-text {
+  letter-spacing: 0.015em !important;
+}
+
+.nav-links {
+  align-items: center;
+  gap: 1.35rem !important;
+}
+
+.nav-links a {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.nav-links a:not(.nav-cta)::after {
+  height: 1px !important;
+  background: rgba(19, 176, 203, 0.32) !important;
+}
+
+.nav-cta {
+  border-radius: 0 !important;
+  padding: 1rem 1.75rem !important;
+  background: #0f8688 !important;
+  clip-path: polygon(0 0, 92% 0, 100% 50%, 92% 100%, 0 100%) !important;
+  box-shadow: none !important;
+}
+
+.careers-intro,
+.opportunities-section,
+.internship-section,
+.apply-section,
+.culture-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.opening-card,
+.benefit-card,
+.internship-image,
+.application-form-container,
+.culture-card,
+.opportunity-card {
+  border-radius: 24px !important;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease !important;
+}
+
+.opening-card:hover,
+.benefit-card:hover,
+.application-form-container:hover,
+.culture-card:hover,
+.opportunity-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 48px rgba(19, 176, 203, 0.12) !important;
+}
+
+.footer {
+  margin-top: 4rem;
+  border-top: 1px solid rgba(19, 176, 203, 0.12);
+}
+
+.footer-bottom {
+  padding-top: 1.8rem !important;
+}
+
+.footer {
+  background: #fff !important;
+  color: #0f5053 !important;
+  padding: 0 !important;
+  border-top: 1px solid rgba(19, 176, 203, 0.12) !important;
+}
+
+.footer-container {
+  max-width: 1380px !important;
+  margin: 0 auto !important;
+  padding: 3.4rem 2.4rem 2.9rem !important;
+  display: grid !important;
+  grid-template-columns: 1.2fr 0.95fr 0.95fr 0.95fr 0.95fr 1.25fr !important;
+  gap: 2.2rem !important;
+  border-bottom: none !important;
+  align-items: start !important;
+  justify-content: center !important;
+}
+
+.footer-brand-column,
+.footer-column,
+.footer-form-column {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.footer-brand-column,
+.footer-column,
+.footer-form-column {
+  padding-top: 0.25rem !important;
+}
+
+.footer-brand-copy,
+.footer-bottom-content,
+.footer-meta-link,
+.footer-form input {
+  color: #315e60 !important;
+}
+
+.footer-brand-copy {
+  max-width: 320px !important;
+  line-height: 1.65 !important;
+}
+
+.footer-column h4,
+.footer-brand-text,
+.footer-column ul li a,
+.footer-form label {
+  color: #0f5053 !important;
+  -webkit-text-fill-color: initial !important;
+  background: none !important;
+}
+
+.footer-column h4,
+.footer-form-column h4 {
+  margin-bottom: 1.35rem !important;
+}
+
+.footer-column ul {
+  display: grid !important;
+  gap: 0.95rem !important;
+}
+
+.footer-column ul li a {
+  line-height: 1.45 !important;
+}
+
+.footer-column h4::after {
+  background: linear-gradient(135deg, #13b0cb, #51c186) !important;
+}
+
+.footer-social a {
+  background: #167f7f !important;
+  color: #fff !important;
+}
+
+.footer-form input {
+  border-bottom: 1px solid rgba(15, 80, 83, 0.28) !important;
+}
+
+.footer-form {
+  display: grid !important;
+  gap: 1.15rem !important;
+}
+
+.footer-form div {
+  display: grid !important;
+  gap: 0.55rem !important;
+}
+
+.footer-form button {
+  background: #167f7f !important;
+  color: #fff !important;
+  margin-top: 0.35rem !important;
+}
+
+.footer-bottom {
+  background: transparent !important;
+  padding: 2.25rem 2.4rem 1.95rem !important;
+  border-top: 1px dashed rgba(19, 176, 203, 0.35) !important;
+}
+
+.footer-bottom-content {
+  max-width: 1380px !important;
+  margin: 0 auto !important;
+  gap: 1.5rem !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}

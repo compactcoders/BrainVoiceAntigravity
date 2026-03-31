@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/blog", "dest": "/blogs.html" },
+    { "src": "/contact", "dest": "/contactus.html" },
+    { "src": "/(.*)", "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
+

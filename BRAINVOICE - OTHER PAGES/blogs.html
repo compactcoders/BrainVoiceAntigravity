@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brainvoice - Blogs & Insights</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a class="logo-container" href="../index.html" aria-label="Brainvoice landing page">
+      <img src="images/BrainVoice-logo.svg" alt="Brainvoice" class="logo-img">
+      <span class="logo-text">BRAINVOICE.<span class="logo-ai">AI</span></span>
+    </a>
+
+    <div class="nav-links">
+      <a href="about.html">About Us</a>
+      <a href="blogs.html" class="active">Blogs</a>
+      <a href="careers.html">Careers</a>
+      <a href="success-stories.html">Success Stories</a>
+      <a href="contactus.html" class="nav-cta">Get Started</a>
+    </div>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <main class="container">
+    <div class="featured-ribbon">
+      <h2>
+        <i class="fas fa-bolt"></i>
+        FEATURED
+        <span class="featured-subtitle">Voice AI, implementation lessons, product strategy, and practical delivery insights.</span>
+      </h2>
+      <div class="lorem-mini">
+        <i class="far fa-newspaper"></i> editor's pick
+      </div>
+    </div>
+
+    <article class="featured-card" onclick="window.open('post.html?id=1', '_blank')">
+      <div class="featured-text">
+        <h3>How voice intelligence creates <span class="highlight">faster decisions</span> across enterprise teams</h3>
+        <p class="crypto-desc">Explore where transcription, QA, search, and workflow automation fit together to create a more usable operational picture.</p>
+        <span class="featured-link">Read full analysis <i class="fas fa-arrow-right"></i></span>
+      </div>
+      <div class="featured-badge">
+        <i class="fas fa-wave-square"></i> featured insight
+      </div>
+    </article>
+
+    <div class="section-header">
+      <i class="fas fa-pen-nib"></i>
+      <h2 class="section-title">Latest from our blog</h2>
+    </div>
+
+    <div class="blog-grid" id="blogGrid"></div>
+
+    <section class="newsletter-section">
+      <div class="newsletter-content">
+        <div class="newsletter-icon">
+          <i class="fas fa-envelope-open-text"></i>
+        </div>
+        <div class="newsletter-text">
+          <h3>Subscribe to our weekly newsletter</h3>
+          <p>Get the latest insights on AI and voice intelligence, no spam, just quality content.</p>
+        </div>
+        <div class="newsletter-form">
+          <div class="input-wrapper">
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" id="newsletterEmail" placeholder="Enter your email address">
+          </div>
+          <button id="subscribeBtn" class="subscribe-btn">
+            Subscribe <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="posts-section">
+      <div class="posts-header">
+        <h2>Latest Posts</h2>
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="apps">Apps</button>
+          <button class="filter-btn" data-filter="products">Products</button>
+          <button class="filter-btn" data-filter="tutorial">Tutorial</button>
+        </div>
+      </div>
+
+      <div class="posts-grid" id="postsGrid"></div>
+
+      <div class="pagination">
+        <button class="page-btn prev" disabled><i class="fas fa-chevron-left"></i></button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">4</button>
+        <button class="page-btn">5</button>
+        <button class="page-btn next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand-column">
+        <a class="footer-brand" href="../index.html">
+          <img src="images/BrainVoice-logo.svg" alt="Brainvoice">
+          <span class="footer-brand-text">BRAINVOICE.<span class="logo-ai">AI</span></span>
+        </a>
+        <p class="footer-brand-copy">Brainvoice helps organizations understand conversations through AI, uncovering insights hidden in human speech.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>About Us</h4>
+        <ul>
+          <li><a href="about.html#about-webtech">About WebTech</a></li>
+          <li><a href="about.html#our-team">Our Team</a></li>
+          <li><a href="about.html#mission-values">Mission & Values</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="about.html#community">Community Involvement</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="about.html#services-overview">Software Development</a></li>
+          <li><a href="contactus.html">IT Consulting</a></li>
+          <li><a href="contactus.html">Web Design</a></li>
+          <li><a href="success-stories.html">Digital Transformation</a></li>
+          <li><a href="contactus.html">Project Management</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="success-stories.html">Industry Solutions</a></li>
+          <li><a href="contactus.html">Custom Solutions</a></li>
+          <li><a href="success-stories.html">Case Studies</a></li>
+          <li><a href="success-stories.html">Client Success</a></li>
+          <li><a href="contactus.html">Partnership</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blogs.html">Blog</a></li>
+          <li><a href="blogs.html">Whitepapers</a></li>
+          <li><a href="blogs.html">Webinars</a></li>
+          <li><a href="contactus.html#faq">FAQs</a></li>
+          <li><a href="blogs.html">Knowledge Base</a></li>
+          <li><a href="success-stories.html">Testimonials</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column footer-form-column">
+        <h4>Get Started</h4>
+        <form class="footer-form">
+          <div>
+            <label for="footer-first-name-blogs">First name*</label>
+            <input id="footer-first-name-blogs" type="text" placeholder="First name" required>
+          </div>
+          <div>
+            <label for="footer-last-name-blogs">Last name*</label>
+            <input id="footer-last-name-blogs" type="text" placeholder="Last name" required>
+          </div>
+          <div>
+            <label for="footer-email-blogs">Email*</label>
+            <input id="footer-email-blogs" type="email" placeholder="name@email.com" required>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <span>© 2026 Brainvoice. All Rights Reserved.</span>
+        <div class="footer-copyright">
+          <a class="footer-meta-link" href="#">Terms & conditions</a>
+          <span class="divider">|</span>
+          <a class="footer-meta-link" href="#">Privacy policy</a>
+        </div>
+        <span>Built for Brainvoice AI</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/blog.js"></script>
+</body>
+</html>
