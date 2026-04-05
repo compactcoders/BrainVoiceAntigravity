@@ -3684,3 +3684,49 @@ font-weight:600;
 .video-list button:hover{
 background:#0f4c45;
 }
+
+
+/* ==========================================================================
+   GLOBAL RESPONSIVE OVERRIDES (ADDED AUTOMATICALLY)
+   ========================================================================== */
+@media (max-width: 768px) {
+  body, html {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+  
+  /* Force Tailwind flex/grid layout to wrap / column nicely on small screens */
+  .flex-row, .tablet\:flex-row {
+    flex-direction: column !important;
+  }
+  
+  .w-full {
+    width: 100% !important;
+  }
+  
+  .px-4 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  h1.supertitle {
+    font-size: 1.5rem !important;
+    top: -20px !important;
+  }
+
+  /* Specific index.html fixes */
+  #hero-text h1 span {
+    font-size: 3rem !important;
+    line-height: 1 !important;
+  }
+
+  .mesh-label {
+    position: static !important;
+    transform: none !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
