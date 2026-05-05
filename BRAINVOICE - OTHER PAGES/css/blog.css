@@ -1171,8 +1171,26 @@ body {
     justify-content: center;
   }
   
-.footer-container {
+  .footer-container {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .pagination {
+    flex-wrap: nowrap !important;
+    gap: 0.25rem !important;
+    justify-content: center !important;
+  }
+
+  .page-btn {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 0.8rem !important;
+    min-width: 34px !important;
+  }
+
+  .page-btn.prev, .page-btn.next {
+    padding: 0 0.5rem !important;
+    width: auto !important;
   }
 }
 

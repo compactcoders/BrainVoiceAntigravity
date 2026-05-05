@@ -444,6 +444,87 @@
 		#label-5::after {
 			background-color: #14b8a6 !important;
 		}
+
+		/* Testimonials Desktop Centering & Styling (Static Grid) */
+		@media (min-width: 1024px) {
+			.testimonials-swiper {
+				max-width: 1280px !important;
+				margin-left: auto !important;
+				margin-right: auto !important;
+				overflow: visible !important;
+				padding: 2rem 0 !important;
+				cursor: default !important;
+			}
+			.testimonials-swiper .swiper-wrapper {
+				justify-content: center !important;
+				display: flex !important;
+				transform: none !important; /* Disable swiper movement on desktop */
+				width: 100% !important;
+				gap: 1rem !important;
+			}
+			.testimonials-swiper .swiper-slide {
+				width: 350px !important;
+				flex-shrink: 0 !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+			/* Hide duplicate slides created by swiper loop on desktop */
+			.testimonials-swiper .swiper-slide-duplicate {
+				display: none !important;
+			}
+		}
+
+		.testimonial-card {
+			background: rgba(255, 255, 255, 0.04) !important;
+			backdrop-filter: blur(12px) !important;
+			border: 1px solid rgba(255, 255, 255, 0.08) !important;
+			border-radius: 20px !important;
+			padding: 3.5rem 2.5rem !important;
+			text-align: center !important;
+			min-height: 480px !important;
+			display: flex !important;
+			flex-direction: column !important;
+			justify-content: center !important;
+			transition: all 0.3s ease !important;
+			box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
+		}
+
+		.testimonial-card:hover {
+			background: rgba(255, 255, 255, 0.08) !important;
+			transform: translateY(-10px) !important;
+			border-color: rgba(20, 184, 166, 0.3) !important;
+		}
+
+		.testimonial-card h3 {
+			color: #ffffff !important;
+			font-family: 'teknolog', sans-serif !important;
+			font-size: 1.75rem !important;
+			font-weight: 700 !important;
+			text-transform: uppercase !important;
+			line-height: 1.2 !important;
+			margin-bottom: 2rem !important;
+			letter-spacing: 0.05em !important;
+		}
+
+		.testimonial-card p {
+			color: rgba(255, 255, 255, 0.85) !important;
+			font-size: 1rem !important;
+			line-height: 1.7 !important;
+			margin-bottom: 2.5rem !important;
+			font-family: 'ki', sans-serif !important;
+		}
+
+		.testimonial-card span {
+			color: #14b8a6 !important;
+			font-weight: 600 !important;
+			font-size: 0.95rem !important;
+			font-family: 'ki', sans-serif !important;
+		}
+
+		/* Hide the BR added in HTML for cleaner spacing */
+		.testimonial-card br {
+			display: none !important;
+		}
 	</style>
 
 
@@ -456,25 +537,197 @@
     overflow-x: hidden !important;
     max-width: 100vw !important;
   }
-  
-  .tablet\:flex-row {
-    flex-direction: column !important;
+
+  /* Black text for Our Chatbot label on mobile */
+  #label-5 .label-content h3,
+  #label-5 .label-content p {
+    color: #000000 !important;
   }
   
-  .tablet\:gap-24 {
-    gap: 2rem !important;
+  /* Reset the 200vw hack */
+  #hero-section {
+    width: 100vw !important;
+    left: 0 !important;
   }
-  
-  .max-w-\[725px\] {
+
+  #hero-container {
+    overflow: hidden !important;
+    width: 100vw !important;
+  }
+
+  /* Centering all text elements on mobile */
+  .hero-text, 
+  #hero-top,
+  .who-div, 
+  .cycle-through,
+  .find-your-container {
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin-left: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Shift content to the right side on mobile as requested */
+  .about-div, .why-use {
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 55vw !important;
+    max-width: 300px !important;
+    left: 72% !important;
+    top: 60% !important;
+    transform: translate(-50%, -50%) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .about-div *, .why-use * {
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     max-width: 100% !important;
   }
-  
-  .is-h1 {
-    font-size: 2.2rem !important;
+
+  .hero-text h1, 
+  .why-use, 
+  .who-div h2, 
+  .about-div h2, 
+  .about-div h3,
+  .cycle-through h2,
+  .find-your-container h4 {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    color: black !important;
   }
-  
+
+  /* Specific fix for the "Discovering Your Voice" heading spans */
+  .about-div h2 span {
+    align-self: center !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
   .hero-text {
-    padding-top: 30px !important;
+    align-self: flex-start !important;
+    padding-top: 10vh !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Centering the "Our Featured Apps" specifically and moving it above the brain */
+  .why-use {
+    top: 10% !important;
+    bottom: auto !important;
+  }
+
+  .why-use .flex.items-center,
+  .about-div .flex.items-center {
+    justify-content: center !important;
+  }
+
+  /* Hide decorative lines and reset margins that cause off-centering on mobile */
+  .hero-text h1 .bg-gradient-to-l,
+  .why-use .bg-gradient-to-l,
+  .about-div .bg-gradient-to-l {
+    display: none !important;
+  }
+
+  .about-div div[class*="ml-"] {
+    margin-left: 0 !important;
+    text-align: center !important;
+  }
+
+  .about-div {
+    align-items: center !important;
+  }
+
+  /* Hide process step supertitles and numbers on mobile */
+  .about-div .supertitle {
+    display: none !important;
+  }
+
+  /* Ensure spans inside headers are centered */
+  .find-your-container h4 span {
+    align-self: center !important;
+    text-align: center !important;
+  }
+
+  .hero-text p,
+  .about-div p,
+  .who-div p,
+  .find-your-container p {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Only center supertitles in the hero area to avoid breaking slides */
+  #hero-container .supertitle {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin-bottom: 1rem !important;
+    justify-content: center !important;
+  }
+
+  /* Adjust line decorators in find-your-container */
+  .find-your-container .bg-gradient-to-l {
+    display: none !important; /* Hide the side line on mobile for better centering */
+  }
+
+  /* Highlighted supertitle backgrounds on mobile - thicker, not lengthier */
+  .supertitle span.bg-white,
+  .supertitle span.bg-burntOrange {
+    background-color: #14b8a6 !important;
+    color: white !important;
+    padding-top: 0.6rem !important;
+    padding-bottom: 0.6rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: auto !important;
+    display: inline-flex !important;
+    line-height: 1 !important;
+  }
+
+  /* Make the decorative side-bars teal and match the new thickness */
+  .supertitle div[class*="bg-"] {
+    background-color: #14b8a6 !important;
+    width: 6px !important;
+    min-height: 2.2rem !important;
+  }
+
+  .is-h1 {
+    font-size: 1.25rem !important;
+    line-height: 1.1 !important;
+    word-break: break-word !important;
+  }
+
+  .is-h2 {
+    font-size: 1.1rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .about-div p {
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .hero-text {
+    padding-bottom: 10vh !important;
   }
   
   .menu-row {
@@ -512,54 +765,71 @@
     font-size: 1.3rem !important;
   }
 
-  /* THREE JS BRAIN MODEL MOBILE SCALING TRICK */
-  /* Brain 3D Model: Widen the aspect ratio so ThreeJS shrinks the size dynamically without bleeding off-screen */
-  #hero-section {
-    width: 200vw !important;
-    left: -50vw !important;
-  }
-
-  /* Re-align the text layout elements that were pushed sideways by the wider container */
-  #hero-top,
-  .why-use,
-  .who-div,
-  .cycle-through {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    margin-left: 50vw !important;
-    left: 0 !important;
-    padding-left: 1.25rem !important; /* Ensures the original 20px padding */
-    padding-right: 1.25rem !important;
-  }
-  
-  /* Prevent side-scrolling while rendering the wider container */
-  #hero-container {
-    overflow: hidden !important;
-    width: 100vw !important;
-  }
-
   /* Brain 3D Mapped Text Labels Responsive Fix */
-  .mesh-label {
-    width: 180px !important;
-    padding: 8px !important;
-    background-color: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(5px);
-    border-radius: 8px;
+  .mesh-label, .mobile-hero-para {
+    position: fixed !important;
+    bottom: 15px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 95% !important;
+    max-width: 400px !important;
+    padding: 10px !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    z-index: 100 !important;
+    pointer-events: auto !important;
+    /* Specific color override for Our Chatbot label on mobile */
+  #label-5 .label-content p,
+  #label-5 .label-content h3.supertitle {
+    color: black !important;
   }
 
-  .mesh-label .label-content p {
-    font-size: 11.5px !important;
-    line-height: 1.3 !important;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  #label-5 .blink,
+  #label-5 .border-\[1\.5px\] {
+    background-color: black !important;
+    border-color: black !important;
+  }
+}
+
+  .mesh-label .label-content p, .mobile-hero-para p {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    color: white !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
   }
 
   .mesh-label .label-content h3.supertitle {
-    font-size: 13px !important;
-    min-height: auto !important;
+    font-size: 14px !important;
+    margin-bottom: 0.4rem !important;
+    justify-content: center !important;
+    color: white !important;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+  }
+
+  /* Make blinkers and icons white on mobile labels */
+  .mesh-label .blink, 
+  .mesh-label .border-\[1\.5px\] {
+    background-color: white !important;
+    border-color: white !important;
+  }
+
+  .mesh-label {
+    display: none !important;
+  }
+
+  .mesh-label.is-active {
+    display: block !important;
+  }
+
+  /* Ensure the initial para is visible on mobile when no label is active */
+  .mobile-hero-para {
+    display: block !important;
   }
 }
 </style>
@@ -845,7 +1115,7 @@
 									<div
 										class="flex flex-col tablet:flex-row gap-4 tablet:gap-24 w-full justify-between tablet:items-end self-end hero-text">
 										<h1 class="max-w-[725px] w-full flex flex-col relative">
-											<span class="supertitle absolute -top-10 left-0 flex flex-row gap-1">
+											<span class="max-phone:hidden supertitle absolute -top-10 left-0 flex flex-row gap-1">
 												<span class="p-0.5 px-3 w-fit bg-white leading-0 flex items-center"
 													style="color:#0f766e;">
 													Analytics for
@@ -854,9 +1124,9 @@
 												<div class="bg-white min-h-7 w-1"></div>
 											</span>
 											<span class="">ENTERPRISE</span>
-											<span class="flex gap-2 phone:gap-4 items-center">
+											<span class="flex gap-2 phone:gap-4 items-center justify-center">
 												<div
-													class="bg-gradient-to-l from-white to-transparent h-[4px] phone:h-[6px] w-[40px] phone:w-[60px] laptop:w-[120px]">
+													class="max-phone:hidden bg-gradient-to-l from-white to-transparent h-[4px] phone:h-[6px] w-[40px] phone:w-[60px] laptop:w-[120px]">
 												</div>
 												<span class="flex-shrink-0"> WITH AI</span>
 											</span>
@@ -865,14 +1135,20 @@
 											<p style="color:#0f766e" class="text-pretty">
 												<span class="max-phone:hidden">
 													Brainvoice.AI is a cutting innovative technology company dedicated in building custom AI models for enterprises with a deep rooted passion for data driven insights. Specialised in optimising organisation operations & customer experience.
+												</span>
+											</p>
+											<!-- Mobile specific paragraph that acts as the initial stage card -->
+											<div class="mobile-hero-para hidden max-phone:block">
+												<p>Brainvoice.AI is a cutting innovative technology company dedicated in building custom AI models for enterprises with a deep rooted passion for data driven insights. Specialised in optimising organisation operations & customer experience.</p>
+											</div>
 										</div>
 									</div>
 								</div>
 							</section>
 							<div class="h-dvh absolute pointer-events-none absolute top-0 left-0 w-full">
 								<h2
-									class="max-phone:hidden is-h1 max-w-[700px] flex flex-col absolute bottom-8 tablet:bottom-12 left-4 tablet:left-8 z-20 text-white why-use opacity-0">
-									<span class="supertitle absolute -top-10 left-0 flex flex-row gap-1">
+									class="is-h1 max-w-[700px] flex flex-col absolute bottom-8 tablet:bottom-12 left-4 tablet:left-8 z-20 text-white why-use opacity-0">
+									<span class="max-phone:hidden supertitle absolute -top-10 left-0 flex flex-row gap-1">
 										<span class="p-0.5 px-3 w-fit bg-white text-brown leading-0 flex items-center">
 											Understanding
 										</span>
@@ -1173,29 +1449,35 @@
 		What Our Users Say
 	</h2>
 
-	<div class="mt-4 flex flex-wrap justify-center gap-8 px-6">
+	<div class="swiper testimonials-swiper mt-4 overflow-hidden px-6">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide flex justify-center">
+				<div class="testimonial-card">
+					<h3>Customer Experience</h3>
+					<br>
+					<p>BrainVoice AI helped us engage customers at every stage by making communication faster, smarter, and more personalized across the entire journey.</p>
+					<span>— Priya Sharma</span>
+				</div>
+			</div>
 
-		<div class="testimonial-card">
-			<h3>Customer Experience</h3>
-			<br>
-			<p>BrainVoice AI helped us engage customers at every stage by making communication faster, smarter, and more personalized across the entire journey.</p>
-			<span>— Priya Sharma</span>
+			<div class="swiper-slide flex justify-center">
+				<div class="testimonial-card">
+					<h3>Operational Efficiency</h3>
+					<br>
+					<p>We were able to streamline workflows and improve daily operations through a platform that feels intuitive, responsive, and built for performance.</p>
+					<span>— Rahul Verma</span>
+				</div>
+			</div>
+
+			<div class="swiper-slide flex justify-center">
+				<div class="testimonial-card">
+					<h3>Business Scalability</h3>
+					<br>
+					<p>BrainVoice AI gave us the tools to grow with confidence by supporting automation, smarter decision-making, and a more connected digital experience.</p>
+					<span>— Ankit Reddy</span>
+				</div>
+			</div>
 		</div>
-
-		<div class="testimonial-card">
-			<h3>Operational Efficiency</h3>
-			<br>
-			<p>We were able to streamline workflows and improve daily operations through a platform that feels intuitive, responsive, and built for performance.</p>
-			<span>— Rahul Verma</span>
-		</div>
-
-		<div class="testimonial-card">
-			<h3>Business Scalability</h3>
-			<br>
-			<p>BrainVoice AI gave us the tools to grow with confidence by supporting automation, smarter decision-making, and a more connected digital experience.</p>
-			<span>— Ankit Reddy</span>
-		</div>
-
 	</div>
 
 </div>

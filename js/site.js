@@ -38319,8 +38319,8 @@ void main() {
           this.model.position.y = 0.25;
           this.scale = 0.65;
           if (this.width < 768) {
-            this.scale = 0.45;
-            this.model.position.y = 0.4;
+            this.scale = 0.15; // Small scale only for Mobile
+            this.model.position.y = 0.30;
           }
           this.model.scale.set(this.scale, this.scale, this.scale);
           this.scene.add(this.model);
@@ -39003,6 +39003,14 @@ void main() {
         }
       });
       this.outlinePass.selectedObjects = selectedObjects;
+
+      // Mobile: Toggle between initial description and active label cards
+      if (this.width < 768) {
+        const mobilePara = document.querySelector('.mobile-hero-para');
+        if (mobilePara) {
+          mobilePara.style.display = activeHighlight ? 'none' : 'block';
+        }
+      }
     }
     initializeLabels() {
       this.linesGroup = new Group();
@@ -49307,34 +49315,36 @@ void main() {
     if (sliders.length < 1)
       return;
     sliders.forEach((slider) => {
+      const isTestimonial = slider.classList.contains('testimonials-swiper');
+      
       const sliderInstance = new Swiper(slider, {
         modules: [Autoplay],
-        slidesPerView: 1.15,
-        spaceBetween: 0,
+        slidesPerView: isTestimonial ? 1.2 : 1.15,
+        spaceBetween: isTestimonial ? 20 : 0,
+        centeredSlides: isTestimonial ? true : false,
         loop: true,
         speed: 800,
         autoplay: {
-          delay: 3e3,
+          delay: 3500,
           disableOnInteraction: false
         },
         breakpoints: {
-          1600: {
-            slidesPerView: 2.5
-          },
-          1400: {
-            slidesPerView: 2.1
-          },
-          1200: {
-            slidesPerView: 1.75
-          },
           1024: {
-            slidesPerView: 1.5
+            slidesPerView: isTestimonial ? 3 : 1.75,
+            spaceBetween: isTestimonial ? 30 : 0,
+            centeredSlides: false,
+            loop: false,
+            allowTouchMove: isTestimonial ? false : true
           },
           768: {
-            slidesPerView: 2.25
+            slidesPerView: isTestimonial ? 2 : 2.25,
+            spaceBetween: isTestimonial ? 30 : 0,
+            centeredSlides: false
           },
           576: {
-            slidesPerView: 1.5
+            slidesPerView: isTestimonial ? 1.5 : 1.5,
+            spaceBetween: isTestimonial ? 20 : 0,
+            centeredSlides: true
           }
         }
       });

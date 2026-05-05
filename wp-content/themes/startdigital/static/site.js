@@ -38324,8 +38324,8 @@ void main() {
           this.model.position.y = 0.25;
           this.scale = 0.30;
           if (this.width < 768) {
-            this.scale = 0.45;
-            this.model.position.y = 0.4;
+            this.scale = 0.15; // Small scale only for Mobile
+            this.model.position.y = 0.30;
           }
           this.model.scale.set(this.scale, this.scale, this.scale);
           this.scene.add(this.model);
@@ -39071,6 +39071,14 @@ void main() {
         }
       });
       this.outlinePass.selectedObjects = selectedObjects;
+
+      // Mobile: Toggle between initial description and active label cards
+      if (this.width < 768) {
+        const mobilePara = document.querySelector('.mobile-hero-para');
+        if (mobilePara) {
+          mobilePara.style.display = activeHighlight ? 'none' : 'block';
+        }
+      }
     }
     initializeLabels() {
       this.linesGroup = new Group();
