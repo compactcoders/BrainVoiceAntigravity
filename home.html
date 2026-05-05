@@ -433,7 +433,19 @@
 		href='./wp-content/plugins/gravityforms/assets/css/dist/gravity-forms-orbital-theme.min.css?ver=2.9.27'
 		type='text/css' media='all' />
 	<style>
-		/* Force allow vertical scrolling on swiper areas for mobile */
+		/* Force allow vertical scrolling on all interactive and scroll areas for mobile */
+		html, body {
+			overflow-x: hidden !important;
+			overscroll-behavior-y: none;
+			touch-action: pan-y !important;
+		}
+
+		#smooth-wrapper, #smooth-content {
+			touch-action: pan-y !important;
+			min-height: 100% !important;
+			overflow: visible !important;
+		}
+
 		.swiper, .swiper-wrapper, .swiper-slide {
 			touch-action: pan-y !important;
 		}
@@ -1320,7 +1332,7 @@
 
 								</div>
 								<div
-									class="cycle-through-gradient opacity-0 bg-gradient-to-b from-white to-white/0 absolute top-0 left-0 w-full h-full z-20 tablet:hidden">
+									class="cycle-through-gradient opacity-0 bg-gradient-to-b from-white to-white/0 absolute top-0 left-0 w-full h-full z-20 tablet:hidden pointer-events-none">
 								</div>
 								<div
 									class="cycle-through w-[calc(100%-2rem)] absolute top-20 phone:top-28 tablet:top-24 laptop:top-24 max-tablet:left-4 right-auto tablet:right-8 z-20 max-w-[568px] mini:w-full tablet:p-4 opacity-0 pointer-events-none">
@@ -2487,16 +2499,45 @@ We provide enterprise grade AI solutions meticulously crafted for your use case 
 
 	</script>
 	<script>
-		// Force a scroll refresh to fix "stuck" mobile scrolling after dynamic sections
-		window.addEventListener('load', function() {
-			setTimeout(function() {
+		// Advanced Mobile Scroll Fixer
+		(function() {
+			const refreshScroll = () => {
 				if (window.gsap && window.ScrollTrigger) {
 					ScrollTrigger.refresh();
 				}
-				// Force layout recalculation
-				window.dispatchEvent(new Event('resize'));
-			}, 500);
-		});
+			};
+
+			// Force refresh after all assets and dynamic content are ready
+			window.addEventListener('load', () => {
+				setTimeout(refreshScroll, 1000);
+			});
+
+			// Fix for "stuck" sections on mobile touch
+			document.addEventListener('touchend', () => {
+				// Small delay to allow momentum to start
+				setTimeout(refreshScroll, 100);
+			}, { passive: true });
+
+			// Configuration for smoother mobile performance
+			if (window.gsap && window.ScrollTrigger) {
+				ScrollTrigger.config({
+					ignoreMobileResize: true,
+					limitCallbacks: true
+				});
+				
+				// Ensure vertical scroll is always enabled
+				ScrollTrigger.normalizeScroll({
+					allowNestedScroll: true,
+					momentum: true,
+					type: "touch,wheel,pointer"
+				});
+			}
+
+			// Force layout recalculation on resize
+			window.addEventListener('resize', () => {
+				gsap.delayedCall(0.2, refreshScroll);
+			});
+		})();
 	</script>
 </body>
 
