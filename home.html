@@ -657,7 +657,8 @@
 
   .hero-text {
     align-self: flex-start !important;
-    padding-top: 10vh !important;
+    justify-content: flex-start !important;
+    padding-top: 5vh !important;
     padding-bottom: 0 !important;
   }
 
@@ -805,7 +806,6 @@
   /* Brain 3D Mapped Text Labels Responsive Fix */
   .mesh-label, .mobile-hero-para {
     position: fixed !important;
-    bottom: 15px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 95% !important;
@@ -817,6 +817,15 @@
     box-shadow: none !important;
     z-index: 100 !important;
     pointer-events: auto !important;
+  }
+
+  .mobile-hero-para {
+    bottom: 22vh !important;
+  }
+
+  .mesh-label {
+    bottom: 8vh !important;
+  }
     /* Specific color override for Our Chatbot label on mobile */
   #label-5 .label-content p,
   #label-5 .label-content h3.supertitle {
@@ -1150,7 +1159,7 @@
 								<div
 									class="flex flex-row justify-between gap-4 relative z-20 h-full w-full px-4 tablet:px-8">
 									<div
-										class="flex flex-col tablet:flex-row gap-4 tablet:gap-24 w-full justify-between tablet:items-end self-end hero-text">
+										class="flex flex-col tablet:flex-row gap-4 tablet:gap-24 w-full justify-between tablet:items-end self-end max-tablet:self-start hero-text">
 										<h1 class="max-w-[725px] w-full flex flex-col relative">
 											<span class="max-phone:hidden supertitle absolute -top-10 left-0 flex flex-row gap-1">
 												<span class="p-0.5 px-3 w-fit bg-white leading-0 flex items-center"
