@@ -436,14 +436,34 @@
 		/* Force allow vertical scrolling on all interactive and scroll areas for mobile */
 		html, body {
 			overflow-x: hidden !important;
-			overscroll-behavior-y: none;
-			touch-action: pan-y !important;
+			overscroll-behavior-y: auto !important;
+			touch-action: auto !important;
+			height: auto !important;
+			min-height: 100% !important;
+		}
+
+		/* Mobile-specific: Bypass smooth-scroll fixed wrapper to prevent sticking */
+		@media (max-width: 1024px) {
+			#smooth-wrapper {
+				position: relative !important;
+				height: auto !important;
+				overflow: visible !important;
+				touch-action: auto !important;
+			}
+			#smooth-content {
+				position: relative !important;
+				width: 100% !important;
+				height: auto !important;
+				overflow: visible !important;
+			}
+			/* Ensure pinned sections don't trap the user */
+			[data-scroll-section], .section, section {
+				overflow: visible !important;
+			}
 		}
 
 		#smooth-wrapper, #smooth-content {
-			touch-action: pan-y !important;
 			min-height: 100% !important;
-			overflow: visible !important;
 		}
 
 		.swiper, .swiper-wrapper, .swiper-slide {
@@ -2499,44 +2519,58 @@ We provide enterprise grade AI solutions meticulously crafted for your use case 
 
 	</script>
 	<script>
-		// Advanced Mobile Scroll Fixer
+		// Global Mobile Scroll & Lenis Fixer
 		(function() {
+			const isMobile = window.innerWidth <= 1024 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
 			const refreshScroll = () => {
 				if (window.gsap && window.ScrollTrigger) {
 					ScrollTrigger.refresh();
 				}
 			};
 
-			// Force refresh after all assets and dynamic content are ready
+			// Disable Lenis smooth touch on mobile to prevent sticking
+			const fixLenis = () => {
+				if (window.lenis) {
+					if (isMobile) {
+						window.lenis.options.smoothTouch = false;
+						window.lenis.destroy(); // Optional: completely disable on mobile for max stability
+					}
+				}
+			};
+
 			window.addEventListener('load', () => {
+				fixLenis();
 				setTimeout(refreshScroll, 1000);
+				
+				// Add ghost spacer to ensure scroll room
+				if (isMobile) {
+					const spacer = document.createElement('div');
+					spacer.style.height = '20vh';
+					spacer.style.pointerEvents = 'none';
+					document.body.appendChild(spacer);
+				}
 			});
 
-			// Fix for "stuck" sections on mobile touch
 			document.addEventListener('touchend', () => {
-				// Small delay to allow momentum to start
-				setTimeout(refreshScroll, 100);
+				setTimeout(refreshScroll, 150);
 			}, { passive: true });
 
-			// Configuration for smoother mobile performance
 			if (window.gsap && window.ScrollTrigger) {
 				ScrollTrigger.config({
 					ignoreMobileResize: true,
 					limitCallbacks: true
 				});
 				
-				// Ensure vertical scroll is always enabled
-				ScrollTrigger.normalizeScroll({
-					allowNestedScroll: true,
-					momentum: true,
-					type: "touch,wheel,pointer"
-				});
+				// Standardize scroll for mobile
+				if (!isMobile) {
+					ScrollTrigger.normalizeScroll({
+						allowNestedScroll: true,
+						momentum: true,
+						type: "touch,wheel,pointer"
+					});
+				}
 			}
-
-			// Force layout recalculation on resize
-			window.addEventListener('resize', () => {
-				gsap.delayedCall(0.2, refreshScroll);
-			});
 		})();
 	</script>
 </body>
