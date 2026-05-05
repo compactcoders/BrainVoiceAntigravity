@@ -433,6 +433,11 @@
 		href='./wp-content/plugins/gravityforms/assets/css/dist/gravity-forms-orbital-theme.min.css?ver=2.9.27'
 		type='text/css' media='all' />
 	<style>
+		/* Force allow vertical scrolling on swiper areas for mobile */
+		.swiper, .swiper-wrapper, .swiper-slide {
+			touch-action: pan-y !important;
+		}
+
 		#label-1,
 		#label-5 {
 			border-color: #14b8a6 !important;
@@ -1443,7 +1448,7 @@
 							<div class="absolute top-0 w-full left-0 h-1/4 bg-transparent"></div>
 							<div class="absolute bottom-0 w-full left-0 h-1/4 bg-transparent"></div>
 						</div>
-						<div id="info-section" class="testimonial-section py-20 text-center text-white">
+						<div id="info-section" class="testimonial-section relative z-20 py-20 text-center text-white">
 
 	<h2 class="text-3xl md:text-5xl font-semibold mb-20">
 		What Our Users Say
@@ -1479,8 +1484,8 @@
 			</div>
 		</div>
 	</div>
-
 </div>
+</section>
 						<div
 							class="video-outer flex items-center justify-center w-full laptop:h-lvh relative px-4 tablet:px-8 my-16 overflow-hidden max-tablet:hidden">
 							<svg width="0" height="0" viewbox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg"
@@ -2480,6 +2485,18 @@ We provide enterprise grade AI solutions meticulously crafted for your use case 
 
 		}
 
+	</script>
+	<script>
+		// Force a scroll refresh to fix "stuck" mobile scrolling after dynamic sections
+		window.addEventListener('load', function() {
+			setTimeout(function() {
+				if (window.gsap && window.ScrollTrigger) {
+					ScrollTrigger.refresh();
+				}
+				// Force layout recalculation
+				window.dispatchEvent(new Event('resize'));
+			}, 500);
+		});
 	</script>
 </body>
 
