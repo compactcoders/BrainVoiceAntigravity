@@ -434,7 +434,8 @@
 		type='text/css' media='all' />
 	<style>
 		/* Force allow vertical scrolling on all interactive and scroll areas for mobile */
-		html, body {
+		html,
+		body {
 			overflow-x: hidden !important;
 			overscroll-behavior-y: auto !important;
 			touch-action: auto !important;
@@ -450,23 +451,30 @@
 				overflow: visible !important;
 				touch-action: auto !important;
 			}
+
 			#smooth-content {
 				position: relative !important;
 				width: 100% !important;
 				height: auto !important;
 				overflow: visible !important;
 			}
+
 			/* Ensure pinned sections don't trap the user */
-			[data-scroll-section], .section, section {
+			[data-scroll-section],
+			.section,
+			section {
 				overflow: visible !important;
 			}
 		}
 
-		#smooth-wrapper, #smooth-content {
+		#smooth-wrapper,
+		#smooth-content {
 			min-height: 100% !important;
 		}
 
-		.swiper, .swiper-wrapper, .swiper-slide {
+		.swiper,
+		.swiper-wrapper,
+		.swiper-slide {
 			touch-action: pan-y !important;
 		}
 
@@ -492,19 +500,23 @@
 				padding: 2rem 0 !important;
 				cursor: default !important;
 			}
+
 			.testimonials-swiper .swiper-wrapper {
 				justify-content: center !important;
 				display: flex !important;
-				transform: none !important; /* Disable swiper movement on desktop */
+				transform: none !important;
+				/* Disable swiper movement on desktop */
 				width: 100% !important;
 				gap: 1rem !important;
 			}
+
 			.testimonials-swiper .swiper-slide {
 				width: 350px !important;
 				flex-shrink: 0 !important;
 				padding: 0 !important;
 				margin: 0 !important;
 			}
+
 			/* Hide duplicate slides created by swiper loop on desktop */
 			.testimonials-swiper .swiper-slide-duplicate {
 				display: none !important;
@@ -523,7 +535,7 @@
 			flex-direction: column !important;
 			justify-content: center !important;
 			transition: all 0.3s ease !important;
-			box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
 		}
 
 		.testimonial-card:hover {
@@ -565,320 +577,354 @@
 	</style>
 
 
-<!-- ==========================================================================
+	<!-- ==========================================================================
      GLOBAL RESPONSIVE OVERRIDES FOR INDEX.HTML (ADDED AUTOMATICALLY)
      ========================================================================== -->
-<style id="mobile-responsive-overrides">
-@media (max-width: 768px) {
-  body, html {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-  }
+	<style id="mobile-responsive-overrides">
+		@media (max-width: 768px) {
 
-  /* Black text for Our Chatbot label on mobile */
-  #label-5 .label-content h3,
-  #label-5 .label-content p {
-    color: #000000 !important;
-  }
-  
-  /* Reset the 200vw hack */
-  #hero-section {
-    width: 100vw !important;
-    left: 0 !important;
-  }
+			body,
+			html {
+				overflow-x: hidden !important;
+				max-width: 100vw !important;
+			}
 
-  #hero-container {
-    overflow: hidden !important;
-    width: 100vw !important;
-  }
+			/* Black text for Our Chatbot label on mobile */
+			#label-5 .label-content h3,
+			#label-5 .label-content p {
+				color: #000000 !important;
+			}
 
-  /* Centering all text elements on mobile */
-  .hero-text, 
-  #hero-top,
-  .who-div, 
-  .cycle-through,
-  .find-your-container {
-    text-align: center !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-    margin-left: 0 !important;
-    left: 0 !important;
-    transform: none !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
+			/* Reset the 200vw hack */
+			#hero-section {
+				width: 100vw !important;
+				left: 0 !important;
+			}
 
-  /* Shift content to the right side on mobile as requested */
-  .about-div, .why-use {
-    text-align: center !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 55vw !important;
-    max-width: 300px !important;
-    left: 72% !important;
-    top: 60% !important;
-    transform: translate(-50%, -50%) !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
+			#hero-container {
+				overflow: hidden !important;
+				width: 100vw !important;
+			}
 
-  .about-div *, .why-use * {
-    text-align: center !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    max-width: 100% !important;
-  }
+			/* Centering all text elements on mobile */
+			.hero-text,
+			#hero-top,
+			.who-div,
+			.cycle-through,
+			.find-your-container {
+				text-align: center !important;
+				align-items: center !important;
+				justify-content: center !important;
+				width: 100% !important;
+				max-width: 100vw !important;
+				margin-left: 0 !important;
+				left: 0 !important;
+				transform: none !important;
+				padding-left: 1rem !important;
+				padding-right: 1rem !important;
+			}
 
-  .hero-text h1, 
-  .why-use, 
-  .who-div h2, 
-  .about-div h2, 
-  .about-div h3,
-  .cycle-through h2,
-  .find-your-container h4 {
-    align-items: center !important;
-    text-align: center !important;
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    color: black !important;
-  }
+			/* Shift content to the right side on mobile as requested */
+			.about-div,
+			.why-use {
+				text-align: center !important;
+				align-items: center !important;
+				justify-content: center !important;
+				width: 55vw !important;
+				max-width: 300px !important;
+				left: 72% !important;
+				top: 60% !important;
+				transform: translate(-50%, -50%) !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
 
-  /* Specific fix for the "Discovering Your Voice" heading spans */
-  .about-div h2 span {
-    align-self: center !important;
-    text-align: center !important;
-    justify-content: center !important;
-  }
+			.about-div *,
+			.why-use * {
+				text-align: center !important;
+				align-items: center !important;
+				justify-content: center !important;
+				margin-left: auto !important;
+				margin-right: auto !important;
+				max-width: 100% !important;
+			}
 
-  .hero-text {
-    align-self: flex-start !important;
-    justify-content: flex-start !important;
-    padding-top: 5vh !important;
-    padding-bottom: 0 !important;
-  }
+			.hero-text h1,
+			.why-use,
+			.who-div h2,
+			.about-div h2,
+			.about-div h3,
+			.cycle-through h2,
+			.find-your-container h4 {
+				align-items: center !important;
+				text-align: center !important;
+				width: 100% !important;
+				display: flex !important;
+				flex-direction: column !important;
+				color: black !important;
+			}
 
-  /* Centering the "Our Featured Apps" specifically and moving it above the brain */
-  .why-use {
-    top: 10% !important;
-    bottom: auto !important;
-  }
+			/* Specific fix for the "Discovering Your Voice" heading spans */
+			.about-div h2 span {
+				align-self: center !important;
+				text-align: center !important;
+				justify-content: center !important;
+			}
 
-  .why-use .flex.items-center,
-  .about-div .flex.items-center {
-    justify-content: center !important;
-  }
+			.hero-text {
+				align-self: flex-start !important;
+				justify-content: flex-start !important;
+				padding-top: 5vh !important;
+				padding-bottom: 0 !important;
+			}
 
-  /* Hide decorative lines and reset margins that cause off-centering on mobile */
-  .hero-text h1 .bg-gradient-to-l,
-  .why-use .bg-gradient-to-l,
-  .about-div .bg-gradient-to-l {
-    display: none !important;
-  }
+			/* Centering the "Our Featured Apps" specifically and moving it above the brain */
+			.why-use {
+				top: 10% !important;
+				bottom: auto !important;
+			}
 
-  .about-div div[class*="ml-"] {
-    margin-left: 0 !important;
-    text-align: center !important;
-  }
+			.why-use .flex.items-center,
+			.about-div .flex.items-center {
+				justify-content: center !important;
+			}
 
-  .about-div {
-    align-items: center !important;
-  }
+			/* Hide decorative lines and reset margins that cause off-centering on mobile */
+			.hero-text h1 .bg-gradient-to-l,
+			.why-use .bg-gradient-to-l,
+			.about-div .bg-gradient-to-l {
+				display: none !important;
+			}
 
-  /* Hide process step supertitles and numbers on mobile */
-  .about-div .supertitle {
-    display: none !important;
-  }
+			.about-div div[class*="ml-"] {
+				margin-left: 0 !important;
+				text-align: center !important;
+			}
 
-  /* Ensure spans inside headers are centered */
-  .find-your-container h4 span {
-    align-self: center !important;
-    text-align: center !important;
-  }
+			.about-div {
+				align-items: center !important;
+			}
 
-  .hero-text p,
-  .about-div p,
-  .who-div p,
-  .find-your-container p {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    text-align: center !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
+			/* Hide process step supertitles and numbers on mobile */
+			.about-div .supertitle {
+				display: none !important;
+			}
 
-  /* Only center supertitles in the hero area to avoid breaking slides */
-  #hero-container .supertitle {
-    position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    margin-bottom: 1rem !important;
-    justify-content: center !important;
-  }
+			/* Ensure spans inside headers are centered */
+			.find-your-container h4 span {
+				align-self: center !important;
+				text-align: center !important;
+			}
 
-  /* Adjust line decorators in find-your-container */
-  .find-your-container .bg-gradient-to-l {
-    display: none !important; /* Hide the side line on mobile for better centering */
-  }
+			.hero-text p,
+			.about-div p,
+			.who-div p,
+			.find-your-container p {
+				margin-left: 0 !important;
+				margin-right: 0 !important;
+				text-align: center !important;
+				width: 100% !important;
+				max-width: 100% !important;
+			}
 
-  /* Highlighted supertitle backgrounds on mobile - thicker, not lengthier */
-  .supertitle span.bg-white,
-  .supertitle span.bg-burntOrange {
-    background-color: #14b8a6 !important;
-    color: white !important;
-    padding-top: 0.6rem !important;
-    padding-bottom: 0.6rem !important;
-    padding-left: 1.25rem !important;
-    padding-right: 1.25rem !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    width: auto !important;
-    display: inline-flex !important;
-    line-height: 1 !important;
-  }
+			/* Only center supertitles in the hero area to avoid breaking slides */
+			#hero-container .supertitle {
+				position: relative !important;
+				top: 0 !important;
+				left: 0 !important;
+				margin-bottom: 1rem !important;
+				justify-content: center !important;
+			}
 
-  /* Make the decorative side-bars teal and match the new thickness */
-  .supertitle div[class*="bg-"] {
-    background-color: #14b8a6 !important;
-    width: 6px !important;
-    min-height: 2.2rem !important;
-  }
+			/* Adjust line decorators in find-your-container */
+			.find-your-container .bg-gradient-to-l {
+				display: none !important;
+				/* Hide the side line on mobile for better centering */
+			}
 
-  .is-h1 {
-    font-size: 1.25rem !important;
-    line-height: 1.1 !important;
-    word-break: break-word !important;
-  }
+			/* Highlighted supertitle backgrounds on mobile - thicker, not lengthier */
+			.supertitle span.bg-white,
+			.supertitle span.bg-burntOrange {
+				background-color: #14b8a6 !important;
+				color: white !important;
+				padding-top: 0.6rem !important;
+				padding-bottom: 0.6rem !important;
+				padding-left: 1.25rem !important;
+				padding-right: 1.25rem !important;
+				margin-left: 0 !important;
+				margin-right: 0 !important;
+				width: auto !important;
+				display: inline-flex !important;
+				line-height: 1 !important;
+			}
 
-  .is-h2 {
-    font-size: 1.1rem !important;
-    line-height: 1.2 !important;
-  }
+			/* Make the decorative side-bars teal and match the new thickness */
+			.supertitle div[class*="bg-"] {
+				background-color: #14b8a6 !important;
+				width: 6px !important;
+				min-height: 2.2rem !important;
+			}
 
-  .about-div p {
-    font-size: 0.85rem !important;
-    line-height: 1.4 !important;
-  }
+			.is-h1 {
+				font-size: 1.25rem !important;
+				line-height: 1.1 !important;
+				word-break: break-word !important;
+			}
 
-  .hero-text {
-    padding-bottom: 10vh !important;
-  }
-  
-  .menu-row {
-    display: none !important;
-  }
-  
-  header {
-    background-color: rgba(255,255,255,0.95) !important;
-  }
+			.is-h2 {
+				font-size: 1.1rem !important;
+				line-height: 1.2 !important;
+			}
 
-  /* Minimal Footer Layout for Mobile */
-  .big-logo {
-    font-size: 15vw !important;
-    margin-bottom: 0 !important;
-  }
+			.about-div p {
+				font-size: 0.85rem !important;
+				line-height: 1.4 !important;
+			}
 
-  footer .tablet\:flex-row {
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    gap: 1.5rem !important;
-  }
+			.hero-text {
+				padding-bottom: 10vh !important;
+			}
 
-  footer .tablet\:flex-row > .flex {
-    flex: 1 1 40% !important;
-    min-width: 40% !important;
-  }
+			.menu-row {
+				display: none !important;
+			}
 
-  footer .tablet\:flex-row > .flex:first-child,
-  footer .tablet\:flex-row > .flex:last-child {
-    flex: 1 1 100% !important;
-    min-width: 100% !important;
-  }
+			header {
+				background-color: rgba(255, 255, 255, 0.95) !important;
+			}
 
-  footer .tablet\:flex-row .is-h5 {
-    font-size: 1.3rem !important;
-  }
+			/* Minimal Footer Layout for Mobile */
+			.big-logo {
+				font-size: 15vw !important;
+				margin-bottom: 0 !important;
+			}
 
-  /* Brain 3D Mapped Text Labels Responsive Fix */
-  .mesh-label, .mobile-hero-para {
-    position: fixed !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 95% !important;
-    max-width: 400px !important;
-    padding: 10px !important;
-    background-color: transparent !important;
-    backdrop-filter: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    z-index: 100 !important;
-    pointer-events: auto !important;
-  }
+			footer .tablet\:flex-row {
+				flex-direction: row !important;
+				flex-wrap: wrap !important;
+				gap: 1.5rem !important;
+			}
 
-  .mobile-hero-para {
-    bottom: 22vh !important;
-  }
+			footer .tablet\:flex-row>.flex {
+				flex: 1 1 40% !important;
+				min-width: 40% !important;
+			}
 
-  .mesh-label {
-    bottom: 8vh !important;
-  }
-    /* Specific color override for Our Chatbot label on mobile */
-  #label-5 .label-content p,
-  #label-5 .label-content h3.supertitle {
-    color: black !important;
-  }
+			footer .tablet\:flex-row>.flex:first-child,
+			footer .tablet\:flex-row>.flex:last-child {
+				flex: 1 1 100% !important;
+				min-width: 100% !important;
+			}
 
-  #label-5 .blink,
-  #label-5 .border-\[1\.5px\] {
-    background-color: black !important;
-    border-color: black !important;
-  }
-}
+			footer .tablet\:flex-row .is-h5 {
+				font-size: 1.3rem !important;
+			}
 
-  .mesh-label .label-content p, .mobile-hero-para p {
-    font-size: 12px !important;
-    line-height: 1.4 !important;
-    text-align: center !important;
-    color: white !important;
-    font-weight: 700 !important;
-    margin: 0 !important;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  }
+			/* Brain 3D Mapped Text Labels Responsive Fix */
+			.mesh-label,
+			.mobile-hero-para {
+				position: fixed !important;
+				left: 50% !important;
+				transform: translateX(-50%) !important;
+				width: 95% !important;
+				max-width: 400px !important;
+				padding: 10px !important;
+				background-color: transparent !important;
+				backdrop-filter: none !important;
+				border: none !important;
+				box-shadow: none !important;
+				z-index: 100 !important;
+				pointer-events: auto !important;
+			}
 
-  .mesh-label .label-content h3.supertitle {
-    font-size: 14px !important;
-    margin-bottom: 0.4rem !important;
-    justify-content: center !important;
-    color: white !important;
-    font-weight: 800 !important;
-    text-transform: uppercase;
-  }
+			.mobile-hero-para {
+				bottom: 22vh !important;
+			}
 
-  /* Make blinkers and icons white on mobile labels */
-  .mesh-label .blink, 
-  .mesh-label .border-\[1\.5px\] {
-    background-color: white !important;
-    border-color: white !important;
-  }
+			.mesh-label {
+				bottom: 8vh !important;
+			}
 
-  .mesh-label {
-    display: none !important;
-  }
+			/* Specific color override for Our Chatbot label on mobile */
+			#label-5 .label-content p,
+			#label-5 .label-content h3.supertitle {
+				color: black !important;
+			}
 
-  .mesh-label.is-active {
-    display: block !important;
-  }
+			#label-5 .blink,
+			#label-5 .border-\[1\.5px\] {
+				background-color: black !important;
+				border-color: black !important;
+			}
 
-  /* Ensure the initial para is visible on mobile when no label is active */
-  .mobile-hero-para {
-    display: block !important;
-  }
-}
-</style>
+			/* Styles for mobile labels - keep them white */
+			.mesh-label .label-content p,
+			.mobile-hero-para p {
+				color: white !important;
+				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+			}
+
+			.mesh-label .label-content h3.supertitle {
+				color: white !important;
+				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+			}
+
+			/* Make blinkers and icons white on mobile labels */
+			.mesh-label .blink,
+			.mesh-label .border-\[1\.5px\] {
+				background-color: white !important;
+				border-color: white !important;
+			}
+
+			.mesh-label {
+				display: none !important;
+			}
+
+			.mesh-label.is-active {
+				display: block !important;
+			}
+
+			/* Ensure the initial para is visible on mobile when no label is active */
+			.mobile-hero-para {
+				display: block !important;
+			}
+			/* Footer sellpoints black text on mobile */
+			.footer-sellpoints h5,
+			.footer-sellpoints p {
+				color: #000000 !important;
+			}
+
+			.footer-sellpoints .border-white {
+				border-color: #000000 !important;
+			}
+
+			.footer-sellpoints .bg-white.blink {
+				background-color: #000000 !important;
+			}
+		}
+
+		/* Global Styles for Labels (Default for Laptop) */
+		.mesh-label .label-content p,
+		.mobile-hero-para p {
+			font-size: 12px !important;
+			line-height: 1.4 !important;
+			text-align: center !important;
+			font-weight: 700 !important;
+			margin: 0 !important;
+			color: black !important;
+			text-shadow: none !important;
+		}
+
+		.mesh-label .label-content h3.supertitle {
+			font-size: 14px !important;
+			margin-bottom: 0.4rem !important;
+			justify-content: center !important;
+			font-weight: 800 !important;
+			text-transform: uppercase;
+			color: black !important;
+			text-shadow: none !important;
+		}
+	</style>
 
 </head>
 
@@ -1161,7 +1207,8 @@
 									<div
 										class="flex flex-col tablet:flex-row gap-4 tablet:gap-24 w-full justify-between tablet:items-end self-end max-tablet:self-start hero-text">
 										<h1 class="max-w-[725px] w-full flex flex-col relative">
-											<span class="max-phone:hidden supertitle absolute -top-10 left-0 flex flex-row gap-1">
+											<span
+												class="max-phone:hidden supertitle absolute -top-10 left-0 flex flex-row gap-1">
 												<span class="p-0.5 px-3 w-fit bg-white leading-0 flex items-center"
 													style="color:#0f766e;">
 													Analytics for
@@ -1179,13 +1226,13 @@
 										</h1>
 										<div class="flex flex-col gap-4 max-w-[500px] w-full">
 											<p style="color:#0f766e" class="text-pretty">
-												<span class="max-phone:hidden">
-													Brainvoice.AI is a cutting innovative technology company dedicated in building custom AI models for enterprises with a deep rooted passion for data driven insights. Specialised in optimising organisation operations & customer experience.
-												</span>
 											</p>
 											<!-- Mobile specific paragraph that acts as the initial stage card -->
 											<div class="mobile-hero-para hidden max-phone:block">
-												<p>Brainvoice.AI is a cutting innovative technology company dedicated in building custom AI models for enterprises with a deep rooted passion for data driven insights. Specialised in optimising organisation operations & customer experience.</p>
+												<p>Brainvoice.AI is a cutting innovative technology company dedicated in
+													building custom AI models for enterprises with a deep rooted passion
+													for data driven insights. Specialised in optimising organisation
+													operations & customer experience.</p>
 											</div>
 										</div>
 									</div>
@@ -1194,7 +1241,8 @@
 							<div class="h-dvh absolute pointer-events-none absolute top-0 left-0 w-full">
 								<h2
 									class="is-h1 max-w-[700px] flex flex-col absolute bottom-8 tablet:bottom-12 left-4 tablet:left-8 z-20 text-white why-use opacity-0">
-									<span class="max-phone:hidden supertitle absolute -top-10 left-0 flex flex-row gap-1">
+									<span
+										class="max-phone:hidden supertitle absolute -top-10 left-0 flex flex-row gap-1">
 										<span class="p-0.5 px-3 w-fit bg-white text-brown leading-0 flex items-center">
 											Understanding
 										</span>
@@ -1219,9 +1267,15 @@
 													style="border-color:#14b8a6;">
 													<div class="size-2 blink" style="background-color:#14b8a6;"></div>
 												</div>
-												<h3 class="supertitle min-h-7 leading-0 flex items-center">Hlealthcare ERP</h3>
+												<h3 class="supertitle min-h-7 leading-0 flex items-center">Hlealthcare
+													ERP</h3>
 											</div>
-<p>A Sovereign Healthcare AI ecosystem designed to automate hospital operations through high-precision resource allocation and autonomous clinical logic. By maintaining a 'Human-in-the-Loop' feedback architecture, the platform delivers hyper-personalized patient care while meticulously calibrating to the unique operational constraints of modern medical institutions.											</p>
+											<p>A Sovereign Healthcare AI ecosystem designed to automate hospital
+												operations through high-precision resource allocation and autonomous
+												clinical logic. By maintaining a 'Human-in-the-Loop' feedback
+												architecture, the platform delivers hyper-personalized patient care
+												while meticulously calibrating to the unique operational constraints of
+												modern medical institutions. </p>
 										</div>
 									</div>
 								</div>
@@ -1233,9 +1287,14 @@
 													class="border-[1.5px] border-white size-3 flex items-center justify-center shrink-0">
 													<div class="size-2 bg-white blink"></div>
 												</div>
-												<h3 class="supertitle min-h-7 leading-0 flex items-center">Manufacturing QC</h3>
+												<h3 class="supertitle min-h-7 leading-0 flex items-center">Manufacturing
+													QC</h3>
 											</div>
-											<p>Our intelligent quality control solution is engineered to architect a "Zero-Defect" manufacturing environment. By integrating Hybrid Agentic Architecture with real-time vision data, the system monitors production consistency, identifies microscopic anomalies, and—critically—predicts potential failures before they occur in the production line.
+											<p>Our intelligent quality control solution is engineered to architect a
+												"Zero-Defect" manufacturing environment. By integrating Hybrid Agentic
+												Architecture with real-time vision data, the system monitors production
+												consistency, identifies microscopic anomalies, and—critically—predicts
+												potential failures before they occur in the production line.
 										</div>
 									</div>
 								</div>
@@ -1247,9 +1306,15 @@
 													style="border-color:#14b8a6;">
 													<div class="size-2 blink" style="background-color:#14b8a6;"></div>
 												</div>
-												<h3 class="supertitle min-h-7 leading-0 flex items-center">Our Chatbot</h3>
+												<h3 class="supertitle min-h-7 leading-0 flex items-center">Our Chatbot
+												</h3>
 											</div>
-											<p>Beyond standard automated responses, our chatbot utilizes Retrieval-Augmented Generation (RAG) to securely connect with your private databases. This architecture allows the AI to pull real-time, context-specific data, delivering a hyper-personalized chat experience that understands individual customer history while maintaining strict data sovereignty and precision.
+											<p>Beyond standard automated responses, our chatbot utilizes
+												Retrieval-Augmented Generation (RAG) to securely connect with your
+												private databases. This architecture allows the AI to pull real-time,
+												context-specific data, delivering a hyper-personalized chat experience
+												that understands individual customer history while maintaining strict
+												data sovereignty and precision.
 										</div>
 									</div>
 								</div>
@@ -1390,7 +1455,14 @@
 												<div class="bg-burntOrange min-h-7 w-1"></div>
 											</h4>
 										</div>
-										<p class="opacity-0">BrainVoice AI is built on the foundation of intelligent automation, human-centered design, and scalable AI innovation. Its strategic direction focuses on creating practical, high-impact AI solutions that help businesses enhance communication, streamline operations, and improve customer experiences. By combining advanced artificial intelligence with real-world usability, BrainVoice AI aims to position itself as a forward-thinking technology brand that drives digital transformation across industries.
+										<p class="opacity-0">BrainVoice AI is built on the foundation of intelligent
+											automation, human-centered design, and scalable AI innovation. Its strategic
+											direction focuses on creating practical, high-impact AI solutions that help
+											businesses enhance communication, streamline operations, and improve
+											customer experiences. By combining advanced artificial intelligence with
+											real-world usability, BrainVoice AI aims to position itself as a
+											forward-thinking technology brand that drives digital transformation across
+											industries.
 										</p>
 									</div>
 									<div class="flex flex-col gap-4 text-brown" style="display: none;">
@@ -1413,7 +1485,14 @@
 												<div class="bg-burntOrange min-h-7 w-1"></div>
 											</h4>
 										</div>
-										<p class="opacity-0">Reliability & Latest Tech Stack are at the core of BrainVoice AI’s development approach, ensuring that every solution is secure, scalable, and future-ready. By leveraging modern frameworks, robust cloud infrastructure, and advanced AI technologies, BrainVoice AI delivers high-performance digital products that businesses can depend on. This focus on technical excellence enables seamless user experiences, faster deployment, and long-term adaptability in a rapidly evolving digital landscape.</p>
+										<p class="opacity-0">Reliability & Latest Tech Stack are at the core of
+											BrainVoice AI’s development approach, ensuring that every solution is
+											secure, scalable, and future-ready. By leveraging modern frameworks, robust
+											cloud infrastructure, and advanced AI technologies, BrainVoice AI delivers
+											high-performance digital products that businesses can depend on. This focus
+											on technical excellence enables seamless user experiences, faster
+											deployment, and long-term adaptability in a rapidly evolving digital
+											landscape.</p>
 									</div>
 									<div class="flex flex-col gap-4 text-brown" style="display: none;">
 										<div class="flex flex-row items-center gap-3">
@@ -1441,7 +1520,14 @@
 												<div class="bg-burntOrange min-h-7 w-1"></div>
 											</h4>
 										</div>
-										<p class="opacity-0">BrainVoice AI is built on the foundation of intelligent automation, human-centered design, and scalable AI innovation. Its strategic direction focuses on creating practical, high-impact AI solutions that help businesses enhance communication, streamline operations, and improve customer experiences. By combining advanced artificial intelligence with real-world usability, BrainVoice AI aims to position itself as a forward-thinking technology brand that drives digital transformation across industries.</p>
+										<p class="opacity-0">BrainVoice AI is built on the foundation of intelligent
+											automation, human-centered design, and scalable AI innovation. Its strategic
+											direction focuses on creating practical, high-impact AI solutions that help
+											businesses enhance communication, streamline operations, and improve
+											customer experiences. By combining advanced artificial intelligence with
+											real-world usability, BrainVoice AI aims to position itself as a
+											forward-thinking technology brand that drives digital transformation across
+											industries.</p>
 									</div>
 									<div class="flex flex-col gap-4 text-brown" style="display: none;">
 										<div class="flex flex-row items-center gap-3">
@@ -1466,7 +1552,14 @@
 												<div class="bg-burntOrange min-h-7 w-1"></div>
 											</h4>
 										</div>
-										<p class="opacity-0">Reliability & Latest Tech Stack are at the core of BrainVoice AI’s development approach, ensuring that every solution is secure, scalable, and future-ready. By leveraging modern frameworks, robust cloud infrastructure, and advanced AI technologies, BrainVoice AI delivers high-performance digital products that businesses can depend on. This focus on technical excellence enables seamless user experiences, faster deployment, and long-term adaptability in a rapidly evolving digital landscape.</p>
+										<p class="opacity-0">Reliability & Latest Tech Stack are at the core of
+											BrainVoice AI’s development approach, ensuring that every solution is
+											secure, scalable, and future-ready. By leveraging modern frameworks, robust
+											cloud infrastructure, and advanced AI technologies, BrainVoice AI delivers
+											high-performance digital products that businesses can depend on. This focus
+											on technical excellence enables seamless user experiences, faster
+											deployment, and long-term adaptability in a rapidly evolving digital
+											landscape.</p>
 									</div>
 
 								</div>
@@ -1491,425 +1584,461 @@
 						</div>
 						<div id="info-section" class="testimonial-section relative z-20 py-20 text-center text-white">
 
-	<h2 class="text-3xl md:text-5xl font-semibold mb-20">
-		What Our Users Say
-	</h2>
+							<h2 class="text-3xl md:text-5xl font-semibold mb-20">
+								What Our Users Say
+							</h2>
 
-	<div class="swiper testimonials-swiper mt-4 overflow-hidden px-6">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide flex justify-center">
-				<div class="testimonial-card">
-					<h3>Customer Experience</h3>
-					<br>
-					<p>BrainVoice AI helped us engage customers at every stage by making communication faster, smarter, and more personalized across the entire journey.</p>
-					<span>— Priya Sharma</span>
-				</div>
-			</div>
-
-			<div class="swiper-slide flex justify-center">
-				<div class="testimonial-card">
-					<h3>Operational Efficiency</h3>
-					<br>
-					<p>We were able to streamline workflows and improve daily operations through a platform that feels intuitive, responsive, and built for performance.</p>
-					<span>— Rahul Verma</span>
-				</div>
-			</div>
-
-			<div class="swiper-slide flex justify-center">
-				<div class="testimonial-card">
-					<h3>Business Scalability</h3>
-					<br>
-					<p>BrainVoice AI gave us the tools to grow with confidence by supporting automation, smarter decision-making, and a more connected digital experience.</p>
-					<span>— Ankit Reddy</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</section>
-						<div
-							class="video-outer flex items-center justify-center w-full laptop:h-lvh relative px-4 tablet:px-8 my-16 overflow-hidden max-tablet:hidden">
-							<svg width="0" height="0" viewbox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg"
-								style="position: absolute;">
-								<defs>
-									<clipPath id="custom-clip" clippathunits="objectBoundingBox">
-										<path d="M0 0H1V0.75L0.859 1H0V0.25L0.141 0L0 0Z" />
-									</clipPath>
-								</defs>
-							</svg>
-							<section class="brainvoice-video-section">
-
-								<div class="video-player">
-  <iframe 
-    id="brainvoiceVideo"
-    width="900" 
-    height="500"
-    src="https://www.youtube.com/embed/HkycZVwPqkU"
-    title="BrainVoice Video"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
-
-								<div class="video-list">
-
-									<button onclick="changeVideo('https://www.youtube.com/watch?v=VIDEO1')">
-										Platform Overview
-									</button>
-
-									<button onclick="changeVideo('https://www.youtube.com/watch?v=VIDEO2')">
-										Visibility Analysis
-									</button>
-
-									<button onclick="changeVideo('https://www.youtube.com/watch?v=VIDEO3')">
-										Sentiment Insight
-									</button>
-
-									<button onclick="changeVideo('https://www.youtube.com/watch?v=VIDEO4')">
-										Competitor Tracking
-									</button>
-
-								</div>
-
-							</section>
-						</div>
-						<div id="industries" class="grid grid-cols-5 gap-12 py-8 tablet:py-32 items-center">
-							<div
-								class="flex flex-col gap-4 w-full text-white z-30 relative max-tablet:px-4 tablet:pl-8 col-span-5 tablet:col-span-2 find-your-container">
-								<h4 class="capitalize is-h1 flex flex-col w-full">
-									<span class="self-start">Find Your</span>
-									<span class="w-full flex items-center gap-4">
-										<div
-											class="bg-gradient-to-l from-white to-transparent h-[6px] w-[60px] laptop:w-[120px]">
+							<div class="swiper testimonials-swiper mt-4 overflow-hidden px-6">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide flex justify-center">
+										<div class="testimonial-card">
+											<h3>Customer Experience</h3>
+											<br>
+											<p>We needed a partner who understood the operational challenges of scaling
+												a business. Brainvoice helped us automate routine workflows and scale
+												our revenue streams, all while keeping our data secure. Their team is
+												hands-on, highly responsive, and feels like a natural extension of our
+												own staff.</p>
+											<span>- Sulaiman,CEO,Ezone</span>
 										</div>
-										<span class="flex-shrink-0">
-											Industry
-										</span>
-									</span>
-								</h4>
-								<div class="flex flex-col gap-8 laptop:ml-[136px]">
-									<p class="w-full max-w-[400px]">Customisable solutions for enterprise management
-We provide enterprise grade AI solutions meticulously crafted for your use case to help automate processes, gain insight from data,and build intelligent systems that drive business growth.
-</p>
-									<a href="#footer" target="" class="button second font-heading white">
-										<div class="line-1"></div>
-										<div class="line-2"></div>
-										<div class="btn-primary-lines btn-primary-lines-1">
-											<div class="line-1"></div>
-											<div class="line-2"></div>
-											<div class="btn-primary-lines btn-primary-lines-2">
-												<div class="line-1"></div>
-												<div class="line-2"></div>
-												<div class="btn-text">
-													Get Started
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div
-								class="block col-span-5 tablet:col-span-3 text-brown overflow-x-hidden overflow-y-visible pt-3 relative swiper-container !cursor-grab">
-								<div
-									class="max-tablet:hidden drag font-heading absolute top-0 left-0 bg-brown text-white py-[6px] px-3 z-40 pointer-events-none -translate-x-1/2 -translate-y-1/2 flex gap-3 items-center">
-									<svg class="size-3" viewbox="0 0 9 6" fill="none"
-										xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M0.734835 2.73483C0.588388 2.88128 0.588388 3.11872 0.734835 3.26516L3.12132 5.65165C3.26777 5.7981 3.5052 5.7981 3.65165 5.65165C3.7981 5.5052 3.7981 5.26777 3.65165 5.12132L1.53033 3L3.65165 0.878679C3.7981 0.732233 3.7981 0.494796 3.65165 0.348349C3.5052 0.201902 3.26777 0.201902 3.12132 0.348349L0.734835 2.73483ZM9 2.625L1 2.625L1 3.375L9 3.375L9 2.625Z"
-											fill="white" />
-									</svg>
-									Drag
-									<svg class="size-3" viewbox="0 0 9 6" fill="none"
-										xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M8.26517 3.26517C8.41161 3.11872 8.41161 2.88128 8.26517 2.73483L5.87868 0.34835C5.73223 0.201903 5.4948 0.201903 5.34835 0.34835C5.2019 0.494796 5.2019 0.732233 5.34835 0.87868L7.46967 3L5.34835 5.12132C5.2019 5.26777 5.2019 5.5052 5.34835 5.65165C5.4948 5.7981 5.73223 5.7981 5.87868 5.65165L8.26517 3.26517ZM0 3.375H8V2.625H0V3.375Z"
-											fill="white" />
-									</svg>
-								</div>
-								<div class="swiper">
-									<div class="swiper-wrapper">
-										<div class="swiper-slide relative pl-4 pr-[1px] h-full">
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
-													fill="white" />
-											</svg>
-											<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
-												
-												<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
-												</div>
-												01
-											</div>
-											<div
-												class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
-												<h4 class="is-h2">Customer
-<br />Customer Experience</h4>
-												<p class="para-indent">Engage your customers at every stage of the journey<br/>Unify CRM activities like sales, marketing, and support using a single platform for a coordinated, context-rich response to every lead and customer.
-											</div>
-											<div
-												class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-											</div>
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd"
-													d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z"
-													fill="white" />
-											</svg>
-										</div>
-										<div class="swiper-slide relative pl-4 pr-[1px] h-full">
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
-													fill="white" />
-											</svg>
-											<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
-												
+									</div>
 
-												<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
-												</div>
-												02
-											</div>
-											<div
-												class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
-												<h4 class="is-h2">Productivity & <br />Collaboration</h4>
-												<p class="para-indent">Enterprise-Ready Agentic Workflow Suite. <br/>Transform your organizational output with an integrated ERP intelligence layer designed to unify fragmented departments. Our suite eliminates the burden of manual, repetitive tasks by deploying autonomous agents that streamline workflows, ensuring your teams focus on high-value strategic execution rather than administrative overhead.
+									<div class="swiper-slide flex justify-center">
+										<div class="testimonial-card">
+											<h3>Operational Efficiency</h3>
+											<br>
+											<p>Integrating generative AI with legacy enterprise software is always
+												tricky. Brainvoice’s AI and Agentic RAG architecture solved that for us
+												effortlessly. Our private data remains secure on-premise, and we finally
+												have a customer-facing system that retrieves accurate internal
+												information without any hallucinations.</p>
+											<span>- Jidesh Gopinath,CTO,AVCRI</span>
+										</div>
+									</div>
 
-											</div>
-											<div
-												class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-											</div>
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd"
-													d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z"
-													fill="white" />
-											</svg>
-										</div>
-										<div class="swiper-slide relative pl-4 pr-[1px] h-full">
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
-													fill="white" />
-											</svg>
-											<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
-
-												<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
-												</div>
-												03
-											</div>
-											<div
-												class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
-												<h4 class="is-h2"> Custom<br />Solutions</h4>
-												<p class="para-indent">Design, build, and deploy agentic solutions engineered for your enterprise's unique bottlenecks.</br>We develop high-fidelity web and mobile applications using a proprietary blend of low-code efficiency and pro-code precision. Each solution is infused with Agentic AI enhancements—including end-to-end process automation, predictive trend analysis, and multi-language detection—to ensure your digital infrastructure scales alongside your industrial ambitions.
-												</div>
-												<div class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-											</div>
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd"
-													d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z"
-													fill="white" />
-											</svg>
-										</div>
-										<div class="swiper-slide relative pl-4 pr-[1px] h-full">
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
-													fill="white" />
-											</svg>
-											<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
-	
-												<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
-												</div>
-												04
-											</div>
-											<div
-												class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
-												<h4 class="is-h2">Business <br />Intelligence </h4>
-												<p class="para-indent">Transforming raw enterprise streams into 360-degree informed strategic decisions.</br>Empower your institutions with robust, data-driven insights. Streamline operations and enhance your strategic market positioning.</p>
-											</div>
-											<div
-												class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-											</div>
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd"
-													d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z"
-													fill="white" />
-											</svg>
-										</div>
-										<div class="swiper-slide relative pl-4 pr-[1px] h-full">
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
-													fill="white" />
-											</svg>
-											<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
-										
-												<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
-												</div>
-												01
-											</div>
-											<div
-												class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
-												<h4 class="is-h2">Customer
-<br />Customer Experience</h4>
-												<p class="para-indent">Engage your customers at every stage of the journey<br/>Unify CRM activities like sales, marketing, and support using a single platform for a coordinated, context-rich response to every lead and customer.
-											</div>
-											<div
-												class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-											</div>
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd"
-													d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z"
-													fill="white" />
-											</svg>
-										</div>
-										<div class="swiper-slide relative pl-4 pr-[1px] h-full">
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
-													fill="white" />
-											</svg>
-											<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
-											
-												<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
-												</div>
-												02
-											</div>
-											<div
-												class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
-												<h4 class="is-h2">Productivity & <br />Collaboration</h4>
-												<p class="para-indent">Enterprise-Ready Agentic Workflow Suite. <br/>Transform your organizational output with an integrated ERP intelligence layer designed to unify fragmented departments. Our suite eliminates the burden of manual, repetitive tasks by deploying autonomous agents that streamline workflows, ensuring your teams focus on high-value strategic execution rather than administrative overhead.
-
-											</div>
-											<div
-												class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-											</div>
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd"
-													d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z"
-													fill="white" />
-											</svg>
-										</div>
-										<div class="swiper-slide relative pl-4 pr-[1px] h-full">
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
-													fill="white" />
-											</svg>
-											<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
-												
-												<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
-												</div>
-												03
-											</div>
-											<div
-												class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
-												<h4 class="is-h2"> Custom<br />Solutions</h4>
-												<p class="para-indent">Design, build, and deploy agentic solutions engineered for your enterprise's unique bottlenecks.</br>We develop high-fidelity web and mobile applications using a proprietary blend of low-code efficiency and pro-code precision. Each solution is infused with Agentic AI enhancements—including end-to-end process automation, predictive trend analysis, and multi-language detection—to ensure your digital infrastructure scales alongside your industrial ambitions.
-												</div>
-											<div
-												class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-											</div>
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd"
-													d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z"
-													fill="white" />
-											</svg>
-										</div>
-										<div class="swiper-slide relative pl-4 pr-[1px] h-full">
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
-													fill="white" />
-											</svg>
-											<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
-												
-												<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
-												</div>
-												04
-											</div>
-											<div
-												class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
-												<h4 class="is-h2">Business <br />Intelligence </h4>
-												<p class="para-indent">Transforming raw enterprise streams into 360-degree informed strategic decisions.</br>Empower your institutions with robust, data-driven insights. Streamline operations and enhance your strategic market positioning.
-											</p>
-											</div>
-											<div
-												class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-												<div class="bg-brown h-5 w-[2px]"></div>
-											</div>
-											<svg class="w-full" viewbox="0 0 454 72" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd"
-													d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z"
-													fill="white" />
-											</svg>
+									<div class="swiper-slide flex justify-center">
+										<div class="testimonial-card">
+											<h3>Business Scalability</h3>
+											<br>
+											<p>Managing compliance and carbon credits across our plantations used to be
+												a complex challenge. Brainvoice helped us build a smart, unified system
+												that tracks data effortlessly and generates completely accurate,
+												audit-ready reports. </p>
+											<span>- Hafiz Khan,CEO,Communitree</span>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+					</section>
+					<div
+						class="video-outer flex items-center justify-center w-full laptop:h-lvh relative px-4 tablet:px-8 my-16 overflow-hidden max-tablet:hidden">
+						<svg width="0" height="0" viewbox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg"
+							style="position: absolute;">
+							<defs>
+								<clipPath id="custom-clip" clippathunits="objectBoundingBox">
+									<path d="M0 0H1V0.75L0.859 1H0V0.25L0.141 0L0 0Z" />
+								</clipPath>
+							</defs>
+						</svg>
+						<section class="brainvoice-video-section">
+
+							<div class="video-player">
+								<iframe id="brainvoiceVideo" width="900" height="500"
+									src="https://www.youtube.com/embed/HkycZVwPqkU" title="BrainVoice Video"
+									frameborder="0"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowfullscreen>
+								</iframe>
+							</div>
+
+							<div class="video-list">
+
+								<button onclick="changeVideo('https://www.youtube.com/watch?v=VIDEO1')">
+									Platform Overview
+								</button>
+
+								<button onclick="changeVideo('https://www.youtube.com/watch?v=VIDEO2')">
+									Visibility Analysis
+								</button>
+
+								<button onclick="changeVideo('https://www.youtube.com/watch?v=VIDEO3')">
+									Sentiment Insight
+								</button>
+
+								<button onclick="changeVideo('https://www.youtube.com/watch?v=VIDEO4')">
+									Competitor Tracking
+								</button>
+
+							</div>
+
+						</section>
+					</div>
+					<div id="industries" class="grid grid-cols-5 gap-12 py-8 tablet:py-32 items-center">
+						<div
+							class="flex flex-col gap-4 w-full text-white z-30 relative max-tablet:px-4 tablet:pl-8 col-span-5 tablet:col-span-2 find-your-container">
+							<h4 class="capitalize is-h1 flex flex-col w-full">
+								<span class="self-start">Find Your</span>
+								<span class="w-full flex items-center gap-4">
+									<div
+										class="bg-gradient-to-l from-white to-transparent h-[6px] w-[60px] laptop:w-[120px]">
+									</div>
+									<span class="flex-shrink-0">
+										Industry
+									</span>
+								</span>
+							</h4>
+							<div class="flex flex-col gap-8 laptop:ml-[136px]">
+								<p class="w-full max-w-[400px]">Customisable solutions for enterprise management
+									We provide enterprise grade AI solutions meticulously crafted for your use case to
+									help automate processes, gain insight from data,and build intelligent systems that
+									drive business growth.
+								</p>
+								<a href="#footer" target="" class="button second font-heading white">
+									<div class="line-1"></div>
+									<div class="line-2"></div>
+									<div class="btn-primary-lines btn-primary-lines-1">
+										<div class="line-1"></div>
+										<div class="line-2"></div>
+										<div class="btn-primary-lines btn-primary-lines-2">
+											<div class="line-1"></div>
+											<div class="line-2"></div>
+											<div class="btn-text">
+												Get Started
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div
+							class="block col-span-5 tablet:col-span-3 text-brown overflow-x-hidden overflow-y-visible pt-3 relative swiper-container !cursor-grab">
+							<div
+								class="max-tablet:hidden drag font-heading absolute top-0 left-0 bg-brown text-white py-[6px] px-3 z-40 pointer-events-none -translate-x-1/2 -translate-y-1/2 flex gap-3 items-center">
+								<svg class="size-3" viewbox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M0.734835 2.73483C0.588388 2.88128 0.588388 3.11872 0.734835 3.26516L3.12132 5.65165C3.26777 5.7981 3.5052 5.7981 3.65165 5.65165C3.7981 5.5052 3.7981 5.26777 3.65165 5.12132L1.53033 3L3.65165 0.878679C3.7981 0.732233 3.7981 0.494796 3.65165 0.348349C3.5052 0.201902 3.26777 0.201902 3.12132 0.348349L0.734835 2.73483ZM9 2.625L1 2.625L1 3.375L9 3.375L9 2.625Z"
+										fill="white" />
+								</svg>
+								Drag
+								<svg class="size-3" viewbox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M8.26517 3.26517C8.41161 3.11872 8.41161 2.88128 8.26517 2.73483L5.87868 0.34835C5.73223 0.201903 5.4948 0.201903 5.34835 0.34835C5.2019 0.494796 5.2019 0.732233 5.34835 0.87868L7.46967 3L5.34835 5.12132C5.2019 5.26777 5.2019 5.5052 5.34835 5.65165C5.4948 5.7981 5.73223 5.7981 5.87868 5.65165L8.26517 3.26517ZM0 3.375H8V2.625H0V3.375Z"
+										fill="white" />
+								</svg>
+							</div>
+							<div class="swiper">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide relative pl-4 pr-[1px] h-full">
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
+												fill="white" />
+										</svg>
+										<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
+
+											<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
+											</div>
+											01
+										</div>
+										<div
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											<h4 class="is-h2">Customer
+												<br />Customer Experience
+											</h4>
+											<p class="para-indent">Engage your customers at every stage of the
+												journey<br />Unify CRM activities like sales, marketing, and support
+												using a single platform for a coordinated, context-rich response to
+												every lead and customer.
+										</div>
+										<div
+											class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+										</div>
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z" fill="white" />
+										</svg>
+									</div>
+									<div class="swiper-slide relative pl-4 pr-[1px] h-full">
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
+												fill="white" />
+										</svg>
+										<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
+
+
+											<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
+											</div>
+											02
+										</div>
+										<div
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											<h4 class="is-h2">Productivity & <br />Collaboration</h4>
+											<p class="para-indent">Enterprise-Ready Agentic Workflow Suite.
+												<br />Transform your organizational output with an integrated ERP
+												intelligence layer designed to unify fragmented departments. Our suite
+												eliminates the burden of manual, repetitive tasks by deploying
+												autonomous agents that streamline workflows, ensuring your teams focus
+												on high-value strategic execution rather than administrative overhead.
+
+										</div>
+										<div
+											class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+										</div>
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z" fill="white" />
+										</svg>
+									</div>
+									<div class="swiper-slide relative pl-4 pr-[1px] h-full">
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
+												fill="white" />
+										</svg>
+										<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
+
+											<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
+											</div>
+											03
+										</div>
+										<div
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											<h4 class="is-h2"> Custom<br />Solutions</h4>
+											<p class="para-indent">Design, build, and deploy agentic solutions
+												engineered for your enterprise's unique bottlenecks.</br>We develop
+												high-fidelity web and mobile applications using a proprietary blend of
+												low-code efficiency and pro-code precision. Each solution is infused
+												with Agentic AI enhancements—including end-to-end process automation,
+												predictive trend analysis, and multi-language detection—to ensure your
+												digital infrastructure scales alongside your industrial ambitions.
+										</div>
+										<div
+											class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+										</div>
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z" fill="white" />
+										</svg>
+									</div>
+									<div class="swiper-slide relative pl-4 pr-[1px] h-full">
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
+												fill="white" />
+										</svg>
+										<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
+
+											<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
+											</div>
+											04
+										</div>
+										<div
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											<h4 class="is-h2">Business <br />Intelligence </h4>
+											<p class="para-indent">Transforming raw enterprise streams into 360-degree
+												informed strategic decisions.</br>Empower your institutions with robust,
+												data-driven insights. Streamline operations and enhance your strategic
+												market positioning.</p>
+										</div>
+										<div
+											class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+										</div>
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z" fill="white" />
+										</svg>
+									</div>
+									<div class="swiper-slide relative pl-4 pr-[1px] h-full">
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
+												fill="white" />
+										</svg>
+										<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
+
+											<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
+											</div>
+											01
+										</div>
+										<div
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											<h4 class="is-h2">Customer
+												<br />Customer Experience
+											</h4>
+											<p class="para-indent">Engage your customers at every stage of the
+												journey<br />Unify CRM activities like sales, marketing, and support
+												using a single platform for a coordinated, context-rich response to
+												every lead and customer.
+										</div>
+										<div
+											class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+										</div>
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z" fill="white" />
+										</svg>
+									</div>
+									<div class="swiper-slide relative pl-4 pr-[1px] h-full">
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
+												fill="white" />
+										</svg>
+										<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
+
+											<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
+											</div>
+											02
+										</div>
+										<div
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											<h4 class="is-h2">Productivity & <br />Collaboration</h4>
+											<p class="para-indent">Enterprise-Ready Agentic Workflow Suite.
+												<br />Transform your organizational output with an integrated ERP
+												intelligence layer designed to unify fragmented departments. Our suite
+												eliminates the burden of manual, repetitive tasks by deploying
+												autonomous agents that streamline workflows, ensuring your teams focus
+												on high-value strategic execution rather than administrative overhead.
+
+										</div>
+										<div
+											class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+										</div>
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z" fill="white" />
+										</svg>
+									</div>
+									<div class="swiper-slide relative pl-4 pr-[1px] h-full">
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
+												fill="white" />
+										</svg>
+										<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
+
+											<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
+											</div>
+											03
+										</div>
+										<div
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											<h4 class="is-h2"> Custom<br />Solutions</h4>
+											<p class="para-indent">Design, build, and deploy agentic solutions
+												engineered for your enterprise's unique bottlenecks.</br>We develop
+												high-fidelity web and mobile applications using a proprietary blend of
+												low-code efficiency and pro-code precision. Each solution is infused
+												with Agentic AI enhancements—including end-to-end process automation,
+												predictive trend analysis, and multi-language detection—to ensure your
+												digital infrastructure scales alongside your industrial ambitions.
+										</div>
+										<div
+											class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+										</div>
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z" fill="white" />
+										</svg>
+									</div>
+									<div class="swiper-slide relative pl-4 pr-[1px] h-full">
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M382 0H0V72H454L382 0Z"
+												fill="white" />
+										</svg>
+										<div class="absolute pl-5 top-6 left-6 flex items-center gap-2 supertitle">
+
+											<div class="bg-gradient-to-l from-brown to-transparent h-[2px] w-12">
+											</div>
+											04
+										</div>
+										<div
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											<h4 class="is-h2">Business <br />Intelligence </h4>
+											<p class="para-indent">Transforming raw enterprise streams into 360-degree
+												informed strategic decisions.</br>Empower your institutions with robust,
+												data-driven insights. Streamline operations and enhance your strategic
+												market positioning.
+											</p>
+										</div>
+										<div
+											class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+											<div class="bg-brown h-5 w-[2px]"></div>
+										</div>
+										<svg class="w-full" viewbox="0 0 454 72" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M72 72L454 72L454 0L6.29444e-06 -3.96899e-05L72 72Z" fill="white" />
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 					</section>
 				</div>
 			</main>
@@ -1917,9 +2046,11 @@ We provide enterprise grade AI solutions meticulously crafted for your use case 
 				<div class="px-4 tablet:px-8 flex flex-col gap-16 laptop:gap-24">
 					<div class="flex flex-col laptop:flex-row gap-4 laptop:gap-32 justify-between">
 						<div class="flex flex-col gap-8 laptop:gap-16 w-full laptop:w-[75%] footer-text">
-							<h4 class="text-balance is-h1">Explore how our customised solutions can help your enterprise.</h4>
+							<h4 class="text-balance is-h1">Explore how our customised solutions can help your
+								enterprise.</h4>
 							<div class="flex flex-col gap-8 justify-center">
-								<p class="max-w-[500px]">Our team will get in touch with you for an exploratory call.</p>
+								<p class="max-w-[500px]">Our team will get in touch with you for an exploratory call.
+								</p>
 								<a href="#footer" target="" class="button second font-heading ">
 									<div class="line-1"></div>
 									<div class="line-2"></div>
@@ -1976,7 +2107,9 @@ We provide enterprise grade AI solutions meticulously crafted for your use case 
 								</div>
 								<h5 class="is-h6">Data protection and encryption</h5>
 							</div>
-							<p class="">Data integrity is important to us-that's why we handle all user data using the latest international security compliance standards, with 100% data encryption in transit, using the latest version of TLS.
+							<p class="">Data integrity is important to us-that's why we handle all user data using the
+								latest international security compliance standards, with 100% data encryption in
+								transit, using the latest version of TLS.
 							</p>
 						</div>
 						<div class="flex flex-col gap-4 w-full max-w-[350px]">
@@ -1987,7 +2120,10 @@ We provide enterprise grade AI solutions meticulously crafted for your use case 
 								</div>
 								<h5 class="is-h6">Market-leading privacy standards</h5>
 							</div>
-							<p class="">We have a strict privacy policy to protect personal information, and we never put our users at risk by selling or disclosing their information to unauthorized third parties. We comply with GDPR and CCPA worldwide, going above and beyond what's mandated by law.</p>
+							<p class="">We have a strict privacy policy to protect personal information, and we never
+								put our users at risk by selling or disclosing their information to unauthorized third
+								parties. We comply with GDPR and CCPA worldwide, going above and beyond what's mandated
+								by law.</p>
 						</div>
 						<div class="flex flex-col gap-4 w-full max-w-[350px]">
 							<div class="flex flex-row gap-2 items-center">
@@ -1997,7 +2133,9 @@ We provide enterprise grade AI solutions meticulously crafted for your use case 
 								</div>
 								<h5 class="is-h6">Scalable tech infrastructure</h5>
 							</div>
-							<p class="">Zoho owns and operates its own data centers-we do not run on a public cloud. Our unified data model and unified cloud storage allows for shared services like Al, search, analytics, and messaging to scale alongside our users.</p>
+							<p class="">Zoho owns and operates its own data centers-we do not run on a public cloud. Our
+								unified data model and unified cloud storage allows for shared services like Al, search,
+								analytics, and messaging to scale alongside our users.</p>
 						</div>
 					</div>
 				</div>
@@ -2024,7 +2162,9 @@ We provide enterprise grade AI solutions meticulously crafted for your use case 
 											BRAINVOICE.<span style="color:#51C186;">AI</span>
 										</span>
 									</div>
-									<p class="text-sm">Brainvoice.AI is a cutting-edge digital marketing analytical and IT company dedicated to revolutionizing the way organizations achieve business growth and expansion.
+									<p class="text-sm">Brainvoice.AI is a cutting-edge digital marketing analytical and
+										IT company dedicated to revolutionizing the way organizations achieve business
+										growth and expansion.
 									</p>
 									<div class="flex flex-row gap-2 w-full">
 										<a href="https://www.linkedin.com/company/thestartagency"
@@ -2396,7 +2536,7 @@ We provide enterprise grade AI solutions meticulously crafted for your use case 
 							<div
 								class="pt-7 pb-4 mini:pt-10 mini:pb-4 border-t border-dashed border-brown text-xs flex gap-4 tablet:gap-2 tablet:items-center max-tablet:flex-col tablet:justify-between">
 								<span class="w-full">
-									</span>
+								</span>
 
 								<div
 									class="flex flex-row gap-4 w-full tablet:items-center tablet:justify-center text-brown ">
@@ -2529,7 +2669,7 @@ We provide enterprise grade AI solutions meticulously crafted for your use case 
 	</script>
 	<script>
 		// Global Mobile Scroll & Lenis Fixer
-		(function() {
+		(function () {
 			const isMobile = window.innerWidth <= 1024 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 			const refreshScroll = () => {
@@ -2551,7 +2691,7 @@ We provide enterprise grade AI solutions meticulously crafted for your use case 
 			window.addEventListener('load', () => {
 				fixLenis();
 				setTimeout(refreshScroll, 1000);
-				
+
 				// Add ghost spacer to ensure scroll room
 				if (isMobile) {
 					const spacer = document.createElement('div');
@@ -2570,7 +2710,7 @@ We provide enterprise grade AI solutions meticulously crafted for your use case 
 					ignoreMobileResize: true,
 					limitCallbacks: true
 				});
-				
+
 				// Standardize scroll for mobile
 				if (!isMobile) {
 					ScrollTrigger.normalizeScroll({

@@ -38319,7 +38319,7 @@ void main() {
           this.model.position.y = 0.25;
           this.scale = 0.65;
           if (this.width < 768) {
-            this.scale = 0.15; // Small scale only for Mobile
+            this.scale = 0.12; // Small scale only for Mobile
             this.model.position.y = 0.30;
           }
           this.model.scale.set(this.scale, this.scale, this.scale);
