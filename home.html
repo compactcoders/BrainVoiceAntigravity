@@ -624,6 +624,17 @@
 				padding-right: 1rem !important;
 			}
 
+			/* Fix for cycle-through overlapping/misplacement on mobile */
+			.cycle-through {
+				display: grid !important;
+				place-items: center !important;
+			}
+
+			.cycle-through > div {
+				grid-area: 1 / 1 / 2 / 2 !important;
+				width: 100% !important;
+			}
+
 			/* Shift content to the right side on mobile as requested */
 			.about-div,
 			.why-use {
