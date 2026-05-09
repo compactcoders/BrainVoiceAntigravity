@@ -628,11 +628,32 @@
 			.cycle-through {
 				display: grid !important;
 				place-items: center !important;
+				z-index: 100 !important;
+				opacity: 0;
+				/* Keep default opacity 0, site.js will show it */
 			}
 
-			.cycle-through > div {
+			.cycle-through>div {
 				grid-area: 1 / 1 / 2 / 2 !important;
 				width: 100% !important;
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transition: opacity 0.5s ease-in-out !important;
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: center !important;
+				text-align: center !important;
+			}
+
+			.cycle-through>div.active-cycle {
+				opacity: 1 !important;
+				visibility: visible !important;
+			}
+
+			/* Ensure h4 and p inside are also visible on mobile */
+			.cycle-through>div.active-cycle h4,
+			.cycle-through>div.active-cycle p {
+				opacity: 1 !important;
 			}
 
 			/* Shift content to the right side on mobile as requested */
@@ -871,7 +892,7 @@
 			/* Styles for mobile labels - keep them white */
 			.mesh-label .label-content p,
 			.mobile-hero-para p {
-				color: white !important;
+				color: rgba(0, 0, 0, 0) !important;
 				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 			}
 
@@ -899,6 +920,7 @@
 			.mobile-hero-para {
 				display: block !important;
 			}
+
 			/* Footer sellpoints black text on mobile */
 			.footer-sellpoints h5,
 			.footer-sellpoints p {
@@ -917,12 +939,12 @@
 		/* Global Styles for Labels (Default for Laptop) */
 		.mesh-label .label-content p,
 		.mobile-hero-para p {
-			font-size: 12px !important;
-			line-height: 1.4 !important;
-			text-align: center !important;
-			font-weight: 700 !important;
+			font-size: 16px !important;
+			line-height: 1.5 !important;
+			text-align: left !important;
+			font-weight: 400 !important;
 			margin: 0 !important;
-			color: black !important;
+			color: rgb(0, 0, 0) !important;
 			text-shadow: none !important;
 		}
 
@@ -1239,7 +1261,7 @@
 											<p style="color:#0f766e" class="text-pretty">
 											</p>
 											<!-- Mobile specific paragraph that acts as the initial stage card -->
-											<div class="mobile-hero-para hidden max-phone:block">
+											<div class="mobile-hero-para">
 												<p>Brainvoice.AI is a cutting innovative technology company dedicated in
 													building custom AI models for enterprises with a deep rooted passion
 													for data driven insights. Specialised in optimising organisation
@@ -1485,73 +1507,6 @@
 														xmlns="http://www.w3.org/2000/svg">
 														<path
 															d="M21.5814 0.287598H3.17455L0.523438 2.98244V15.4733L3.17455 18.1681H6.64214V23.9986L12.378 18.1681H21.5814L24.2325 15.4733V2.98244L21.5814 0.287598ZM21.5567 14.3462L20.4727 15.4482H4.2833L3.19925 14.3462V4.10947L4.2833 3.00754H20.4727L21.5567 4.10947V14.3462Z"
-															fill="currentColor" />
-													</svg>
-												</div>
-												<span
-													class="p-0.5 px-3 w-fit bg-burntOrange text-white leading-0 flex items-center">
-													Reliability & Latest Tech stack
-												</span>
-												<div class="bg-burntOrange min-h-7 w-2"></div>
-												<div class="bg-burntOrange min-h-7 w-1"></div>
-											</h4>
-										</div>
-										<p class="opacity-0">Reliability & Latest Tech Stack are at the core of
-											BrainVoice AI’s development approach, ensuring that every solution is
-											secure, scalable, and future-ready. By leveraging modern frameworks, robust
-											cloud infrastructure, and advanced AI technologies, BrainVoice AI delivers
-											high-performance digital products that businesses can depend on. This focus
-											on technical excellence enables seamless user experiences, faster
-											deployment, and long-term adaptability in a rapidly evolving digital
-											landscape.</p>
-									</div>
-									<div class="flex flex-col gap-4 text-brown" style="display: none;">
-										<div class="flex flex-row items-center gap-3">
-											<h4 class="supertitle flex flex-row gap-1 opacity-0">
-												<div
-													class="size-7 flex justify-center items-center text-burntOrange border-burntOrange border-2 -mr-0.5 overflow-hidden">
-													<svg class="size-3" viewbox="0 0 24 27" fill="none"
-														xmlns="http://www.w3.org/2000/svg">
-														<path
-															d="M7.90723 19.3965C9.85264 19.3965 11.4297 17.7934 11.4297 15.8159C11.4297 13.8384 9.85264 12.2354 7.90723 12.2354C5.96183 12.2354 4.38477 13.8384 4.38477 15.8159C4.38477 17.7934 5.96183 19.3965 7.90723 19.3965Z"
-															fill="currentColor" />
-														<path
-															d="M23.9994 6.09686H18.0015V0H15.3352V6.09686H9.33594V8.80705H15.3352V14.9053H18.0015V8.80705H23.9994V6.09686Z"
-															fill="currentColor" />
-														<path
-															d="M7.90755 20.334H3.26673L0.671875 23.0497V26.94L4.39331 23.0442H7.90755H11.4232L15.1446 26.94V23.0497L12.5498 20.334H7.90755Z"
-															fill="currentColor" />
-													</svg>
-												</div>
-												<span
-													class="p-0.5 px-3 w-fit bg-burntOrange text-white leading-0 flex items-center">
-													Foundations and Strategic direction
-												</span>
-												<div class="bg-burntOrange min-h-7 w-2"></div>
-												<div class="bg-burntOrange min-h-7 w-1"></div>
-											</h4>
-										</div>
-										<p class="opacity-0">BrainVoice AI is built on the foundation of intelligent
-											automation, human-centered design, and scalable AI innovation. Its strategic
-											direction focuses on creating practical, high-impact AI solutions that help
-											businesses enhance communication, streamline operations, and improve
-											customer experiences. By combining advanced artificial intelligence with
-											real-world usability, BrainVoice AI aims to position itself as a
-											forward-thinking technology brand that drives digital transformation across
-											industries.</p>
-									</div>
-									<div class="flex flex-col gap-4 text-brown" style="display: none;">
-										<div class="flex flex-row items-center gap-3">
-											<h4 class="supertitle flex flex-row gap-1 opacity-0">
-												<div
-													class="size-7 flex justify-center items-center text-burntOrange border-burntOrange border-2 -mr-0.5 overflow-hidden">
-													<svg class="size-3" viewbox="0 0 24 24" fill="none"
-														xmlns="http://www.w3.org/2000/svg">
-														<path
-															d="M8.94462 0.114746C4.19676 0.114746 0.333984 4.04123 0.333984 8.86739C0.333984 13.6936 4.19676 17.62 8.94462 17.62C13.6925 17.62 17.5553 13.6936 17.5553 8.86739C17.5553 4.04123 13.6925 0.114746 8.94462 0.114746ZM8.94462 14.928C5.6568 14.928 2.98373 12.2094 2.98373 8.86879C2.98373 5.52814 5.65817 2.80959 8.94462 2.80959C12.2311 2.80959 14.9055 5.52814 14.9055 8.86879C14.9055 12.2094 12.2311 14.928 8.94462 14.928Z"
-															fill="currentColor" />
-														<path
-															d="M16.4199 14.5625V18.3718L21.3503 23.3821L23.2247 21.4781L16.4199 14.5625Z"
 															fill="currentColor" />
 													</svg>
 												</div>
@@ -2730,6 +2685,30 @@
 						type: "touch,wheel,pointer"
 					});
 				}
+			}
+
+			// Auto-cycle logic for mobile
+			if (isMobile) {
+				const initMobileCycle = () => {
+					const cycleItems = document.querySelectorAll('.cycle-through > div');
+					if (cycleItems.length === 0) return;
+
+					let currentIndex = 0;
+					const cycle = () => {
+						cycleItems.forEach((item, i) => {
+							if (i === currentIndex) {
+								item.classList.add('active-cycle');
+							} else {
+								item.classList.remove('active-cycle');
+							}
+						});
+						currentIndex = (currentIndex + 1) % cycleItems.length;
+					};
+
+					setInterval(cycle, 3000); // Cycle every 3 seconds
+					cycle();
+				};
+				window.addEventListener('load', initMobileCycle);
 			}
 		})();
 	</script>
