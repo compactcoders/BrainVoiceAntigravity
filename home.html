@@ -584,6 +584,39 @@
 		.testimonial-card br {
 			display: none !important;
 		}
+
+		/* Industries Swiper Uniformity */
+		#industries .swiper-wrapper {
+			display: flex !important;
+			align-items: stretch !important;
+		}
+
+		#industries .swiper-slide {
+			height: auto !important;
+			display: flex !important;
+			flex-direction: column !important;
+		}
+
+		#industries .swiper-slide .bg-white {
+			flex-grow: 1 !important;
+			display: flex !important;
+			flex-direction: column !important;
+			min-height: 400px !important;
+		}
+
+		@media (min-width: 1024px) {
+			#industries .swiper-slide .bg-white {
+				min-height: 480px !important;
+			}
+		}
+
+		/* Ensure uniform SVG heights by fixing slide width on laptop */
+		@media (min-width: 1024px) {
+			#industries .swiper-slide {
+				width: 380px !important;
+				margin-right: 20px !important;
+			}
+		}
 	</style>
 
 
@@ -1805,14 +1838,14 @@
 											01
 										</div>
 										<div
-											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 h-[400px] laptop:h-[480px] relative">
 											<h4 class="is-h2">Customer
 												<br />Customer Experience
 											</h4>
 											<p class="para-indent">Engage your customers at every stage of the
 												journey<br />Unify CRM activities like sales, marketing, and support
 												using a single platform for a coordinated, context-rich response to
-												every lead and customer.
+												every lead and customer.</p>
 										</div>
 										<div
 											class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
@@ -1844,14 +1877,14 @@
 											02
 										</div>
 										<div
-											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 h-[400px] laptop:h-[480px] relative">
 											<h4 class="is-h2">Productivity & <br />Collaboration</h4>
 											<p class="para-indent">Enterprise-Ready Agentic Workflow Suite.
 												<br />Transform your organizational output with an integrated ERP
 												intelligence layer designed to unify fragmented departments. Our suite
 												eliminates the burden of manual, repetitive tasks by deploying
 												autonomous agents that streamline workflows, ensuring your teams focus
-												on high-value strategic execution rather than administrative overhead.
+												on high-value strategic execution rather than administrative overhead.</p>
 
 										</div>
 										<div
@@ -1883,7 +1916,7 @@
 											03
 										</div>
 										<div
-											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 h-[400px] laptop:h-[480px] relative">
 											<h4 class="is-h2"> Custom<br />Solutions</h4>
 											<p class="para-indent">Design, build, and deploy agentic solutions
 												engineered for your enterprise's unique bottlenecks.</br>We develop
@@ -1891,7 +1924,7 @@
 												low-code efficiency and pro-code precision. Each solution is infused
 												with Agentic AI enhancements—including end-to-end process automation,
 												predictive trend analysis, and multi-language detection—to ensure your
-												digital infrastructure scales alongside your industrial ambitions.
+												digital infrastructure scales alongside your industrial ambitions.</p>
 										</div>
 										<div
 											class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
@@ -1922,7 +1955,7 @@
 											04
 										</div>
 										<div
-											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 h-[400px] laptop:h-[480px] relative">
 											<h4 class="is-h2">Business <br />Intelligence </h4>
 											<p class="para-indent">Transforming raw enterprise streams into 360-degree
 												informed strategic decisions.</br>Empower your institutions with robust,
@@ -1958,14 +1991,14 @@
 											01
 										</div>
 										<div
-											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 h-[400px] laptop:h-[480px] relative">
 											<h4 class="is-h2">Customer
 												<br />Customer Experience
 											</h4>
 											<p class="para-indent">Engage your customers at every stage of the
 												journey<br />Unify CRM activities like sales, marketing, and support
 												using a single platform for a coordinated, context-rich response to
-												every lead and customer.
+												every lead and customer.</p>
 										</div>
 										<div
 											class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
@@ -1996,14 +2029,14 @@
 											02
 										</div>
 										<div
-											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 h-[400px] laptop:h-[480px] relative">
 											<h4 class="is-h2">Productivity & <br />Collaboration</h4>
 											<p class="para-indent">Enterprise-Ready Agentic Workflow Suite.
 												<br />Transform your organizational output with an integrated ERP
 												intelligence layer designed to unify fragmented departments. Our suite
 												eliminates the burden of manual, repetitive tasks by deploying
 												autonomous agents that streamline workflows, ensuring your teams focus
-												on high-value strategic execution rather than administrative overhead.
+												on high-value strategic execution rather than administrative overhead.</p>
 
 										</div>
 										<div
@@ -2035,7 +2068,7 @@
 											03
 										</div>
 										<div
-											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 h-[400px] laptop:h-[480px] relative">
 											<h4 class="is-h2"> Custom<br />Solutions</h4>
 											<p class="para-indent">Design, build, and deploy agentic solutions
 												engineered for your enterprise's unique bottlenecks.</br>We develop
@@ -2043,7 +2076,7 @@
 												low-code efficiency and pro-code precision. Each solution is infused
 												with Agentic AI enhancements—including end-to-end process automation,
 												predictive trend analysis, and multi-language detection—to ensure your
-												digital infrastructure scales alongside your industrial ambitions.
+												digital infrastructure scales alongside your industrial ambitions.</p>
 										</div>
 										<div
 											class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
@@ -2074,13 +2107,12 @@
 											04
 										</div>
 										<div
-											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 min-h-[400px] laptop:min-h-[480px] relative">
+											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 h-[400px] laptop:h-[480px] relative">
 											<h4 class="is-h2">Business <br />Intelligence </h4>
 											<p class="para-indent">Transforming raw enterprise streams into 360-degree
 												informed strategic decisions.</br>Empower your institutions with robust,
 												data-driven insights. Streamline operations and enhance your strategic
-												market positioning.
-											</p>
+												market positioning.</p>
 										</div>
 										<div
 											class="absolute bottom-6 right-6 flex items-center gap-[6px] supertitle z-10">
