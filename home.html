@@ -847,11 +847,10 @@
 				line-height: 1 !important;
 			}
 
-			/* Make the decorative side-bars teal and match the new thickness */
-			.supertitle div[class*="bg-"] {
-				background-color: #14b8a6 !important;
-				width: 6px !important;
-				min-height: 2.2rem !important;
+			/* Remove the extra two vertical strips on mobile */
+			.supertitle div.w-1,
+			.supertitle div.w-2 {
+				display: none !important;
 			}
 
 			.is-h1 {
