@@ -44,6 +44,7 @@
 		href="./wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsolais.ai%2F" />
 	<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed"
 		href="./wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsolais.ai%2F&#038;format=xml" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 	<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
 		img:is([sizes=auto i], [sizes^="auto," i]) {
 			contain-intrinsic-size: 3000px 1500px
@@ -918,11 +919,46 @@
 			}
 
 			/* Ensure the initial para is visible on mobile when no label is active */
-			.mobile-hero-para {
+			/* Mobile Menu styling to match about.html */
+			.mobile-menu-btn {
+				background: none;
+				border: none;
+				font-size: 1.8rem;
+				background: linear-gradient(135deg, #13B0CB, #27B6B7, #39BA9F);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				cursor: pointer;
+				padding: 5px;
+			}
+
+			.nav-links.active {
+				display: flex !important;
+				flex-direction: column !important;
+				position: absolute !important;
+				top: 100% !important;
+				left: 0 !important;
+				right: 0 !important;
+				background: white !important;
+				padding: 2rem !important;
+				box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+				gap: 1.5rem !important;
+				z-index: 100 !important;
+				opacity: 1 !important;
+				pointer-events: auto !important;
+				border-top: 1px solid rgba(0,0,0,0.05) !important;
+			}
+
+			.nav-links.active a {
+				color: black !important;
+				font-size: 1.2rem !important;
+				font-weight: 600 !important;
+				text-align: left !important;
+				width: 100% !important;
 				display: block !important;
-				transition: opacity 0.3s ease !important;
-				pointer-events: none !important;
-				/* Allow clicking through to 3D model */
+			}
+
+			.nav-links.active span.font-heading {
+				display: none !important; /* Hide the / separators on mobile menu */
 			}
 
 			/* Footer sellpoints black text on mobile */
@@ -977,7 +1013,7 @@
 				</span>
 			</a>
 			<div class="flex-row items-center gap-3 flex">
-				<div class="menu-row  flex-row items-center gap-3 hidden tablet:flex">
+				<div id="nav-links" class="nav-links menu-row flex-row items-center gap-3 hidden tablet:flex">
 					<a href="BRAINVOICE - OTHER PAGES/about.html" class="nav-link font-heading">
 						<div class="btn-text">
 							About Us
@@ -1001,19 +1037,36 @@
 							Success Stories
 						</div>
 					</a>
+					<span class="font-heading tablet:hidden">/</span>
+					<a href="BRAINVOICE - OTHER PAGES/contactus.html" class="nav-link font-heading tablet:hidden">
+						<div class="btn-text">
+							Get Started
+						</div>
+					</a>
 				</div>
-				<a href="BRAINVOICE - OTHER PAGES/contactus.html"
-					class="h-[44px] flex text-white button-primary font-heading ml-5">
-					<svg class="h-full fill-brown" viewbox="0 0 34 209" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" clip-rule="evenodd"
-							d="M6.2653e-05 33.9999L0 208.5L34 208.5L34.0001 -0.000108298L6.2653e-05 33.9999Z" />
-					</svg>
-					<div class="px-4 bg-brown flex items-center justify-center btn-text -mx-[1px]">Get started</div>
-					<svg class="h-full fill-brown" viewbox="0 0 34 209" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" clip-rule="evenodd"
-							d="M33.9999 174.5L34 0L-7.62939e-06 -1.48619e-06L-8.54078e-05 208.5L33.9999 174.5Z" />
-					</svg>
-				</a>
+				<!-- Desktop Get Started -->
+				<div class="hidden tablet:flex">
+					<a href="BRAINVOICE - OTHER PAGES/contactus.html"
+						class="h-[44px] flex text-white button-primary font-heading ml-5">
+						<svg class="h-full fill-brown" viewbox="0 0 34 209" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M6.2653e-05 33.9999L0 208.5L34 208.5L34.0001 -0.000108298L6.2653e-05 33.9999Z" />
+						</svg>
+						<div class="px-4 bg-brown flex items-center justify-center btn-text -mx-[1px]">Get started</div>
+						<svg class="h-full fill-brown" viewbox="0 0 34 209" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M33.9999 174.5L34 0L-7.62939e-06 -1.48619e-06L-8.54078e-05 208.5L33.9999 174.5Z" />
+						</svg>
+					</a>
+				</div>
+				<!-- Hamburger Menu for Mobile -->
+				<button class="mobile-menu-btn flex tablet:hidden" id="mobileMenuBtn" aria-label="Menu">
+					<i class="fas fa-bars"></i>
+				</button>
+			</div>
+		</div>
 			</div>
 		</div>
 	</header>
@@ -2659,6 +2712,26 @@
 			window.addEventListener('load', () => {
 				fixLenis();
 				setTimeout(refreshScroll, 1000);
+
+				// Mobile Menu Toggle logic
+				const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+				const navLinks = document.getElementById('nav-links');
+
+				if (mobileMenuBtn && navLinks) {
+					mobileMenuBtn.addEventListener('click', (e) => {
+						e.stopPropagation();
+						navLinks.classList.toggle('active');
+					});
+
+					// Close mobile menu when clicking outside
+					document.addEventListener('click', (e) => {
+						if (navLinks.classList.contains('active') && 
+							!navLinks.contains(e.target) && 
+							!mobileMenuBtn.contains(e.target)) {
+							navLinks.classList.remove('active');
+						}
+					});
+				}
 
 				// Add ghost spacer to ensure scroll room
 				if (isMobile) {
