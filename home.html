@@ -892,12 +892,13 @@
 			/* Styles for mobile labels - keep them white */
 			.mesh-label .label-content p,
 			.mobile-hero-para p {
-				color: rgba(0, 0, 0, 0) !important;
+				color: rgb(0, 0, 0) !important;
 				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+				text-align: center !important;
 			}
 
 			.mesh-label .label-content h3.supertitle {
-				color: white !important;
+				color: rgb(0, 0, 0) !important;
 				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 			}
 
@@ -919,6 +920,9 @@
 			/* Ensure the initial para is visible on mobile when no label is active */
 			.mobile-hero-para {
 				display: block !important;
+				transition: opacity 0.3s ease !important;
+				pointer-events: none !important;
+				/* Allow clicking through to 3D model */
 			}
 
 			/* Footer sellpoints black text on mobile */
@@ -1258,8 +1262,7 @@
 											</span>
 										</h1>
 										<div class="flex flex-col gap-4 max-w-[500px] w-full">
-											<p style="color:#0f766e" class="text-pretty">
-											</p>
+
 											<!-- Mobile specific paragraph that acts as the initial stage card -->
 											<div class="mobile-hero-para">
 												<p>Brainvoice.AI is a cutting innovative technology company dedicated in

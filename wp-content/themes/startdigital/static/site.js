@@ -39072,12 +39072,11 @@ void main() {
       });
       this.outlinePass.selectedObjects = selectedObjects;
 
-      // Mobile: Toggle between initial description and active label cards
-      if (this.width < 768) {
-        const mobilePara = document.querySelector('.mobile-hero-para');
-        if (mobilePara) {
-          mobilePara.style.display = activeHighlight ? 'none' : 'block';
-        }
+      // Toggle between initial description and active label cards
+      const mobilePara = document.querySelector('.mobile-hero-para');
+      if (mobilePara) {
+        mobilePara.style.opacity = activeHighlight ? '0' : '1';
+        mobilePara.style.pointerEvents = activeHighlight ? 'none' : 'auto';
       }
     }
     initializeLabels() {
