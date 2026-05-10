@@ -940,12 +940,12 @@
 				right: 0 !important;
 				background: white !important;
 				padding: 2rem !important;
-				box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
 				gap: 1.5rem !important;
 				z-index: 100 !important;
 				opacity: 1 !important;
 				pointer-events: auto !important;
-				border-top: 1px solid rgba(0,0,0,0.05) !important;
+				border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
 			}
 
 			.nav-links.active a {
@@ -958,7 +958,8 @@
 			}
 
 			.nav-links.active span.font-heading {
-				display: none !important; /* Hide the / separators on mobile menu */
+				display: none !important;
+				/* Hide the / separators on mobile menu */
 			}
 
 			/* Footer sellpoints black text on mobile */
@@ -996,6 +997,26 @@
 			text-transform: uppercase;
 			color: black !important;
 			text-shadow: none !important;
+		}
+
+		/* Laptop and larger screens: reduce font sizes for the Featured Apps section and labels as requested */
+		@media (min-width: 1025px) {
+			.why-use.is-h1 {
+				font-size: 2.25rem !important;
+			}
+
+			.why-use .supertitle span {
+				font-size: 11px !important;
+			}
+
+			.mesh-label .label-content p {
+				font-size: 13.5px !important;
+				line-height: 1.4 !important;
+			}
+
+			.mesh-label .label-content h3.supertitle {
+				font-size: 12px !important;
+			}
 		}
 	</style>
 
@@ -1067,7 +1088,7 @@
 				</button>
 			</div>
 		</div>
-			</div>
+		</div>
 		</div>
 	</header>
 	<section id="loading-screen"
@@ -1383,7 +1404,7 @@
 												"Zero-Defect" manufacturing environment. By integrating Hybrid Agentic
 												Architecture with real-time vision data, the system monitors production
 												consistency, identifies microscopic anomalies, and—critically—predicts
-												potential failures before they occur in the production line.
+												potential failures before they occur in the production line.</p>
 										</div>
 									</div>
 								</div>
@@ -1399,11 +1420,11 @@
 												</h3>
 											</div>
 											<p>Beyond standard automated responses, our chatbot utilizes
-												Retrieval-Augmented Generation (RAG) to securely connect with your
+												RAG to securely connect with your
 												private databases. This architecture allows the AI to pull real-time,
 												context-specific data, delivering a hyper-personalized chat experience
 												that understands individual customer history while maintaining strict
-												data sovereignty and precision.
+												data sovereignty & precision.
 										</div>
 									</div>
 								</div>
@@ -2725,8 +2746,8 @@
 
 					// Close mobile menu when clicking outside
 					document.addEventListener('click', (e) => {
-						if (navLinks.classList.contains('active') && 
-							!navLinks.contains(e.target) && 
+						if (navLinks.classList.contains('active') &&
+							!navLinks.contains(e.target) &&
 							!mobileMenuBtn.contains(e.target)) {
 							navLinks.classList.remove('active');
 						}
