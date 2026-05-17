@@ -616,6 +616,31 @@
 				width: 380px !important;
 				margin-right: 20px !important;
 			}
+
+			/* Prevent text overflow in white cards on laptop screens */
+			#industries .swiper-slide .is-h2 {
+				font-size: 2rem !important;
+				line-height: 1.1 !important;
+			}
+
+			/* Make label-3 text white on laptops */
+			#label-3 .label-content,
+			#label-3 .label-content h3,
+			#label-3 .label-content p {
+				color: white !important;
+			}
+
+			/* Make footer sellpoints black on laptops */
+			.footer-sellpoints {
+				color: black !important;
+				border-color: black !important;
+			}
+			.footer-sellpoints .border-white {
+				border-color: black !important;
+			}
+			.footer-sellpoints .bg-white {
+				background-color: black !important;
+			}
 		}
 	</style>
 
@@ -630,6 +655,49 @@
 			html {
 				overflow-x: hidden !important;
 				max-width: 100vw !important;
+			}
+
+			/* Solid background for header on mobile for readability */
+			header {
+				background-color: white !important;
+				box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+			}
+			
+			/* Make video section responsive on mobile */
+			.video-outer {
+				height: auto !important;
+				padding: 2rem 1rem !important;
+				display: flex !important;
+				margin-top: 2rem !important;
+				margin-bottom: 2rem !important;
+			}
+			.brainvoice-video-section {
+				flex-direction: column !important;
+				width: 100% !important;
+				height: auto !important;
+				gap: 1.5rem !important;
+			}
+			.video-player iframe {
+				width: 100% !important;
+				height: 250px !important;
+			}
+			.video-list {
+				flex-direction: row !important;
+				flex-wrap: wrap !important;
+				gap: 0.5rem !important;
+				width: 100% !important;
+				margin-top: 1rem !important;
+			}
+			.video-list button {
+				flex: 1 1 45% !important;
+				font-size: 0.8rem !important;
+				padding: 0.75rem 0.5rem !important;
+				margin: 0 !important;
+			}
+
+			/* Black text for the paragraph in Find Your Industry section on mobile */
+			.find-your-container p {
+				color: #000000 !important;
 			}
 
 			/* Black text for Our Chatbot label on mobile */
@@ -1729,7 +1797,7 @@
 						</div>
 					</section>
 					<div
-						class="video-outer flex items-center justify-center w-full laptop:h-lvh relative px-4 tablet:px-8 my-16 overflow-hidden max-tablet:hidden">
+						class="video-outer flex items-center justify-center w-full laptop:h-lvh relative px-4 tablet:px-8 my-16 overflow-hidden">
 						<svg width="0" height="0" viewbox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg"
 							style="position: absolute;">
 							<defs>
@@ -1841,7 +1909,7 @@
 										<div
 											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 h-[400px] laptop:h-[480px] relative">
 											<h4 class="is-h2">Customer
-												<br />Customer Experience
+												<br />Experience
 											</h4>
 											<p class="para-indent">Engage your customers at every stage of the
 												journey<br />Unify CRM activities like sales, marketing, and support
