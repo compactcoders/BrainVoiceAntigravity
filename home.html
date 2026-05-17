@@ -617,22 +617,6 @@
 				margin-right: 2% !important;
 			}
 		}
-
-		/* Global CSS Grid Implementation to automatically adopt styles and responsiveness */
-		body, main, #page-content, section, 
-		#hero-container, #hero-section, #hero-top, 
-		.hero-text, .about-div, .why-use, .who-div, 
-		.cycle-through, .find-your-container, .footer-text {
-			display: grid !important;
-			grid-template-columns: minmax(0, 1fr);
-			box-sizing: border-box !important;
-		}
-		
-		/* Aligning text appropriately for the grid layout */
-		.hero-text, .about-div, .why-use, .who-div, .cycle-through, .find-your-container {
-			place-items: center !important;
-			text-align: center !important;
-		}
 	</style>
 
 
@@ -679,32 +663,17 @@
 				width: 100vw !important;
 			}
 
-			/* Add CSS Grid for major layout containers to automatically adapt styles and responsiveness */
-			#hero-container, 
-			#hero-section, 
-			#hero-top,
-			.hero-text,
-			.about-div, 
-			.why-use, 
-			.who-div, 
-			.cycle-through, 
-			.find-your-container,
-			.footer-text {
-				display: grid !important;
-				place-items: center !important;
-				grid-template-columns: minmax(0, 1fr) !important;
-				width: 100% !important;
-				max-width: 100% !important;
-				box-sizing: border-box !important;
-			}
-
-			/* Centering all text elements on mobile using Grid */
+			/* Centering all text elements on mobile */
 			.hero-text,
 			#hero-top,
 			.who-div,
 			.cycle-through,
 			.find-your-container {
 				text-align: center !important;
+				align-items: center !important;
+				justify-content: center !important;
+				width: 100% !important;
+				max-width: 100% !important;
 				margin-left: 0 !important;
 				left: 0 !important;
 				transform: none !important;
@@ -727,10 +696,10 @@
 				opacity: 0 !important;
 				visibility: hidden !important;
 				transition: opacity 0.5s ease-in-out !important;
-				display: grid !important;
-				place-items: center !important;
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: center !important;
 				text-align: center !important;
-				gap: 1rem !important;
 			}
 
 			.cycle-through>div.active-cycle {
@@ -744,10 +713,12 @@
 				opacity: 1 !important;
 			}
 
-			/* Shift content to the right side on mobile as requested - but make it robust with Grid */
+			/* Shift content to the right side on mobile as requested - but make it robust */
 			.about-div,
 			.why-use {
 				text-align: center !important;
+				align-items: center !important;
+				justify-content: center !important;
 				width: 85% !important;
 				max-width: 90% !important;
 				left: 50% !important;
@@ -760,10 +731,11 @@
 			.about-div *,
 			.why-use * {
 				text-align: center !important;
+				align-items: center !important;
+				justify-content: center !important;
 				margin-left: auto !important;
 				margin-right: auto !important;
 				max-width: 100% !important;
-				box-sizing: border-box !important;
 			}
 
 			.hero-text h1,
@@ -773,21 +745,19 @@
 			.about-div h3,
 			.cycle-through h2,
 			.find-your-container h4 {
-				display: grid !important;
-				place-items: center !important;
-				grid-template-columns: minmax(0, 1fr) !important;
+				align-items: center !important;
 				text-align: center !important;
 				width: 100% !important;
+				display: flex !important;
+				flex-direction: column !important;
 				color: black !important;
-				gap: 0.5rem !important;
 			}
 
 			/* Specific fix for the "Discovering Your Voice" heading spans */
 			.about-div h2 span {
-				display: grid !important;
-				place-items: center !important;
+				align-self: center !important;
 				text-align: center !important;
-				width: 100% !important;
+				justify-content: center !important;
 			}
 
 			.hero-text {
@@ -805,8 +775,7 @@
 
 			.why-use .flex.items-center,
 			.about-div .flex.items-center {
-				display: grid !important;
-				place-items: center !important;
+				justify-content: center !important;
 			}
 
 			/* Hide decorative lines and reset margins that cause off-centering on mobile */
@@ -830,11 +799,12 @@
 				display: none !important;
 			}
 
-			/* Ensure spans inside headers are centered using Grid */
+			/* Ensure spans inside headers are centered */
 			.find-your-container h4 span {
-				display: grid !important;
-				place-items: center !important;
+				align-self: center !important;
 				text-align: center !important;
+				display: flex !important;
+				justify-content: center !important;
 			}
 
 			.hero-text p,
@@ -856,8 +826,7 @@
 				top: 0 !important;
 				left: 0 !important;
 				margin-bottom: 1rem !important;
-				display: grid !important;
-				place-items: center !important;
+				justify-content: center !important;
 			}
 
 			/* Adjust line decorators in find-your-container */
@@ -916,8 +885,7 @@
 			}
 
 			footer .tablet\:flex-row {
-				display: grid !important;
-				grid-template-columns: minmax(0, 1fr) !important;
+				flex-direction: column !important;
 				gap: 2rem !important;
 			}
 
@@ -1009,8 +977,8 @@
 			}
 
 			.nav-links.active {
-				display: grid !important;
-				grid-template-columns: minmax(0, 1fr) !important;
+				display: flex !important;
+				flex-direction: column !important;
 				position: absolute !important;
 				top: 100% !important;
 				left: 0 !important;
