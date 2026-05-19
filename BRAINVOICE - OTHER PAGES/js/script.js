@@ -243,3 +243,54 @@ if (!document.querySelector('#notification-keyframes')) {
 
 // Console log that JS is loaded
 console.log('Brainvoice Global JS loaded successfully');
+
+// Mobile Not Supported Overlay Injector
+(function() {
+  if (window.innerWidth <= 1024) {
+    const overlay = document.createElement('div');
+    overlay.id = 'mobile-not-supported-overlay';
+    overlay.innerHTML = `
+      <div class="mns-top-icon">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#a0fcf0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 10px rgba(160,252,240,0.8));">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+          <path d="M14 7l2 -2m0 0v2m0 -2h-2"></path>
+          <path d="M10 11l-2 2m0 0v-2m0 2h2"></path>
+        </svg>
+      </div>
+      <h1 class="mns-heading">DESKTOP EXPERIENCE<br>REQUIRED</h1>
+      <hr class="mns-separator">
+      <div class="mns-text">
+        <p>THIS IMMERSIVE<br>WEBSITE IS OPTIMIZED<br>FOR LARGER SCREENS.</p>
+        <br>
+        <p>PLEASE VISIT US ON A<br>PC OR LAPTOP FOR THE<br>FULL EXPERIENCE.</p>
+      </div>
+      <div class="mns-bottom-icons">
+        <svg width="120" height="60" viewBox="0 0 60 30" fill="none" stroke="#169b8b" stroke-width="1.2" stroke-linejoin="round">
+          <rect x="2" y="14" width="14" height="10" rx="1"></rect>
+          <path d="M0 24h18v1.5H0z"></path>
+          <rect x="20" y="4" width="22" height="15" rx="1"></rect>
+          <path d="M28 19v4h6v-4"></path>
+          <path d="M24 23h14v1.5H24z"></path>
+          <rect x="46" y="6" width="10" height="18" rx="1"></rect>
+          <line x1="49" y1="9" x2="53" y2="9"></line>
+          <line x1="49" y1="11" x2="53" y2="11"></line>
+          <circle cx="51" cy="20" r="1"></circle>
+        </svg>
+      </div>
+    `;
+    
+    const injectOverlay = () => {
+      if (!document.getElementById('mobile-not-supported-overlay')) {
+        document.body.appendChild(overlay);
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', injectOverlay);
+    } else {
+      injectOverlay();
+    }
+  }
+})();
