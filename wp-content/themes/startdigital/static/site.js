@@ -49542,13 +49542,40 @@ version 0.8.2
           <path d="M10 11l-2 2m0 0v-2m0 2h2"></path>
         </svg>
       </div>
-      <h1 class="mns-heading">DESKTOP EXPERIENCE<br>REQUIRED</h1>
-      <hr class="mns-separator">
-      <div class="mns-text">
-        <p>THIS IMMERSIVE<br>WEBSITE IS OPTIMIZED<br>FOR LARGER SCREENS.</p>
-        <br>
-        <p>PLEASE VISIT US ON A<br>PC OR LAPTOP FOR THE<br>FULL EXPERIENCE.</p>
+      <h1 class="mns-heading">DESKTOP EXPERIENCE<br><span style="color: #14b8a6; text-shadow: 0 0 15px rgba(20,184,166,0.6);">RECOMMENDED</span></h1>
+      
+      <div class="mns-info-container">
+        <div class="mns-info-block">
+          <div class="mns-info-icon-wrapper">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#14b8a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="24" cy="24" r="22" stroke-width="1" stroke-opacity="0.6"></circle>
+              <path d="M12 28c0-6 5-11 11-11 4.5 0 8.3 2.7 10 6.6"></path>
+              <path d="M10 28h16"></path>
+              <path d="M23 17v-3"></path>
+              <path d="M23 14h-4"></path>
+              <circle cx="30" cy="28" r="4" fill="#063937"></circle>
+              <path d="M30 22v2m0 10v2m4-8h2m-10 0h2m6-4l-1.5 1.5m-5 5l-1.5 1.5m6 0l-1.5-1.5m-5-5l-1.5-1.5"></path>
+            </svg>
+          </div>
+          <div class="mns-info-text">
+            Our mobile experience is currently under construction and will be available soon.
+          </div>
+        </div>
+
+        <div class="mns-info-block">
+          <div class="mns-info-icon-wrapper">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#14b8a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="24" cy="24" r="22" stroke-width="1" stroke-opacity="0.6"></circle>
+              <rect x="13" y="16" width="22" height="13" rx="1"></rect>
+              <path d="M10 29h28v2H10z"></path>
+            </svg>
+          </div>
+          <div class="mns-info-text">
+            For the best performance and complete interactive experience, please access the platform using a desktop or laptop device.
+          </div>
+        </div>
       </div>
+
       <div class="mns-bottom-icons">
         <svg width="120" height="60" viewBox="0 0 60 30" fill="none" stroke="#169b8b" stroke-width="1.2" stroke-linejoin="round">
           <rect x="2" y="14" width="14" height="10" rx="1"></rect>
