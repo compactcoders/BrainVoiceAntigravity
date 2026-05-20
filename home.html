@@ -434,51 +434,6 @@
 		href='./wp-content/plugins/gravityforms/assets/css/dist/gravity-forms-orbital-theme.min.css?ver=2.9.27'
 		type='text/css' media='all' />
 	<style>
-		/* Force allow vertical scrolling on all interactive and scroll areas for mobile */
-		html,
-		body {
-			overflow-x: hidden !important;
-			overscroll-behavior-y: auto !important;
-			touch-action: auto !important;
-			height: auto !important;
-			min-height: 100% !important;
-		}
-
-		/* Mobile-specific: Bypass smooth-scroll fixed wrapper to prevent sticking */
-		@media (max-width: 1024px) {
-			#smooth-wrapper {
-				position: relative !important;
-				height: auto !important;
-				overflow: visible !important;
-				touch-action: auto !important;
-			}
-
-			#smooth-content {
-				position: relative !important;
-				width: 100% !important;
-				height: auto !important;
-				overflow: visible !important;
-			}
-
-			/* Ensure pinned sections don't trap the user */
-			[data-scroll-section],
-			.section,
-			section {
-				overflow: visible !important;
-			}
-		}
-
-		#smooth-wrapper,
-		#smooth-content {
-			min-height: 100% !important;
-		}
-
-		.swiper,
-		.swiper-wrapper,
-		.swiper-slide {
-			touch-action: pan-y !important;
-		}
-
 		#label-1,
 		#label-5 {
 			border-color: #14b8a6 !important;
@@ -635,9 +590,11 @@
 				color: black !important;
 				border-color: black !important;
 			}
+
 			.footer-sellpoints .border-white {
 				border-color: black !important;
 			}
+
 			.footer-sellpoints .bg-white {
 				background-color: black !important;
 			}
@@ -646,9 +603,11 @@
 			.footer-text p {
 				color: black !important;
 			}
+
 			.footer-text a.button {
 				color: black !important;
 			}
+
 			.footer-text a.button .line-1,
 			.footer-text a.button .line-2 {
 				background-color: black !important;
@@ -657,6 +616,7 @@
 	</style>
 
 
+<<<<<<< HEAD
 	<!-- ==========================================================================
      GLOBAL RESPONSIVE OVERRIDES FOR INDEX.HTML (ADDED AUTOMATICALLY)
      ========================================================================== -->
@@ -1177,6 +1137,8 @@
 			}
 		}
 	</style>
+=======
+>>>>>>> 8377be4f8e2ab052fc1fb2dd12a7388a9697ac8f
 
 </head>
 
@@ -1240,10 +1202,7 @@
 						</svg>
 					</a>
 				</div>
-				<!-- Hamburger Menu for Mobile -->
-				<button class="mobile-menu-btn flex tablet:hidden" id="mobileMenuBtn" aria-label="Menu">
-					<i class="fas fa-bars"></i>
-				</button>
+
 			</div>
 		</div>
 		</div>
@@ -1496,11 +1455,19 @@
 										<div class="flex flex-col gap-4 max-w-[500px] w-full">
 
 											<!-- Mobile specific paragraph that acts as the initial stage card -->
+<<<<<<< HEAD
 											<div class="mobile-hero-para">
 												<p>Brainvoice.AI is a cutting-edge technology company dedicated to
 													building custom AI models for enterprises with a deep-rooted passion
 													for data-driven insights. Specialized in optimizing organization
 													operations and customer experience.</p>
+=======
+											<div class="mobile-hero-para" style="color: #14b8a6;">
+												<p>Brainvoice.AI is a cutting innovative technology company dedicated in
+													building custom AI models for enterprises with a deep rooted passion
+													for data driven insights. Specialised in optimising organisation
+													operations & customer experience.</p>
+>>>>>>> 8377be4f8e2ab052fc1fb2dd12a7388a9697ac8f
 											</div>
 										</div>
 									</div>
@@ -2865,105 +2832,6 @@
 
 		}
 
-	</script>
-	<script>
-		// Global Mobile Scroll & Lenis Fixer
-		(function () {
-			const isMobile = window.innerWidth <= 1024 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-			const refreshScroll = () => {
-				if (window.gsap && window.ScrollTrigger) {
-					ScrollTrigger.refresh();
-				}
-			};
-
-			// Disable Lenis smooth touch on mobile to prevent sticking
-			const fixLenis = () => {
-				if (window.lenis) {
-					if (isMobile) {
-						window.lenis.options.smoothTouch = false;
-						window.lenis.destroy(); // Optional: completely disable on mobile for max stability
-					}
-				}
-			};
-
-			window.addEventListener('load', () => {
-				fixLenis();
-				setTimeout(refreshScroll, 1000);
-
-				// Mobile Menu Toggle logic
-				const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-				const navLinks = document.getElementById('nav-links');
-
-				if (mobileMenuBtn && navLinks) {
-					mobileMenuBtn.addEventListener('click', (e) => {
-						e.stopPropagation();
-						navLinks.classList.toggle('active');
-					});
-
-					// Close mobile menu when clicking outside
-					document.addEventListener('click', (e) => {
-						if (navLinks.classList.contains('active') &&
-							!navLinks.contains(e.target) &&
-							!mobileMenuBtn.contains(e.target)) {
-							navLinks.classList.remove('active');
-						}
-					});
-				}
-
-				// Add ghost spacer to ensure scroll room
-				if (isMobile) {
-					const spacer = document.createElement('div');
-					spacer.style.height = '20vh';
-					spacer.style.pointerEvents = 'none';
-					document.body.appendChild(spacer);
-				}
-			});
-
-			document.addEventListener('touchend', () => {
-				setTimeout(refreshScroll, 150);
-			}, { passive: true });
-
-			if (window.gsap && window.ScrollTrigger) {
-				ScrollTrigger.config({
-					ignoreMobileResize: true,
-					limitCallbacks: true
-				});
-
-				// Standardize scroll for mobile
-				if (!isMobile) {
-					ScrollTrigger.normalizeScroll({
-						allowNestedScroll: true,
-						momentum: true,
-						type: "touch,wheel,pointer"
-					});
-				}
-			}
-
-			// Auto-cycle logic for mobile
-			if (isMobile) {
-				const initMobileCycle = () => {
-					const cycleItems = document.querySelectorAll('.cycle-through > div');
-					if (cycleItems.length === 0) return;
-
-					let currentIndex = 0;
-					const cycle = () => {
-						cycleItems.forEach((item, i) => {
-							if (i === currentIndex) {
-								item.classList.add('active-cycle');
-							} else {
-								item.classList.remove('active-cycle');
-							}
-						});
-						currentIndex = (currentIndex + 1) % cycleItems.length;
-					};
-
-					setInterval(cycle, 3000); // Cycle every 3 seconds
-					cycle();
-				};
-				window.addEventListener('load', initMobileCycle);
-			}
-		})();
 	</script>
 </body>
 
