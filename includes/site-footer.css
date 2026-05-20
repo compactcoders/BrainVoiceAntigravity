@@ -1,0 +1,364 @@
+/* Shared site footer — matches landing page layout on all pages */
+.bv-site-footer {
+	position: relative;
+	z-index: 20;
+	width: 100%;
+	max-width: 100%;
+	color: #0f5053;
+	font-family: 'Orbitron', sans-serif;
+}
+
+.bv-site-footer__shape {
+	display: block;
+	width: 100%;
+	margin-bottom: -1px;
+}
+
+.bv-site-footer__inner {
+	background: #fff;
+	padding: 1.5rem 1rem 0;
+}
+
+@media (min-width: 768px) {
+	.bv-site-footer__inner {
+		padding: 2rem 2rem 0;
+	}
+}
+
+.bv-site-footer__grid {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 1.5rem 1rem;
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+.bv-site-footer__brand {
+	flex: 1 1 100%;
+	min-width: 0;
+	max-width: 230px;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.bv-site-footer__logo-link {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	text-decoration: none;
+}
+
+.bv-site-footer__logo-link img {
+	width: auto !important;
+	height: 45px !important;
+	max-height: 45px !important;
+	max-width: none !important;
+	object-fit: contain;
+	flex-shrink: 0;
+}
+
+.bv-site-footer__logo-text {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: #000;
+	letter-spacing: 0.04em;
+}
+
+.bv-site-footer__logo-ai {
+	color: #51c186;
+}
+
+.bv-site-footer__tagline {
+	font-size: 0.875rem;
+	line-height: 1.5;
+	color: #315e60;
+	margin: 0;
+}
+
+.bv-site-footer__col {
+	flex: 1 1 140px;
+	min-width: 0;
+	padding-top: 0.5rem;
+}
+
+.bv-site-footer__heading {
+	font-size: clamp(1rem, 2.5vw, 1.35rem);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #0f5053;
+	margin: 0 0 0.75rem;
+	white-space: nowrap;
+}
+
+.bv-site-footer__links {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+
+.bv-site-footer__links a {
+	font-size: 0.8rem;
+	text-decoration: none;
+	color: #2d6668;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	white-space: nowrap;
+}
+
+.bv-site-footer__links a:hover {
+	color: #13b0cb;
+}
+
+.footer-social-links {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.bv-social-btn {
+	width: 2.75rem;
+	height: 2.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #0f8688;
+	color: #fff;
+	text-decoration: none;
+	font-size: 1rem;
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.bv-social-btn:hover {
+	background: linear-gradient(135deg, #0a6f71, #0ea2bb);
+	transform: translateY(-2px);
+}
+
+.footer-resources-form-row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 100%;
+	flex: 1 1 100%;
+}
+
+.footer-col-resources {
+	flex: 1 1 42%;
+	max-width: 48%;
+}
+
+.footer-col-get-started {
+	flex: 1 1 58%;
+	max-width: 52%;
+}
+
+.bv-site-footer__form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.bv-site-footer__field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.15rem;
+}
+
+.bv-site-footer__field span {
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: #0f5053;
+}
+
+.bv-site-footer__field input {
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid rgba(15, 80, 83, 0.35);
+	background: transparent;
+	padding: 0.4rem 0;
+	font-size: 0.8rem;
+	font-family: inherit;
+	color: #0f5053;
+	outline: none;
+}
+
+.bv-site-footer__field input:focus {
+	border-bottom-color: #13b0cb;
+}
+
+.bv-site-footer__submit {
+	width: 100%;
+	margin-top: 0.25rem;
+	padding: 0.55rem 0.75rem;
+	border: none;
+	background: #167f7f;
+	color: #fff;
+	font-family: inherit;
+	font-size: 0.85rem;
+	cursor: pointer;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.bv-site-footer__submit:hover {
+	background: #0f8688;
+}
+
+.footer-legal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.65rem;
+	width: 100%;
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 1.75rem 0 1.5rem;
+	border-top: 1px dashed rgba(15, 80, 83, 0.35);
+	text-align: center;
+	font-size: 0.75rem;
+}
+
+.footer-legal__links {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	margin-top: 0.75rem;
+}
+
+.footer-legal__links a {
+	color: #0e7d80;
+	text-decoration: none;
+}
+
+.footer-legal__links a:hover {
+	text-decoration: underline;
+}
+
+.footer-legal__divider {
+	width: 1px;
+	height: 0.75rem;
+	background: #0f5053;
+	flex-shrink: 0;
+}
+
+.footer-legal__credit a {
+	color: #315e60;
+	text-decoration: none;
+}
+
+/* Mobile: original wrapped footer layout (unchanged from pre-desktop update) */
+@media (max-width: 768px) {
+	.bv-site-footer__brand {
+		flex: 1 1 100%;
+		max-width: 280px;
+	}
+
+	.bv-site-footer__col {
+		flex: 1 1 40%;
+		min-width: 40%;
+	}
+
+	.footer-resources-form-row {
+		flex: 1 1 100%;
+		width: 100%;
+	}
+
+	.footer-col-resources {
+		flex: 1 1 42%;
+		max-width: 48%;
+	}
+
+	.footer-col-get-started {
+		flex: 1 1 58%;
+		max-width: 52%;
+	}
+}
+
+/* Desktop only: single-row grid (current design) */
+@media (min-width: 1024px) {
+	.bv-site-footer__grid {
+		display: grid;
+		grid-template-columns:
+			minmax(200px, 1.35fr)
+			minmax(0, 0.85fr)
+			minmax(0, 0.85fr)
+			minmax(0, 0.85fr)
+			minmax(0, 0.8fr)
+			minmax(160px, 1fr);
+		align-items: start;
+		gap: 1.25rem 1rem;
+	}
+
+	.bv-site-footer__col--explore {
+		display: none;
+	}
+
+	.footer-resources-form-row {
+		display: contents;
+	}
+
+	.bv-site-footer__brand {
+		flex: unset;
+		max-width: none;
+	}
+
+	.bv-site-footer__col {
+		flex: unset;
+		min-width: 0;
+		padding-top: 0.5rem;
+	}
+
+	.footer-col-resources,
+	.footer-col-get-started {
+		flex: unset;
+		max-width: none;
+	}
+
+	.bv-site-footer__heading {
+		font-size: 1.05rem;
+		position: relative;
+		padding-bottom: 0.5rem;
+	}
+
+	.bv-site-footer__heading::after {
+		content: '';
+		display: block;
+		width: 2.5rem;
+		height: 3px;
+		margin-top: 0.35rem;
+		background: #13b0cb;
+	}
+
+	.bv-site-footer__links a {
+		font-size: 0.72rem;
+		white-space: normal;
+		line-height: 1.35;
+	}
+
+	.footer-legal {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		text-align: left;
+	}
+
+	.footer-legal__links {
+		margin-top: 0;
+	}
+}

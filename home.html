@@ -36,14 +36,14 @@
 	<meta property="og:image:type" content="image/png" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<script type="application/ld+json"
-		class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"/","url":"/","name":"Solais &#8226; A visibility platform that monitors AI-driven discovery","isPartOf":{"@id":"/#website"},"about":{"@id":"/#organization"},"datePublished":"2025-02-10T06:14:30+00:00","dateModified":"2026-02-06T07:24:41+00:00","breadcrumb":{"@id":"/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["/"]}]},{"@type":"BreadcrumbList","@id":"/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"}]},{"@type":"WebSite","@id":"/#website","url":"/","name":"BrainVoice","description":"AI Voice Intelligence Platform","publisher":{"@id":"/#organization"},"alternateName":"BrainVoice.ai","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Organization","@id":"/#organization","name":"BrainVoice AI","url":"/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"/#/schema/logo/image/","url":"./wp-content/uploads/2026/02/Solais-Social-Image.png","contentUrl":"./wp-content/uploads/2026/02/Solais-Social-Image.png","width":1200,"height":675,"caption":"BrainVoice AI"},"image":{"@id":"/#/schema/logo/image/"}}]}</script>
+		class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"/","url":"/","name":"BRAINVOICE &#8226; A visibility platform that monitors AI-driven discovery","isPartOf":{"@id":"/#website"},"about":{"@id":"/#organization"},"datePublished":"2025-02-10T06:14:30+00:00","dateModified":"2026-02-06T07:24:41+00:00","breadcrumb":{"@id":"/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["/"]}]},{"@type":"BreadcrumbList","@id":"/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"}]},{"@type":"WebSite","@id":"/#website","url":"/","name":"BrainVoice","description":"AI Voice Intelligence Platform","publisher":{"@id":"/#organization"},"alternateName":"BrainVoice.ai","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Organization","@id":"/#organization","name":"BrainVoice AI","url":"/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"/#/schema/logo/image/","url":"./wp-content/uploads/2026/02/BrainVoice-logo.png","contentUrl":"./wp-content/uploads/2026/02/BrainVoice-logo.png","width":1200,"height":675,"caption":"BrainVoice AI"},"image":{"@id":"/#/schema/logo/image/"}}]}</script>
 	<!-- / Yoast SEO plugin. -->
 
 
 	<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed"
-		href="./wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsolais.ai%2F" />
+		href="./wp-json/oembed/1.0/embed?url=https%3A%2F%2Fbrainvoice.ai%2F" />
 	<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed"
-		href="./wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsolais.ai%2F&#038;format=xml" />
+		href="./wp-json/oembed/1.0/embed?url=https%3A%2F%2Fbrainvoice.ai%2F&#038;format=xml" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 	<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
 		img:is([sizes=auto i], [sizes^="auto," i]) {
@@ -723,6 +723,22 @@
 			#label-5 .label-content h3,
 			#label-5 .label-content p {
 				color: #000000 !important;
+			}
+
+			/* Black text for hero top heading on mobile */
+			#hero-top h1,
+			#hero-top h1 > span,
+			#hero-top h1 .flex-shrink-0,
+			#hero-top h1 span.has-black-color-mobile,
+			#hero-top .hero-text h1 span.has-black-color-mobile {
+				color: #000000 !important;
+			}
+			#hero-top h1 .bg-gradient-to-l {
+				background-image: linear-gradient(to left, #000000, transparent) !important;
+			}
+			/* Preserve the teal color for the inner Analytics for span */
+			#hero-top h1 span[style*="color:#0f766e"] {
+				color: #0f766e !important;
 			}
 
 			/* Reset the 200vw hack */
@@ -1469,7 +1485,7 @@
 												<div class="bg-white min-h-7 w-2"></div>
 												<div class="bg-white min-h-7 w-1"></div>
 											</span>
-											<span class="">ENTERPRISE</span>
+											<span class="has-black-color-mobile">ENTERPRISE</span>
 											<span class="flex gap-2 phone:gap-4 items-center justify-center">
 												<div
 													class="max-phone:hidden bg-gradient-to-l from-white to-transparent h-[4px] phone:h-[6px] w-[40px] phone:w-[60px] laptop:w-[120px]">
@@ -1481,10 +1497,10 @@
 
 											<!-- Mobile specific paragraph that acts as the initial stage card -->
 											<div class="mobile-hero-para">
-												<p>Brainvoice.AI is a cutting innovative technology company dedicated in
-													building custom AI models for enterprises with a deep rooted passion
-													for data driven insights. Specialised in optimising organisation
-													operations & customer experience.</p>
+												<p>Brainvoice.AI is a cutting-edge technology company dedicated to
+													building custom AI models for enterprises with a deep-rooted passion
+													for data-driven insights. Specialized in optimizing organization
+													operations and customer experience.</p>
 											</div>
 										</div>
 									</div>
@@ -1519,7 +1535,7 @@
 													style="border-color:#14b8a6;">
 													<div class="size-2 blink" style="background-color:#14b8a6;"></div>
 												</div>
-												<h3 class="supertitle min-h-7 leading-0 flex items-center">Hlealthcare
+												<h3 class="supertitle min-h-7 leading-0 flex items-center">Healthcare
 													ERP</h3>
 											</div>
 											<p>A Sovereign Healthcare AI ecosystem designed to automate hospital
@@ -1607,7 +1623,7 @@
 											01</div>
 										<span
 											class="p-0.5 px-3 w-fit bg-burntOrange text-white leading-0 flex items-center">
-											Strategising
+											Strategizing
 										</span>
 										<div class="bg-burntOrange min-h-7 w-2"></div>
 										<div class="bg-burntOrange min-h-7 w-1"></div>
@@ -1625,7 +1641,7 @@
 											02</div>
 										<span
 											class="p-0.5 px-3 w-fit bg-burntOrange text-white leading-0 flex items-center">
-											Analysing
+											Analyzing
 										</span>
 										<div class="bg-burntOrange min-h-7 w-2"></div>
 										<div class="bg-burntOrange min-h-7 w-1"></div>
@@ -1873,7 +1889,7 @@
 								</span>
 							</h4>
 							<div class="flex flex-col gap-8 laptop:ml-[136px]">
-								<p class="w-full max-w-[400px]">Customisable solutions for enterprise management
+								<p class="w-full max-w-[400px]">Customizable solutions for enterprise management
 									We provide enterprise grade AI solutions meticulously crafted for your use case to
 									help automate processes, gain insight from data,and build intelligent systems that
 									drive business growth.
@@ -2008,7 +2024,7 @@
 											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 h-[400px] laptop:h-[480px] relative">
 											<h4 class="is-h2"> Custom<br />Solutions</h4>
 											<p class="para-indent">Design, build, and deploy agentic solutions
-												engineered for your enterprise's unique bottlenecks.</br>We develop
+												engineered for your enterprise's unique bottlenecks.<br>We develop
 												high-fidelity web and mobile applications using a proprietary blend of
 												low-code efficiency and pro-code precision. Each solution is infused
 												with Agentic AI enhancements—including end-to-end process automation,
@@ -2047,7 +2063,7 @@
 											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 h-[400px] laptop:h-[480px] relative">
 											<h4 class="is-h2">Business <br />Intelligence </h4>
 											<p class="para-indent">Transforming raw enterprise streams into 360-degree
-												informed strategic decisions.</br>Empower your institutions with robust,
+												informed strategic decisions.<br>Empower your institutions with robust,
 												data-driven insights. Streamline operations and enhance your strategic
 												market positioning.</p>
 										</div>
@@ -2161,7 +2177,7 @@
 											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 h-[400px] laptop:h-[480px] relative">
 											<h4 class="is-h2"> Custom<br />Solutions</h4>
 											<p class="para-indent">Design, build, and deploy agentic solutions
-												engineered for your enterprise's unique bottlenecks.</br>We develop
+												engineered for your enterprise's unique bottlenecks.<br>We develop
 												high-fidelity web and mobile applications using a proprietary blend of
 												low-code efficiency and pro-code precision. Each solution is infused
 												with Agentic AI enhancements—including end-to-end process automation,
@@ -2200,7 +2216,7 @@
 											class="bg-white -my-[1px] p-6 py-12 flex flex-col gap-8 laptop:gap-16 h-[400px] laptop:h-[480px] relative">
 											<h4 class="is-h2">Business <br />Intelligence </h4>
 											<p class="para-indent">Transforming raw enterprise streams into 360-degree
-												informed strategic decisions.</br>Empower your institutions with robust,
+												informed strategic decisions.<br>Empower your institutions with robust,
 												data-driven insights. Streamline operations and enhance your strategic
 												market positioning.</p>
 										</div>

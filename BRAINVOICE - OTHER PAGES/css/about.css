@@ -217,10 +217,20 @@ body {
 }
 
 .gradient-text {
+  display: inline;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
+}
+
+.section-header h2 .gradient-text {
+  background: var(--gradient-primary) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 /* HERO SECTION */
@@ -415,8 +425,13 @@ body {
 .card-number {
   font-size: 3rem;
   font-weight: 800;
-  color: rgba(19, 176, 203, 0.1);
+  line-height: 1;
   margin-bottom: 1rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .card-icon {
@@ -752,7 +767,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   gap: 2rem;
-  color: var(--white);
+  color: #0f5053;
 }
 
 .newsletter-icon {
@@ -778,13 +793,15 @@ body {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
+  color: #0f5053;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .newsletter-text p {
-  color: var(--gray-lighter);
+  color: #315e60;
   font-size: 1rem;
 }
 
@@ -812,10 +829,13 @@ body {
 
 .input-wrapper input {
   width: 100%;
+  box-sizing: border-box;
   padding: 0.9rem 1rem 0.9rem 2.5rem;
   border: 1px solid var(--gray-dark);
   border-radius: 50px;
   font-size: 1rem;
+  line-height: 1.25;
+  min-height: 3.25rem;
   background: var(--gray-dark);
   color: var(--white);
   outline: none;
@@ -835,13 +855,17 @@ body {
   background: var(--gradient-primary);
   color: var(--white);
   border: none;
-  padding: 0 2rem;
+  box-sizing: border-box;
+  padding: 0.9rem 2rem;
+  min-height: 3.25rem;
   border-radius: 50px;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   white-space: nowrap;
 }
@@ -1098,11 +1122,19 @@ body {
   
   .newsletter-form {
     flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .input-wrapper {
+    min-width: 0;
     width: 100%;
   }
   
   .subscribe-btn {
     width: 100%;
+    min-height: 3.25rem;
     justify-content: center;
   }
   
@@ -1495,6 +1527,22 @@ body .footer-form label {
   background: transparent !important;
 }
 
+.newsletter-section .newsletter-content {
+  color: #0f5053;
+}
+
+.newsletter-section .newsletter-text h3 {
+  background: var(--gradient-primary) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+.newsletter-section .newsletter-text p {
+  color: #315e60 !important;
+}
+
 .section-badge,
 .hero-badge {
   background: rgba(19, 176, 203, 0.08) !important;
@@ -1702,8 +1750,8 @@ body::before {
     padding-bottom: 3rem !important;
   }
 
-  /* Images responsive */
-  img {
+  /* Content images only — keep nav/footer logos at fixed size */
+  img:not(.logo-img):not(.bv-site-footer__logo-link img) {
     max-width: 100% !important;
     height: auto !important;
   }
