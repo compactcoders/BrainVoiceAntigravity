@@ -3736,7 +3736,7 @@ background:#0f4c45;
   display: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1px) {
   body > *:not(#mobile-not-supported-overlay) {
     display: none !important;
   }

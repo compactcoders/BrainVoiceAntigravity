@@ -15,7 +15,7 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-shealtghcale=1" />
 	<link rel="author" href="./wp-content/themes/startdigital/humans.txt" />
 	<link rel="pingback" href="/xmlrpc.php" />
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -26,6 +26,7 @@
 	<link rel="canonical" href="/" />
 	<meta property="og:locale" content="en_US" />
 	<meta property="og:type" content="website" />
+
 	<meta property="og:title" content="BRAINVOICE &#8226; A visibility platform that monitors AI-driven discovery" />
 	<meta property="og:url" content="/" />
 	<meta property="og:site_name" content="BrainVoice" />
@@ -401,6 +402,42 @@
 
 	<link rel='stylesheet' id='startdigital-css' href='./wp-content/themes/startdigital/static/style.css?ver=1770962976'
 		type='text/css' media='all' />
+	<!-- Overrides theme mobile rules that reset hero label cards to position:static -->
+	<style id="hero-mobile-theme-overrides">
+		@media (max-width: 768px) {
+
+			#hero-container .mesh-label,
+			#hero-container #label-1,
+			#hero-container #label-3,
+			#hero-container #label-5,
+			.mobile-hero-para {
+				position: fixed !important;
+				transform: translateX(-50%) !important;
+				translate: none !important;
+			}
+
+			#hero-container #label-1,
+			#hero-container #label-3,
+			#hero-container #label-5 {
+				left: 50% !important;
+				right: auto !important;
+				margin-left: 0 !important;
+				border: none !important;
+			}
+
+			/* Theme style.css sets .mesh-label { position: static } on mobile — keep cards fixed */
+			#hero-container .mesh-label {
+				position: fixed !important;
+				max-width: 24rem !important;
+				width: calc(100vw - 1.5rem) !important;
+			}
+
+			#hero-container .mesh-label .label-content {
+				flex-direction: column !important;
+				max-width: 100% !important;
+			}
+		}
+	</style>
 	<script type="text/javascript" src="./wp-content/themes/startdigital/static/site.js?ver=1770962977"
 		id="startdigital-js"></script>
 	<link rel="https://api.w.org/" href="./wp-json/" />
@@ -489,6 +526,11 @@
 		#label-5::before,
 		#label-5::after {
 			background-color: #14b8a6 !important;
+		}
+
+		.video-list-btn.is-active {
+			background: #0f4c45 !important;
+			outline: 2px solid rgba(255, 255, 255, 0.35);
 		}
 
 		/* Testimonials Desktop Centering & Styling (Static Grid) */
@@ -635,9 +677,11 @@
 				color: black !important;
 				border-color: black !important;
 			}
+
 			.footer-sellpoints .border-white {
 				border-color: black !important;
 			}
+
 			.footer-sellpoints .bg-white {
 				background-color: black !important;
 			}
@@ -646,9 +690,11 @@
 			.footer-text p {
 				color: black !important;
 			}
+
 			.footer-text a.button {
 				color: black !important;
 			}
+
 			.footer-text a.button .line-1,
 			.footer-text a.button .line-2 {
 				background-color: black !important;
@@ -672,9 +718,296 @@
 			/* Solid background for header on mobile for readability */
 			header {
 				background-color: white !important;
-				box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
 			}
-			
+
+			/* --- Section 1: Hero (mobile only) --- */
+			#hero-top {
+				justify-content: flex-start !important;
+				align-items: stretch !important;
+				padding-top: calc(6.25rem + env(safe-area-inset-top, 0px)) !important;
+				box-sizing: border-box !important;
+			}
+
+			#hero-top .hero-text {
+				align-self: flex-start !important;
+				justify-content: flex-start !important;
+				align-items: center !important;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+				width: 100% !important;
+				flex: 0 0 auto !important;
+				gap: 0 !important;
+			}
+
+			#hero-top .hero-text h1,
+			#hero-top .hero-text h1>span,
+			#hero-top .hero-text h1 .flex-shrink-0 {
+				color: #ffffff !important;
+				font-family: 'teknolog', sans-serif !important;
+				font-weight: 800 !important;
+				letter-spacing: 0.04em !important;
+				text-transform: uppercase !important;
+			}
+
+			#hero-top .hero-text h1 {
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: center !important;
+				gap: 0.15rem !important;
+				margin-top: 0.25rem !important;
+				margin-bottom: 0 !important;
+				width: 100% !important;
+				font-size: clamp(2rem, 9vw, 2.75rem) !important;
+				line-height: 1.05 !important;
+				text-align: center !important;
+				text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35) !important;
+			}
+
+			/* "Analytics for" badge — horizontal chips only (no tall side bars) */
+			#hero-top .hero-text h1>.supertitle.max-phone\:hidden {
+				display: inline-flex !important;
+				flex-direction: row !important;
+				flex-wrap: nowrap !important;
+				align-items: center !important;
+				position: relative !important;
+				top: auto !important;
+				left: auto !important;
+				margin: 0 auto 0.75rem !important;
+				justify-content: center !important;
+				width: auto !important;
+				gap: 0.25rem !important;
+			}
+
+			#hero-top .hero-text h1>.supertitle.max-phone\:hidden>span {
+				color: #0f766e !important;
+				background-color: #fff !important;
+				font-weight: 800 !important;
+				font-size: 0.65rem !important;
+				letter-spacing: 0.12em !important;
+				text-transform: uppercase !important;
+				padding: 0.45rem 0.85rem !important;
+			}
+
+			#hero-top .hero-text h1>.supertitle.max-phone\:hidden .bg-white.min-h-7 {
+				display: none !important;
+			}
+
+			#hero-top .hero-text h1>span:not(.supertitle):not(.flex) {
+				display: block !important;
+				width: 100% !important;
+				line-height: 1 !important;
+			}
+
+			#hero-top .hero-text h1>.flex {
+				display: inline-flex !important;
+				flex-direction: row !important;
+				align-items: center !important;
+				justify-content: center !important;
+				width: auto !important;
+				gap: 0.5rem !important;
+				margin-top: 0.1rem !important;
+			}
+
+			#hero-top .hero-text h1 .max-phone\:hidden.bg-gradient-to-l {
+				display: block !important;
+				width: 2.5rem !important;
+				min-width: 2.5rem !important;
+				height: 4px !important;
+				flex-shrink: 0 !important;
+			}
+
+			#hero-top .hero-text>.flex.flex-col {
+				width: 100% !important;
+			}
+
+			/* Shared bottom card: intro + Healthcare / Manufacturing / Chatbot */
+			.mobile-hero-para,
+			#hero-container .mesh-label,
+			#hero-container #label-1,
+			#hero-container #label-3,
+			#hero-container #label-5 {
+				position: fixed !important;
+				left: 50% !important;
+				right: auto !important;
+				top: auto !important;
+				margin: 0 !important;
+				margin-left: 0 !important;
+				transform: translateX(-50%) !important;
+				translate: none !important;
+				width: calc(100vw - 1.5rem) !important;
+				max-width: 24rem !important;
+				margin-inline: auto !important;
+				box-sizing: border-box !important;
+				bottom: max(10vh, 4.5rem) !important;
+				z-index: 95 !important;
+				border-left: none !important;
+				border-right: none !important;
+				opacity: 1 !important;
+			}
+
+			.mobile-hero-para,
+			#hero-container .mesh-label.is-active {
+				background: linear-gradient(180deg, rgba(0, 32, 28, 0.58) 0%, rgba(0, 20, 18, 0.78) 100%) !important;
+				border-radius: 12px !important;
+				border: 1px solid rgba(255, 255, 255, 0.14) !important;
+				backdrop-filter: blur(8px) !important;
+				-webkit-backdrop-filter: blur(8px) !important;
+				padding: 1rem 1.15rem 1.25rem !important;
+				max-height: min(62vh, 480px) !important;
+				overflow-x: hidden !important;
+				overflow-y: auto !important;
+				-webkit-overflow-scrolling: touch !important;
+			}
+
+			#hero-container .mesh-label:not(.is-active) {
+				display: none !important;
+				pointer-events: none !important;
+			}
+
+			#hero-container .mesh-label.is-active {
+				display: block !important;
+				opacity: 1 !important;
+				pointer-events: auto !important;
+			}
+
+			#hero-container .mesh-label::before,
+			#hero-container .mesh-label::after {
+				display: none !important;
+				content: none !important;
+			}
+
+			.mobile-hero-para {
+				display: block !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				box-sizing: border-box !important;
+			}
+
+			#hero-container .mesh-label .label-content,
+			#hero-container .mesh-label .label-content>div {
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: center !important;
+				justify-content: flex-start !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				text-align: center !important;
+			}
+
+			#hero-container .mesh-label .label-content .flex.gap-2.items-center,
+			#hero-container .mesh-label .label-content>.flex.flex-col>.flex.gap-2 {
+				flex-direction: row !important;
+				justify-content: center !important;
+				align-items: center !important;
+				width: 100% !important;
+				margin: 0 0 0.65rem 0 !important;
+				gap: 0.45rem !important;
+				flex-shrink: 0 !important;
+			}
+
+			#hero-container .mesh-label .label-content h3.supertitle {
+				font-family: 'teknolog', sans-serif !important;
+				font-size: clamp(0.62rem, 2.8vw, 0.72rem) !important;
+				font-weight: 800 !important;
+				text-transform: uppercase !important;
+				letter-spacing: 0.08em !important;
+				color: #0f766e !important;
+				background-color: #ffffff !important;
+				padding: 0.42rem 0.8rem !important;
+				min-height: unset !important;
+				line-height: 1.2 !important;
+				text-shadow: none !important;
+				display: inline-flex !important;
+				align-items: center !important;
+				justify-content: center !important;
+				white-space: nowrap !important;
+			}
+
+			.mobile-hero-para p,
+			#hero-container .mesh-label .label-content p {
+				font-family: 'ki', system-ui, -apple-system, sans-serif !important;
+				font-size: clamp(0.78rem, 3.4vw, 0.9rem) !important;
+				font-weight: 600 !important;
+				line-height: 1.52 !important;
+				text-align: justify !important;
+				text-align-last: left !important;
+				text-justify: inter-word !important;
+				hyphens: none !important;
+				word-break: normal !important;
+				overflow-wrap: break-word !important;
+				text-transform: none !important;
+				letter-spacing: 0.01em !important;
+				color: #ffffff !important;
+				text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+				margin: 0 !important;
+				padding: 0 !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				display: block !important;
+				box-sizing: border-box !important;
+			}
+
+			#hero-container .mesh-label .label-content {
+				width: 100% !important;
+				max-width: 100% !important;
+				padding: 0 !important;
+				margin: 0 !important;
+				gap: 0 !important;
+				color: #ffffff !important;
+			}
+
+			#hero-container .mesh-label .border-\[1\.5px\] {
+				border-color: #14b8a6 !important;
+				flex-shrink: 0 !important;
+			}
+
+			#hero-container .mesh-label .blink,
+			#hero-container #label-5 .blink {
+				background-color: #14b8a6 !important;
+			}
+
+			#hero-container #label-5 .label-content h3.supertitle {
+				color: #0f766e !important;
+			}
+
+			#hero-container #label-5 .border-\[1\.5px\] {
+				border-color: #14b8a6 !important;
+			}
+
+			/* "Our Featured Apps" — centered under header, not top-right */
+			#hero-container .why-use {
+				position: fixed !important;
+				left: 50% !important;
+				right: auto !important;
+				top: calc(6.25rem + env(safe-area-inset-top, 0px)) !important;
+				bottom: auto !important;
+				width: calc(100vw - 1.5rem) !important;
+				max-width: 24rem !important;
+				margin-inline: auto !important;
+				transform: translateX(-50%) !important;
+				translate: none !important;
+				margin: 0 !important;
+				padding: 0 !important;
+				text-align: center !important;
+				align-items: center !important;
+				justify-content: center !important;
+				z-index: 85 !important;
+			}
+
+			#hero-container .why-use,
+			#hero-container .why-use span {
+				color: #ffffff !important;
+				font-family: 'teknolog', sans-serif !important;
+				font-weight: 800 !important;
+				text-align: center !important;
+			}
+
+			#hero-container .why-use .flex {
+				justify-content: center !important;
+				width: 100% !important;
+			}
+
 			/* Make video section responsive on mobile */
 			.video-outer {
 				height: auto !important;
@@ -683,16 +1016,19 @@
 				margin-top: 2rem !important;
 				margin-bottom: 2rem !important;
 			}
+
 			.brainvoice-video-section {
 				flex-direction: column !important;
 				width: 100% !important;
 				height: auto !important;
 				gap: 1.5rem !important;
 			}
+
 			.video-player iframe {
 				width: 100% !important;
 				height: 250px !important;
 			}
+
 			.video-list {
 				flex-direction: row !important;
 				flex-wrap: wrap !important;
@@ -700,6 +1036,7 @@
 				width: 100% !important;
 				margin-top: 1rem !important;
 			}
+
 			.video-list button {
 				flex: 1 1 45% !important;
 				font-size: 0.8rem !important;
@@ -707,22 +1044,23 @@
 				margin: 0 !important;
 			}
 
+			.video-list-btn.is-active {
+				background: #0f4c45 !important;
+				outline: 2px solid rgba(255, 255, 255, 0.35) !important;
+			}
+
 			/* Black text for the paragraph and button in Find Your Industry section on mobile */
 			.find-your-container p {
 				color: #000000 !important;
 			}
+
 			.find-your-container a.button {
 				color: #000000 !important;
 			}
+
 			.find-your-container a.button .line-1,
 			.find-your-container a.button .line-2 {
 				background-color: #000000 !important;
-			}
-
-			/* Black text for Our Chatbot label on mobile */
-			#label-5 .label-content h3,
-			#label-5 .label-content p {
-				color: #000000 !important;
 			}
 
 			/* Reset the 200vw hack */
@@ -744,13 +1082,12 @@
 			}
 
 			#hero-container {
-				overflow: hidden !important;
+				overflow-x: hidden !important;
+				overflow-y: visible !important;
 				width: 100vw !important;
 			}
 
-			/* Centering all text elements on mobile */
-			.hero-text,
-			#hero-top,
+			/* Centering text on mobile (hero-top excluded — see Section 1) */
 			.who-div,
 			.cycle-through,
 			.find-your-container {
@@ -764,6 +1101,19 @@
 				transform: none !important;
 				padding-left: 1rem !important;
 				padding-right: 1rem !important;
+			}
+
+			#hero-top {
+				text-align: center !important;
+				width: 100% !important;
+				max-width: 100vw !important;
+				margin-left: 0 !important;
+				left: 0 !important;
+				transform: none !important;
+				padding-left: 1rem !important;
+				padding-right: 1rem !important;
+				justify-content: flex-start !important;
+				align-items: stretch !important;
 			}
 
 			/* Fix for cycle-through overlapping/misplacement on mobile */
@@ -798,36 +1148,47 @@
 				opacity: 1 !important;
 			}
 
-			/* Shift content to the right side on mobile as requested */
-			.about-div,
-			.why-use {
-				text-align: center !important;
+			/* Scroll-story overlays — centered in viewport on mobile */
+			#hero-container .h-dvh {
+				width: 100% !important;
+				max-width: 100vw !important;
+				left: 0 !important;
+				right: 0 !important;
+			}
+
+			#hero-container .about-div {
+				display: flex !important;
+				flex-direction: column !important;
 				align-items: center !important;
 				justify-content: center !important;
-				width: 55vw !important;
-				max-width: 300px !important;
-				left: 72% !important;
-				top: 60% !important;
-				transform: translate(-50%, -50%) !important;
-				padding: 0 !important;
+				text-align: center !important;
+				width: min(calc(100vw - 2rem), 22rem) !important;
+				max-width: calc(100vw - 2rem) !important;
+				left: 50% !important;
+				right: auto !important;
+				top: 50% !important;
 				margin: 0 !important;
+				padding: 0 1rem !important;
+				box-sizing: border-box !important;
+				transform: translate3d(-50%, -50%, 0) !important;
+				translate: none !important;
 			}
 
-			.about-div *,
-			.why-use * {
+			#hero-container .about-div h2,
+			#hero-container .about-div h3,
+			#hero-container .about-div p {
 				text-align: center !important;
-				align-items: center !important;
-				justify-content: center !important;
-				margin-left: auto !important;
-				margin-right: auto !important;
+				align-self: center !important;
+				width: 100% !important;
 				max-width: 100% !important;
+				margin-left: 0 !important;
+				margin-right: 0 !important;
+				box-sizing: border-box !important;
 			}
 
-			.hero-text h1,
-			.why-use,
 			.who-div h2,
-			.about-div h2,
-			.about-div h3,
+			#hero-container .about-div h2,
+			#hero-container .about-div h3,
 			.cycle-through h2,
 			.find-your-container h4 {
 				align-items: center !important;
@@ -838,8 +1199,18 @@
 				color: black !important;
 			}
 
-			/* Specific fix for the "Discovering Your Voice" heading spans */
-			.about-div h2 span {
+			/* Hero headings stay white on dark 3D background (not black like scroll sections) */
+			#hero-top .hero-text h1,
+			#hero-top .hero-text h1 span,
+			#hero-container .why-use,
+			#hero-container .why-use span {
+				color: #ffffff !important;
+			}
+
+			/* Heading line wraps (intro + step titles) */
+			#hero-container .about-div h2,
+			#hero-container .about-div h2 span,
+			#hero-container .about-div h3 {
 				align-self: center !important;
 				text-align: center !important;
 				justify-content: center !important;
@@ -848,40 +1219,61 @@
 			.hero-text {
 				align-self: flex-start !important;
 				justify-content: flex-start !important;
-				padding-top: 5vh !important;
+				padding-top: 0 !important;
 				padding-bottom: 0 !important;
 			}
 
-			/* Centering the "Our Featured Apps" specifically and moving it above the brain */
-			.why-use {
-				top: 10% !important;
-				bottom: auto !important;
+			#hero-top .hero-text {
+				padding-top: 0 !important;
 			}
 
-			.why-use .flex.items-center,
 			.about-div .flex.items-center {
 				justify-content: center !important;
 			}
 
-			/* Hide decorative lines and reset margins that cause off-centering on mobile */
-			.hero-text h1 .bg-gradient-to-l,
-			.why-use .bg-gradient-to-l,
+			/* Hide decorative lines in scroll sections; keep hero "WITH AI" line visible */
+			#hero-container .why-use .bg-gradient-to-l,
 			.about-div .bg-gradient-to-l {
 				display: none !important;
 			}
 
-			.about-div div[class*="ml-"] {
+			#hero-container .about-div div[class*="ml-"] {
 				margin-left: 0 !important;
 				text-align: center !important;
 			}
 
-			.about-div {
+			/* Hide numbered step badges on mobile; keep intro "How Brainvoice Works" label */
+			#hero-container .about-div>.supertitle.flex.flex-row {
+				display: none !important;
+			}
+
+			#hero-container .about-div>.supertitle.absolute {
+				display: inline-flex !important;
+				position: relative !important;
+				top: auto !important;
+				left: auto !important;
+				right: auto !important;
+				margin: 0 auto 1rem !important;
+				align-self: center !important;
+				justify-content: center !important;
+				width: auto !important;
+			}
+
+			#hero-container .about-div h2 .self-start,
+			#hero-container .about-div .self-start,
+			#hero-container .about-div.items-start {
+				align-self: center !important;
 				align-items: center !important;
 			}
 
-			/* Hide process step supertitles and numbers on mobile */
-			.about-div .supertitle {
-				display: none !important;
+			#hero-container .about-div .text-left {
+				text-align: center !important;
+			}
+
+			#hero-container .about-div h2>span.flex {
+				justify-content: center !important;
+				align-items: center !important;
+				width: 100% !important;
 			}
 
 			/* Ensure spans inside headers are centered */
@@ -892,8 +1284,7 @@
 				justify-content: center !important;
 			}
 
-			.hero-text p,
-			.about-div p,
+			#hero-container .about-div p,
 			.who-div p,
 			.find-your-container p {
 				margin-left: 0 !important;
@@ -903,8 +1294,18 @@
 				max-width: 100% !important;
 			}
 
-			/* Only center supertitles in the hero area to avoid breaking slides */
-			#hero-container .supertitle {
+			/* Scroll-story hero copy only — not bottom cards (.mobile-hero-para / mesh-label) */
+			#hero-top .hero-text>.flex.flex-col>p {
+				margin-left: 0 !important;
+				margin-right: 0 !important;
+				text-align: center !important;
+				width: 100% !important;
+				max-width: 100% !important;
+			}
+
+			/* Only center scroll-section supertitles in hero (not mesh-label card titles) */
+			#hero-container .why-use .supertitle,
+			#hero-top .supertitle {
 				position: relative !important;
 				top: 0 !important;
 				left: 0 !important;
@@ -951,9 +1352,16 @@
 				line-height: 1.2 !important;
 			}
 
-			.about-div p {
+			#hero-container .about-div p {
 				font-size: 0.85rem !important;
 				line-height: 1.4 !important;
+			}
+
+			#hero-container .about-div h3.is-h2 {
+				font-size: clamp(1.1rem, 5vw, 1.35rem) !important;
+				line-height: 1.15 !important;
+				text-transform: uppercase !important;
+				word-break: break-word !important;
 			}
 
 			.hero-text {
@@ -985,80 +1393,182 @@
 				min-width: 40% !important;
 			}
 
-			footer .tablet\:flex-row>.flex:first-child,
-			footer .tablet\:flex-row>.flex:last-child {
+			footer .tablet\:flex-row>.footer-col-brand {
 				flex: 1 1 100% !important;
 				min-width: 100% !important;
+			}
+
+			footer .tablet\:flex-row>.footer-resources-form-row {
+				flex: 1 1 100% !important;
+				min-width: 100% !important;
+				width: 100% !important;
+			}
+
+			footer .footer-resources-form-row {
+				display: flex !important;
+				flex-direction: row !important;
+				flex-wrap: nowrap !important;
+				align-items: flex-start !important;
+				justify-content: space-between !important;
+				gap: 1rem !important;
+				width: 100% !important;
+			}
+
+			footer .footer-resources-form-row>.flex {
+				flex: 1 1 0 !important;
+				min-width: 0 !important;
+				width: auto !important;
+				max-width: none !important;
+			}
+
+			footer .footer-col-resources {
+				flex: 1 1 42% !important;
+				max-width: 48% !important;
+			}
+
+			footer .footer-col-get-started {
+				flex: 1 1 58% !important;
+				max-width: 52% !important;
+			}
+
+			footer .footer-col-resources .is-h5,
+			footer .footer-col-get-started .is-h5 {
+				font-size: clamp(1rem, 4.5vw, 1.35rem) !important;
+				white-space: nowrap !important;
+			}
+
+			footer .footer-col-get-started #gform_wrapper_1 {
+				max-width: 100% !important;
+			}
+
+			footer .footer-col-get-started .gform_fields {
+				display: flex !important;
+				flex-direction: column !important;
+				gap: 0.5rem !important;
+			}
+
+			footer .footer-col-get-started .gfield {
+				width: 100% !important;
+				margin: 0 !important;
+			}
+
+			footer .footer-col-get-started input[type="text"],
+			footer .footer-col-get-started input[type="email"] {
+				width: 100% !important;
+				font-size: 0.8rem !important;
+			}
+
+			footer .footer-col-get-started .gform_button {
+				width: 100% !important;
+				font-size: 0.85rem !important;
+				padding: 0.5rem 0.75rem !important;
+			}
+
+			footer .footer-col-get-started .gform_required_legend {
+				display: none !important;
 			}
 
 			footer .tablet\:flex-row .is-h5 {
 				font-size: 1.3rem !important;
 			}
 
-			/* Brain 3D Mapped Text Labels Responsive Fix */
-			.mesh-label,
-			.mobile-hero-para {
-				position: fixed !important;
-				left: 50% !important;
-				transform: translateX(-50%) !important;
-				width: 95% !important;
-				max-width: 400px !important;
-				padding: 10px !important;
-				background-color: transparent !important;
-				backdrop-filter: none !important;
-				border: none !important;
-				box-shadow: none !important;
-				z-index: 100 !important;
-				pointer-events: auto !important;
+			footer .footer-social-links {
+				display: flex !important;
+				flex-direction: row !important;
+				flex-wrap: wrap !important;
+				align-items: center !important;
+				justify-content: flex-start !important;
+				gap: 0.5rem !important;
+				width: 100% !important;
 			}
 
-			.mobile-hero-para {
-				bottom: 22vh !important;
+			footer .footer-social-links>a {
+				flex-shrink: 0 !important;
 			}
 
-			.mesh-label {
-				bottom: 8vh !important;
-			}
-
-			/* Specific color override for Our Chatbot label on mobile */
-			#label-5 .label-content p,
-			#label-5 .label-content h3.supertitle {
-				color: black !important;
-			}
-
-			#label-5 .blink,
-			#label-5 .border-\[1\.5px\] {
-				background-color: black !important;
-				border-color: black !important;
-			}
-
-			/* Styles for mobile labels - keep them white */
-			.mesh-label .label-content p,
-			.mobile-hero-para p {
-				color: rgb(0, 0, 0) !important;
-				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+			footer .footer-legal {
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: center !important;
+				justify-content: center !important;
+				gap: 0.65rem !important;
+				width: 100% !important;
 				text-align: center !important;
 			}
 
-			.mesh-label .label-content h3.supertitle {
-				color: rgb(0, 0, 0) !important;
-				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+			footer .footer-legal__links {
+				display: flex !important;
+				flex-direction: row !important;
+				flex-wrap: nowrap !important;
+				align-items: center !important;
+				justify-content: center !important;
+				gap: 0.75rem !important;
+				width: 100% !important;
+				margin-top: 0.75rem !important;
 			}
 
-			/* Make blinkers and icons white on mobile labels */
-			.mesh-label .blink,
-			.mesh-label .border-\[1\.5px\] {
-				background-color: white !important;
-				border-color: white !important;
-			}
-
-			.mesh-label {
-				display: none !important;
-			}
-
-			.mesh-label.is-active {
+			footer .footer-legal__credit {
 				display: block !important;
+				width: 100% !important;
+				text-align: center !important;
 			}
+
+			footer .footer-legal__credit .btn-text {
+				display: inline-block !important;
+			}
+
+			/* Bottom-card position: see Section 1 hero rules (#hero-container …) */
+
+			/* Hero bottom cards — final cascade (beats theme + global rules) */
+			#hero-container .mesh-label,
+			#hero-container #label-1,
+			#hero-container #label-3,
+			#hero-container #label-5 {
+				position: fixed !important;
+				left: 50% !important;
+				right: auto !important;
+				transform: translateX(-50%) !important;
+				translate: none !important;
+			}
+
+			/* Unified card layout: centered badge + justified body (all containers) */
+			#hero-container .mesh-label .label-content>div {
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: stretch !important;
+				width: 100% !important;
+			}
+
+			#hero-container .mesh-label .label-content h3.supertitle {
+				color: #0f766e !important;
+				background-color: #ffffff !important;
+				font-weight: 800 !important;
+				text-shadow: none !important;
+				margin-inline: 0 !important;
+			}
+
+			#hero-container .mesh-label .label-content p,
+			#hero-container .mobile-hero-para p,
+			.mobile-hero-para p {
+				color: #ffffff !important;
+				font-weight: 600 !important;
+				text-align: justify !important;
+				text-align-last: left !important;
+				text-justify: inter-word !important;
+				text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45) !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				margin: 0 !important;
+				align-self: stretch !important;
+			}
+
+			#hero-container #label-1 .label-content p,
+			#hero-container #label-3 .label-content p,
+			#hero-container #label-5 .label-content p {
+				color: #ffffff !important;
+			}
+
+			/* label visibility handled in Section 1 hero rules */
 
 			/* Ensure the initial para is visible on mobile when no label is active */
 			/* Mobile Menu styling to match about.html */
@@ -1117,28 +1627,168 @@
 			.footer-sellpoints .bg-white.blink {
 				background-color: #000000 !important;
 			}
+
+			/* Footer — "Our Owned Models" badge + counter */
+			#footer-section .footer-owned-models {
+				align-items: center !important;
+				align-self: center !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				padding-top: 2rem !important;
+				gap: 1.25rem !important;
+			}
+
+			#footer-section .footer-owned-badge {
+				flex-direction: row !important;
+				flex-wrap: nowrap !important;
+				justify-content: center !important;
+				align-items: center !important;
+				align-self: center !important;
+				width: auto !important;
+				max-width: 100% !important;
+				margin: 0 auto !important;
+				gap: 0.35rem !important;
+			}
+
+			#footer-section .footer-owned-badge__strip {
+				display: none !important;
+			}
+
+			#footer-section .footer-owned-badge__label {
+				display: inline-flex !important;
+				align-items: center !important;
+				justify-content: center !important;
+				line-height: 1.2 !important;
+				font-size: clamp(0.62rem, 2.8vw, 0.75rem) !important;
+				font-weight: 800 !important;
+				letter-spacing: 0.06em !important;
+				text-transform: uppercase !important;
+				white-space: nowrap !important;
+				padding: 0.45rem 0.85rem !important;
+			}
+
+			#footer-section .footer-owned-badge__icon {
+				flex-shrink: 0 !important;
+				margin: 0 !important;
+			}
+
+			/* Counter: keep original slot layout (w-1/2 + absolute columns) for GSAP */
+			#footer-section .footer-owned-counter,
+			#footer-section #footer-numbers {
+				width: 100% !important;
+				max-width: min(100%, 14rem) !important;
+				align-self: center !important;
+				justify-content: center !important;
+				margin: 0.75rem auto 0 !important;
+				font-size: clamp(3.5rem, 20vw, 6.5rem) !important;
+				line-height: 0.75 !important;
+				height: 0.75em !important;
+				overflow: hidden !important;
+			}
+
+			#footer-section #footer-numbers>span {
+				width: 50% !important;
+				flex: 0 0 50% !important;
+				max-width: 50% !important;
+			}
+
+			/* Hero bottom cards — force heading on top, horizontal body (beats theme + Tailwind) */
+			#hero-container .mesh-label.is-active,
+			.mobile-hero-para {
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: stretch !important;
+				min-width: 0 !important;
+			}
+
+			#hero-container .mesh-label .label-content,
+			#hero-container .mesh-label .label-content>div,
+			#hero-container .mesh-label .label-content>.flex.flex-col {
+				display: flex !important;
+				flex-direction: column !important;
+				flex-wrap: nowrap !important;
+				align-items: stretch !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				min-width: 0 !important;
+			}
+
+			#hero-container .mesh-label .label-content>div>.flex.gap-2,
+			#hero-container .mesh-label .label-content .flex.gap-2.items-center {
+				flex: 0 0 auto !important;
+				flex-direction: row !important;
+				flex-wrap: nowrap !important;
+				order: 0 !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				justify-content: center !important;
+				align-self: center !important;
+			}
+
+			#hero-container .mesh-label .label-content p {
+				order: 1 !important;
+				flex: 0 0 auto !important;
+				align-self: stretch !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				min-width: 0 !important;
+				writing-mode: horizontal-tb !important;
+				text-orientation: mixed !important;
+				white-space: normal !important;
+				word-break: normal !important;
+				overflow-wrap: break-word !important;
+				transform: none !important;
+				rotate: none !important;
+			}
+
+			#hero-container .mesh-label .label-content h3.supertitle {
+				writing-mode: horizontal-tb !important;
+				text-orientation: mixed !important;
+				transform: none !important;
+				rotate: none !important;
+				white-space: nowrap !important;
+				width: auto !important;
+				max-width: calc(100% - 1.25rem) !important;
+				height: auto !important;
+				min-height: unset !important;
+				margin: 0 !important;
+			}
+
+			.hero-text .mobile-hero-para,
+			.hero-text .mobile-hero-para p {
+				text-align: justify !important;
+				text-align-last: left !important;
+				text-justify: inter-word !important;
+				writing-mode: horizontal-tb !important;
+				white-space: normal !important;
+				width: 100% !important;
+				max-width: 100% !important;
+			}
 		}
 
-		/* Global Styles for Labels (Default for Laptop) */
-		.mesh-label .label-content p,
-		.mobile-hero-para p {
-			font-size: 16px !important;
-			line-height: 1.5 !important;
-			text-align: left !important;
-			font-weight: 400 !important;
-			margin: 0 !important;
-			color: rgb(0, 0, 0) !important;
-			text-shadow: none !important;
-		}
+		/* Global label styles — desktop/tablet only (do not override mobile hero cards) */
+		@media (min-width: 769px) {
 
-		.mesh-label .label-content h3.supertitle {
-			font-size: 14px !important;
-			margin-bottom: 0.4rem !important;
-			justify-content: center !important;
-			font-weight: 800 !important;
-			text-transform: uppercase;
-			color: black !important;
-			text-shadow: none !important;
+			.mesh-label .label-content p,
+			.mobile-hero-para p {
+				font-size: 16px !important;
+				line-height: 1.5 !important;
+				text-align: left !important;
+				font-weight: 400 !important;
+				margin: 0 !important;
+				color: rgb(0, 0, 0) !important;
+				text-shadow: none !important;
+			}
+
+			.mesh-label .label-content h3.supertitle {
+				font-size: 14px !important;
+				margin-bottom: 0.4rem !important;
+				justify-content: center !important;
+				font-weight: 800 !important;
+				text-transform: uppercase;
+				color: black !important;
+				text-shadow: none !important;
+			}
 		}
 
 		/* Laptop and larger screens: reduce font sizes for the Featured Apps section and labels as requested */
@@ -1162,6 +1812,140 @@
 		}
 	</style>
 
+	<!-- Hero mobile cards: heading on top, body below (loads last) -->
+	<style id="hero-mobile-card-layout">
+		@media (max-width: 768px) {
+			#hero-container .hero-mobile-card {
+				display: block !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				min-width: 0 !important;
+				box-sizing: border-box !important;
+			}
+
+			#hero-container .hero-mobile-card__head {
+				display: flex !important;
+				flex-direction: row !important;
+				flex-wrap: nowrap !important;
+				align-items: center !important;
+				justify-content: center !important;
+				gap: 0.45rem !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				margin: 0 0 0.65rem !important;
+			}
+
+			#hero-container .hero-mobile-card>p {
+				display: block !important;
+				clear: both !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				min-width: 0 !important;
+				margin: 0 !important;
+				padding: 0 !important;
+				box-sizing: border-box !important;
+				writing-mode: horizontal-tb !important;
+				text-orientation: mixed !important;
+				white-space: normal !important;
+				word-break: normal !important;
+				overflow-wrap: break-word !important;
+				text-align: justify !important;
+				text-align-last: left !important;
+				text-justify: inter-word !important;
+			}
+
+			#hero-container .hero-mobile-card .supertitle {
+				display: inline-flex !important;
+				flex-direction: row !important;
+				transform: none !important;
+				rotate: none !important;
+				writing-mode: horizontal-tb !important;
+				white-space: nowrap !important;
+				width: auto !important;
+				max-width: 100% !important;
+				min-height: unset !important;
+				line-height: 1.2 !important;
+				margin: 0 !important;
+			}
+		}
+	</style>
+	<style id="footer-numbers-animation-fix">
+		/* Preserve two-digit GSAP slot animation (site.js footerAnimation) */
+		#footer-section #footer-numbers {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: center;
+			align-items: stretch;
+		}
+
+		#footer-section #footer-numbers>span {
+			position: relative;
+			width: 50%;
+			flex: 0 0 50%;
+			max-width: 50%;
+			overflow: hidden;
+			height: 1em;
+			line-height: 1em;
+		}
+
+		#footer-section #footer-numbers .number-column-0,
+		#footer-section #footer-numbers .number-column-1 {
+			position: absolute;
+			left: 0;
+			width: 100%;
+		}
+
+		#footer-section #footer-numbers .number-column-0 {
+			top: 0;
+			transform-origin: top;
+		}
+
+		#footer-section #footer-numbers .number-column-1 {
+			bottom: 0;
+			transform-origin: bottom;
+		}
+
+		/* Desktop only: unwrap Resources + Get started into main footer row */
+		@media (min-width: 1024px) {
+			.bv-site-footer .footer-resources-form-row {
+				display: contents !important;
+			}
+		}
+
+		footer .footer-social-links {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		footer .footer-legal {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.65rem;
+			width: 100%;
+			text-align: center;
+		}
+
+		footer .footer-legal__links {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: center;
+			justify-content: center;
+			gap: 0.75rem;
+			margin-top: 0.75rem;
+		}
+
+		footer .footer-legal__credit {
+			width: 100%;
+			text-align: center;
+		}
+	</style>
+
 </head>
 
 <body class="home wp-singular page-template-default page page-id-5 wp-theme-startdigital min-h-screen"
@@ -1170,7 +1954,7 @@
 
 	<header class="fixed top-0 z-50 w-full max-py-2 max-laptop:py-3 duration-300 py-6">
 		<div data-navigation class="px-4 tablet:px-8 relative w-full flex items-center justify-between">
-			<a href="index.html" rel="home" class="flex items-center gap-3">
+			<a href="/" rel="home" class="flex items-center gap-3">
 				<span style="font-size:30px; font-weight:700; color:black; letter-spacing:1px;">
 					BRAINVOICE.<span style="color:#51C186;">AI</span>
 				</span>
@@ -1178,33 +1962,23 @@
 			<div class="flex-row items-center gap-3 flex">
 				<div id="nav-links" class="nav-links menu-row flex-row items-center gap-3 hidden tablet:flex">
 					<a href="BRAINVOICE - OTHER PAGES/about.html" class="nav-link font-heading">
-						<div class="btn-text">
-							About Us
-						</div>
+						<div class="btn-text">About Us</div>
 					</a>
 					<span class="font-heading">/</span>
 					<a href="BRAINVOICE - OTHER PAGES/blogs.html" class="nav-link font-heading">
-						<div class="btn-text">
-							Blogs
-						</div>
+						<div class="btn-text">Blogs</div>
 					</a>
 					<span class="font-heading">/</span>
 					<a href="BRAINVOICE - OTHER PAGES/careers.html" class="nav-link font-heading">
-						<div class="btn-text">
-							Careers
-						</div>
+						<div class="btn-text">Careers</div>
 					</a>
 					<span class="font-heading">/</span>
 					<a href="BRAINVOICE - OTHER PAGES/success-stories.html" class="nav-link font-heading">
-						<div class="btn-text">
-							Success Stories
-						</div>
+						<div class="btn-text">Success Stories</div>
 					</a>
 					<span class="font-heading tablet:hidden">/</span>
 					<a href="BRAINVOICE - OTHER PAGES/contactus.html" class="nav-link font-heading tablet:hidden">
-						<div class="btn-text">
-							Get Started
-						</div>
+						<div class="btn-text">Get Started</div>
 					</a>
 				</div>
 				<!-- Desktop Get Started -->
@@ -1512,66 +2286,57 @@
 									</span>
 								</h2>
 								<div id="label-1" class="mesh-label" style="border-color:#14b8a6;">
-									<div class="label-content">
-										<div class="flex flex-col gap-2">
-											<div class="flex gap-2 items-center">
-												<div class="border-[1.5px] size-3 flex items-center justify-center shrink-0"
-													style="border-color:#14b8a6;">
-													<div class="size-2 blink" style="background-color:#14b8a6;"></div>
-												</div>
-												<h3 class="supertitle min-h-7 leading-0 flex items-center">Healthcare
-													ERP</h3>
+									<div class="label-content hero-mobile-card">
+										<div class="hero-mobile-card__head">
+											<div class="hero-mobile-card__icon border-[1.5px] size-3 flex items-center justify-center shrink-0"
+												style="border-color:#14b8a6;">
+												<div class="size-2 blink" style="background-color:#14b8a6;"></div>
 											</div>
-											<p>A Sovereign Healthcare AI ecosystem designed to automate hospital
-												operations through high-precision resource allocation and autonomous
-												clinical logic. By maintaining a 'Human-in-the-Loop' feedback
-												architecture, the platform delivers hyper-personalized patient care
-												while meticulously calibrating to the unique operational constraints of
-												modern medical institutions. </p>
+											<h3 class="supertitle">Healthcare ERP</h3>
 										</div>
+										<p>A Sovereign Healthcare AI ecosystem designed to automate hospital
+											operations through high-precision resource allocation and autonomous
+											clinical logic. By maintaining a 'Human-in-the-Loop' feedback
+											architecture, the platform delivers hyper-personalized patient care
+											while meticulously calibrating to the unique operational constraints of
+											modern medical institutions. </p>
 									</div>
 								</div>
 								<div id="label-3" class="mesh-label">
-									<div class="label-content">
-										<div class="flex flex-col mini:items-end mini:text-end gap-2">
-											<div class="flex gap-2 items-center">
-												<div
-													class="border-[1.5px] border-white size-3 flex items-center justify-center shrink-0">
-													<div class="size-2 bg-white blink"></div>
-												</div>
-												<h3 class="supertitle min-h-7 leading-0 flex items-center">Manufacturing
-													QC</h3>
+									<div class="label-content hero-mobile-card">
+										<div class="hero-mobile-card__head">
+											<div
+												class="hero-mobile-card__icon border-[1.5px] border-white size-3 flex items-center justify-center shrink-0">
+												<div class="size-2 bg-white blink"></div>
 											</div>
-											<p>Our intelligent quality control solution is engineered to architect a
-												"Zero-Defect" manufacturing environment. By integrating Hybrid Agentic
-												Architecture with real-time vision data, the system monitors production
-												consistency, identifies microscopic anomalies, and—critically—predicts
-												potential failures before they occur in the production line.</p>
+											<h3 class="supertitle">Manufacturing QC</h3>
 										</div>
+										<p>Our intelligent quality control solution is engineered to architect a
+											"Zero-Defect" manufacturing environment. By integrating Hybrid Agentic
+											Architecture with real-time vision data, the system monitors production
+											consistency, identifies microscopic anomalies, and—critically—predicts
+											potential failures before they occur in the production line.</p>
 									</div>
 								</div>
 								<div id="label-5" class="mesh-label" style="border-color:#14b8a6;">
-									<div class="label-content">
-										<div class="flex flex-col gap-2">
-											<div class="flex gap-2 items-center">
-												<div class="border-[1.5px] size-3 flex items-center justify-center shrink-0"
-													style="border-color:#14b8a6;">
-													<div class="size-2 blink" style="background-color:#14b8a6;"></div>
-												</div>
-												<h3 class="supertitle min-h-7 leading-0 flex items-center">Our Chatbot
-												</h3>
+									<div class="label-content hero-mobile-card">
+										<div class="hero-mobile-card__head">
+											<div class="hero-mobile-card__icon border-[1.5px] size-3 flex items-center justify-center shrink-0"
+												style="border-color:#14b8a6;">
+												<div class="size-2 blink" style="background-color:#14b8a6;"></div>
 											</div>
-											<p>Beyond standard automated responses, our chatbot utilizes
-												RAG to securely connect with your
-												private databases. This architecture allows the AI to pull real-time,
-												context-specific data, delivering a hyper-personalized chat experience
-												that understands individual customer history while maintaining strict
-												data sovereignty & precision.
+											<h3 class="supertitle">Our Chatbot</h3>
 										</div>
+										<p>Beyond standard automated responses, our chatbot utilizes
+											RAG to securely connect with your
+											private databases. This architecture allows the AI to pull real-time,
+											context-specific data, delivering a hyper-personalized chat experience
+											that understands individual customer history while maintaining strict
+											data sovereignty & precision.</p>
 									</div>
 								</div>
 								<div
-									class="about-div flex flex-col gap-4 w-full max-w-[550px] max-mini:px-4 laptop:max-w-[625px] text-brown z-30 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none">
+									class="about-div about-div-intro flex flex-col items-center text-center gap-4 w-full max-w-[550px] max-mini:px-4 laptop:max-w-[625px] text-brown z-30 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none">
 									<span class="supertitle absolute -top-8 left-4 mini:left-0 flex flex-row gap-1">
 										<span
 											class="p-0.5 px-3 w-fit bg-burntOrange text-white leading-0 flex items-center">
@@ -1600,7 +2365,7 @@
 									</div>
 								</div>
 								<div
-									class="about-div flex flex-col gap-3 w-full max-mini:p-4 max-w-[550px] text-brown z-30 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 items-start phone:items-center phone:text-center pointer-events-none">
+									class="about-div flex flex-col items-center text-center gap-3 w-full max-mini:p-4 max-w-[550px] text-brown z-30 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none">
 									<span class="supertitle flex flex-row gap-1">
 										<div
 											class="size-7 flex justify-center items-center text-burntOrange border-burntOrange border-2 text-xs -mr-0.5">
@@ -1618,7 +2383,7 @@
 										business goals and audience needs.</p>
 								</div>
 								<div
-									class="about-div flex flex-col gap-3 w-full max-mini:p-4 max-w-[550px] text-brown z-30 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 items-start phone:items-center phone:text-center pointer-events-none">
+									class="about-div flex flex-col items-center text-center gap-3 w-full max-mini:p-4 max-w-[550px] text-brown z-30 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none">
 									<span class="supertitle flex flex-row gap-1">
 										<div
 											class="size-7 flex justify-center items-center text-burntOrange border-burntOrange border-2 text-xs -mr-0.5">
@@ -1636,7 +2401,7 @@
 										operational trends across digital channels.</p>
 								</div>
 								<div
-									class="about-div flex flex-col gap-2 w-full max-mini:p-4 max-w-[550px] text-brown z-30 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 items-start phone:items-center phone:text-center pointer-events-none">
+									class="about-div flex flex-col items-center text-center gap-2 w-full max-mini:p-4 max-w-[550px] text-brown z-30 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none">
 									<span class="supertitle flex flex-row gap-1">
 										<div
 											class="size-7 flex justify-center items-center text-burntOrange border-burntOrange border-2 text-xs -mr-0.5">
@@ -1829,28 +2594,29 @@
 
 							<div class="video-player">
 								<iframe id="brainvoiceVideo" width="900" height="500"
-									src="https://www.youtube.com/embed/HkycZVwPqkU" title="BrainVoice Video"
+									src="https://www.youtube.com/embed/HkycZVwPqkU?enablejsapi=1&amp;rel=0&amp;modestbranding=1&amp;playsinline=1"
+									title="AI in Knitting: Eliminate Defects &amp; Boost Production | Brainvoice.AI Demo"
 									frameborder="0"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-									allowfullscreen>
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+									referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 								</iframe>
 							</div>
 
 							<div class="video-list">
 
-								<button onclick="changeVideo('https://www.youtube.com/watch?v=VIDEO1')">
+								<button type="button" class="video-list-btn is-active" data-video-id="HkycZVwPqkU">
 									Platform Overview
 								</button>
 
-								<button onclick="changeVideo('https://www.youtube.com/watch?v=VIDEO2')">
+								<button type="button" class="video-list-btn" data-video-id="HkycZVwPqkU">
 									Visibility Analysis
 								</button>
 
-								<button onclick="changeVideo('https://www.youtube.com/watch?v=VIDEO3')">
+								<button type="button" class="video-list-btn" data-video-id="HkycZVwPqkU">
 									Sentiment Insight
 								</button>
 
-								<button onclick="changeVideo('https://www.youtube.com/watch?v=VIDEO4')">
+								<button type="button" class="video-list-btn" data-video-id="HkycZVwPqkU">
 									Competitor Tracking
 								</button>
 
@@ -1878,7 +2644,8 @@
 									help automate processes, gain insight from data,and build intelligent systems that
 									drive business growth.
 								</p>
-								<a href="#footer" target="" class="button second font-heading white">
+								<a href="BRAINVOICE - OTHER PAGES/contactus.html" target=""
+									class="button second font-heading white">
 									<div class="line-1"></div>
 									<div class="line-2"></div>
 									<div class="btn-primary-lines btn-primary-lines-1">
@@ -2236,7 +3003,8 @@
 							<div class="flex flex-col gap-8 justify-center">
 								<p class="max-w-[500px]">Our team will get in touch with you for an exploratory call.
 								</p>
-								<a href="#footer" target="" class="button second font-heading ">
+								<a href="BRAINVOICE - OTHER PAGES/contactus.html" target=""
+									class="button second font-heading ">
 									<div class="line-1"></div>
 									<div class="line-2"></div>
 									<div class="btn-primary-lines btn-primary-lines-1">
@@ -2254,10 +3022,10 @@
 							</div>
 						</div>
 						<div
-							class="flex flex-col laptop:pt-[15vw] tablet:w-[40%] w-full max-tablet:items-end max-tablet:pt-12 laptop:w-1/2 max-laptop:self-end gap-8">
-							<h4 class="flex flex-row gap-1">
+							class="footer-owned-models flex flex-col laptop:pt-[15vw] tablet:w-[40%] w-full max-tablet:items-center max-tablet:pt-12 laptop:w-1/2 max-laptop:self-center gap-8">
+							<h4 class="footer-owned-badge flex flex-row gap-1 items-center">
 								<div
-									class="size-9 flex justify-center items-center text-white border-white border-2 -mr-0.5 overflow-hidden">
+									class="footer-owned-badge__icon size-9 flex justify-center items-center text-white border-white border-2 shrink-0 overflow-hidden">
 									<svg class="size-5" viewbox="0 0 24 27" fill="none"
 										xmlns="http://www.w3.org/2000/svg">
 										<path
@@ -2271,14 +3039,15 @@
 											fill="currentColor" />
 									</svg>
 								</div>
-								<span class="p-1.5 px-4 w-fit bg-white text-brown leading-0 flex items-center">
+								<span
+									class="footer-owned-badge__label p-1.5 px-4 w-fit bg-white text-brown flex items-center">
 									Our Owned Models
 								</span>
-								<div class="bg-white min-h-7 w-2"></div>
-								<div class="bg-white min-h-7 w-1"></div>
+								<div class="footer-owned-badge__strip bg-white min-h-7 w-2" aria-hidden="true"></div>
+								<div class="footer-owned-badge__strip bg-white min-h-7 w-1" aria-hidden="true"></div>
 							</h4>
 							<h6 id="footer-numbers"
-								class="text-[27vw] max-tablet:w-[40%] leading-[0.75] h-[0.75em] overflow-hidden flex justify-center">
+								class="footer-owned-counter text-[27vw] max-tablet:w-full leading-[0.75] h-[0.75em] overflow-hidden flex justify-center">
 								05</h6>
 						</div>
 					</div>
@@ -2327,421 +3096,8 @@
 			</section>
 			<div class="flex flex-col relative z-20 pb-[2px] tabel:pb-[2px] px-[2px] items-center overflow-x-hidden">
 
-				<footer id="footer" class="text-brown flex flex-col z-20 relative w-full max-w-full">
-					<svg class="-mb-[1px]" viewbox="0 0 1316 71" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M0.398438 71H1316V0H71.3984L0.398438 71Z"
-							fill="white" />
-					</svg>
-					<div
-						class="flex flex-col gap-6 bg-white relative px-4 max-phone:pt-2 phone:px-5 tablet:px-8 laptop:px-10">
-						<div class="flex flex-col gap-6 mini:gap-10 tablet:gap-14 relative z-20">
-							<div class="flex flex-col tablet:flex-row gap-6 mini:gap-8 tablet:gap-10 laptop:gap-12"
-								style="align-items:flex-start; justify-content:space-between;">
-								<div class="flex flex-col gap-6"
-									style="flex:0 1 220px; min-width:185px; max-width:230px;">
-									<div class="flex items-center gap-3">
-										<img src="images/BrainVoice-logo.svg" style="height:45px;">
-										<span class="text-black font-bold text-xl">
-											BRAINVOICE.<span style="color:#51C186;">AI</span>
-										</span>
-									</div>
-									<p class="text-sm">Brainvoice.AI is a cutting-edge digital marketing analytical and
-										IT company dedicated to revolutionizing the way organizations achieve business
-										growth and expansion.
-									</p>
-									<div class="flex flex-row gap-2 w-full">
-										<a href="https://www.linkedin.com/company/thestartagency"
-											class="size-11 flex items-center justify-center relative group">
-											<svg class="size-5 z-10 relative text-white" viewbox="0 0 17 17" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path
-													d="M14.5428 0.72168C15.0161 0.72168 15.47 0.909704 15.8047 1.24439C16.1394 1.57908 16.3274 2.03301 16.3274 2.50633V14.9989C16.3274 15.4722 16.1394 15.9261 15.8047 16.2608C15.47 16.5955 15.0161 16.7835 14.5428 16.7835H2.05027C1.57695 16.7835 1.12302 16.5955 0.788336 16.2608C0.45365 15.9261 0.265625 15.4722 0.265625 14.9989V2.50633C0.265625 2.03301 0.45365 1.57908 0.788336 1.24439C1.12302 0.909704 1.57695 0.72168 2.05027 0.72168H14.5428ZM14.0966 14.5527V9.82338C14.0966 9.05187 13.7902 8.31196 13.2446 7.76642C12.6991 7.22088 11.9592 6.9144 11.1877 6.9144C10.4292 6.9144 9.54579 7.37841 9.11747 8.07442V7.08395H6.62789V14.5527H9.11747V10.1535C9.11747 9.46645 9.67071 8.90429 10.3578 8.90429C10.6891 8.90429 11.0069 9.0359 11.2412 9.27018C11.4754 9.50446 11.6071 9.82222 11.6071 10.1535V14.5527H14.0966ZM3.72784 5.683C4.12543 5.683 4.50673 5.52506 4.78787 5.24392C5.069 4.96278 5.22694 4.58148 5.22694 4.18389C5.22694 3.35403 4.5577 2.67587 3.72784 2.67587C3.32789 2.67587 2.94431 2.83475 2.6615 3.11756C2.37869 3.40037 2.21981 3.78394 2.21981 4.18389C2.21981 5.01376 2.89798 5.683 3.72784 5.683ZM4.96817 14.5527V7.08395H2.49643V14.5527H4.96817Z"
-													fill="currentColor" />
-											</svg>
-											<svg class="text-brown group-hover:text-burntOrange transition-all duration-300 absolute w-full top-1/2 -translate-y-1/2 left-0"
-												viewbox="0 0 454 416" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd"
-													d="M382 0H0V72V344L72 416H454V344V72L382 0Z" fill="currentColor" />
-											</svg>
-										</a>
-										<a href="https://www.instagram.com/thestart.agency/"
-											class="size-11 flex items-center justify-center relative group">
-											<svg class="size-5 z-10 relative text-white" viewbox="0 0 19 19" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<path
-													d="M13.774 6.6301C14.5133 6.6301 15.1125 6.03084 15.1125 5.29161C15.1125 4.55239 14.5133 3.95312 13.774 3.95312C13.0348 3.95312 12.4355 4.55239 12.4355 5.29161C12.4355 6.03084 13.0348 6.6301 13.774 6.6301Z"
-													fill="currentColor" />
-												<path
-													d="M12.8815 1.72168C15.3443 1.72168 17.3431 3.72048 17.3431 6.1833V13.3219C17.3431 15.7847 15.3443 17.7835 12.8815 17.7835H5.74287C3.28005 17.7835 1.28125 15.7847 1.28125 13.3219V6.1833C1.28125 3.72048 3.28005 1.72168 5.74287 1.72168H9.31216H12.8815Z"
-													stroke="currentColor" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path
-													d="M9.31246 6.18359C11.2845 6.18359 12.8818 7.78085 12.8818 9.75289C12.8818 11.7249 11.2845 13.3222 9.31246 13.3222C7.34042 13.3222 5.74316 11.7249 5.74316 9.75289C5.74316 7.78085 7.34042 6.18359 9.31246 6.18359Z"
-													stroke="currentColor" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-											<svg class="text-brown group-hover:text-burntOrange transition-all duration-300 absolute w-full top-1/2 -translate-y-1/2 left-0"
-												viewbox="0 0 454 416" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" clip-rule="evenodd"
-													d="M382 0H0V72V344L72 416H454V344V72L382 0Z" fill="currentColor" />
-											</svg>
-										</a>
-									</div>
-								</div>
-								<div class="flex w-full flex-col gap-3 pt-2" style="flex:0 1 150px; min-width:140px;">
-									<h6 class="text-brown is-h5" style="font-size:2rem; white-space:nowrap;">Explore
-									</h6>
-									<div class="flex flex-col gap-2 text-sm">
-										<a href="BRAINVOICE - OTHER PAGES/about.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">About Us</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/blogs.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">Blogs</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/careers.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">Careers</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/success-stories.html"
-											class="nav-link font-heading" style="white-space:nowrap;">
-											<div class="btn-text">Success Stories</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/contactus.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">Get Started</div>
-										</a>
-									</div>
-								</div>
-								<div class="flex w-full flex-col gap-3 pt-2" style="flex:0 1 175px; min-width:165px;">
-									<h6 class="text-brown is-h5" style="font-size:2rem; white-space:nowrap;">About Us
-									</h6>
-									<div class="flex flex-col gap-2 text-sm">
-										<a href="BRAINVOICE - OTHER PAGES/about.html#about-webtech"
-											class="nav-link font-heading" style="white-space:nowrap;">
-											<div class="btn-text">About WebTech</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/about.html#our-team"
-											class="nav-link font-heading" style="white-space:nowrap;">
-											<div class="btn-text">Our Team</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/about.html#mission-values"
-											class="nav-link font-heading" style="white-space:nowrap;">
-											<div class="btn-text">Mission &amp; Values</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/careers.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">Careers</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/about.html#community"
-											class="nav-link font-heading" style="white-space:nowrap;">
-											<div class="btn-text">Community Involvement</div>
-										</a>
-									</div>
-								</div>
-								<div class="flex w-full flex-col gap-3 pt-2" style="flex:0 1 180px; min-width:170px;">
-									<h6 class="text-brown is-h5" style="font-size:2rem; white-space:nowrap;">Services
-									</h6>
-									<div class="flex flex-col gap-2 text-sm">
-										<a href="BRAINVOICE - OTHER PAGES/about.html#services-overview"
-											class="nav-link font-heading" style="white-space:nowrap;">
-											<div class="btn-text">Software Development</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/contactus.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">IT Consulting</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/contactus.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">Web Design</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/success-stories.html"
-											class="nav-link font-heading" style="white-space:nowrap;">
-											<div class="btn-text">Digital Transformation</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/contactus.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">Project Management</div>
-										</a>
-									</div>
-								</div>
-								<div class="flex w-full flex-col gap-3 pt-2" style="flex:0 1 180px; min-width:170px;">
-									<h6 class="text-brown is-h5" style="font-size:2rem; white-space:nowrap;">Solutions
-									</h6>
-									<div class="flex flex-col gap-2 text-sm">
-										<a href="BRAINVOICE - OTHER PAGES/success-stories.html"
-											class="nav-link font-heading" style="white-space:nowrap;">
-											<div class="btn-text">Industry Solutions</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/contactus.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">Custom Solutions</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/success-stories.html"
-											class="nav-link font-heading" style="white-space:nowrap;">
-											<div class="btn-text">Case Studies</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/success-stories.html"
-											class="nav-link font-heading" style="white-space:nowrap;">
-											<div class="btn-text">Client Success</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/contactus.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">Partnership</div>
-										</a>
-									</div>
-								</div>
-								<div class="flex w-full flex-col gap-3 pt-2" style="flex:0 1 170px; min-width:155px;">
-									<h6 class="text-brown is-h5" style="font-size:2rem; white-space:nowrap;">Resources
-									</h6>
-									<div class="flex flex-col gap-2 text-sm">
-										<a href="BRAINVOICE - OTHER PAGES/blogs.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">Blog</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/blogs.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">Whitepapers</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/blogs.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">Webinars</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/contactus.html#faq"
-											class="nav-link font-heading" style="white-space:nowrap;">
-											<div class="btn-text">FAQs</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/blogs.html" class="nav-link font-heading"
-											style="white-space:nowrap;">
-											<div class="btn-text">Knowledge Base</div>
-										</a>
-										<a href="BRAINVOICE - OTHER PAGES/success-stories.html"
-											class="nav-link font-heading" style="white-space:nowrap;">
-											<div class="btn-text">Testimonials</div>
-										</a>
-									</div>
-								</div>
-								<div class="flex w-full flex-col gap-3 pt-2"
-									style="flex:0 1 200px; min-width:175px; max-width:200px;">
-									<h6 class="text-brown is-h5" style="font-size:2rem; white-space:nowrap;">Get started
-									</h6>
-
-									<div class='gf_browser_chrome gform_wrapper gform-theme gform-theme--foundation gform-theme--framework gform-theme--orbital'
-										data-form-theme='orbital' data-form-index='0' id='gform_wrapper_1'>
-										<style>
-											#gform_wrapper_1[data-form-index="0"].gform-theme,
-											[data-parent-form="1_0"] {
-												--gf-color-primary: #204ce5;
-												--gf-color-primary-rgb: 32, 76, 229;
-												--gf-color-primary-contrast: #fff;
-												--gf-color-primary-contrast-rgb: 255, 255, 255;
-												--gf-color-primary-darker: #001AB3;
-												--gf-color-primary-lighter: #527EFF;
-												--gf-color-secondary: #fff;
-												--gf-color-secondary-rgb: 255, 255, 255;
-												--gf-color-secondary-contrast: #112337;
-												--gf-color-secondary-contrast-rgb: 17, 35, 55;
-												--gf-color-secondary-darker: #F5F5F5;
-												--gf-color-secondary-lighter: #FFFFFF;
-												--gf-color-out-ctrl-light: rgba(17, 35, 55, 0.1);
-												--gf-color-out-ctrl-light-rgb: 17, 35, 55;
-												--gf-color-out-ctrl-light-darker: rgba(104, 110, 119, 0.35);
-												--gf-color-out-ctrl-light-lighter: #F5F5F5;
-												--gf-color-out-ctrl-dark: #585e6a;
-												--gf-color-out-ctrl-dark-rgb: 88, 94, 106;
-												--gf-color-out-ctrl-dark-darker: #112337;
-												--gf-color-out-ctrl-dark-lighter: rgba(17, 35, 55, 0.65);
-												--gf-color-in-ctrl: #fff;
-												--gf-color-in-ctrl-rgb: 255, 255, 255;
-												--gf-color-in-ctrl-contrast: #112337;
-												--gf-color-in-ctrl-contrast-rgb: 17, 35, 55;
-												--gf-color-in-ctrl-darker: #F5F5F5;
-												--gf-color-in-ctrl-lighter: #FFFFFF;
-												--gf-color-in-ctrl-primary: #204ce5;
-												--gf-color-in-ctrl-primary-rgb: 32, 76, 229;
-												--gf-color-in-ctrl-primary-contrast: #fff;
-												--gf-color-in-ctrl-primary-contrast-rgb: 255, 255, 255;
-												--gf-color-in-ctrl-primary-darker: #001AB3;
-												--gf-color-in-ctrl-primary-lighter: #527EFF;
-												--gf-color-in-ctrl-light: rgba(17, 35, 55, 0.1);
-												--gf-color-in-ctrl-light-rgb: 17, 35, 55;
-												--gf-color-in-ctrl-light-darker: rgba(104, 110, 119, 0.35);
-												--gf-color-in-ctrl-light-lighter: #F5F5F5;
-												--gf-color-in-ctrl-dark: #585e6a;
-												--gf-color-in-ctrl-dark-rgb: 88, 94, 106;
-												--gf-color-in-ctrl-dark-darker: #112337;
-												--gf-color-in-ctrl-dark-lighter: rgba(17, 35, 55, 0.65);
-												--gf-radius: 3px;
-												--gf-font-size-secondary: 14px;
-												--gf-font-size-tertiary: 13px;
-												--gf-icon-ctrl-number: url("data:image/svg+xml,%3Csvg width='8' height='14' viewBox='0 0 8 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4 0C4.26522 5.96046e-08 4.51957 0.105357 4.70711 0.292893L7.70711 3.29289C8.09763 3.68342 8.09763 4.31658 7.70711 4.70711C7.31658 5.09763 6.68342 5.09763 6.29289 4.70711L4 2.41421L1.70711 4.70711C1.31658 5.09763 0.683417 5.09763 0.292893 4.70711C-0.0976311 4.31658 -0.097631 3.68342 0.292893 3.29289L3.29289 0.292893C3.48043 0.105357 3.73478 0 4 0ZM0.292893 9.29289C0.683417 8.90237 1.31658 8.90237 1.70711 9.29289L4 11.5858L6.29289 9.29289C6.68342 8.90237 7.31658 8.90237 7.70711 9.29289C8.09763 9.68342 8.09763 10.3166 7.70711 10.7071L4.70711 13.7071C4.31658 14.0976 3.68342 14.0976 3.29289 13.7071L0.292893 10.7071C-0.0976311 10.3166 -0.0976311 9.68342 0.292893 9.29289Z' fill='rgba(17, 35, 55, 0.65)'/%3E%3C/svg%3E");
-												--gf-icon-ctrl-select: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.292893 0.292893C0.683417 -0.097631 1.31658 -0.097631 1.70711 0.292893L5 3.58579L8.29289 0.292893C8.68342 -0.0976311 9.31658 -0.0976311 9.70711 0.292893C10.0976 0.683417 10.0976 1.31658 9.70711 1.70711L5.70711 5.70711C5.31658 6.09763 4.68342 6.09763 4.29289 5.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683418 0.292893 0.292893Z' fill='rgba(17, 35, 55, 0.65)'/%3E%3C/svg%3E");
-												--gf-icon-ctrl-search: url("data:image/svg+xml,%3Csvg width='640' height='640' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M256 128c-70.692 0-128 57.308-128 128 0 70.691 57.308 128 128 128 70.691 0 128-57.309 128-128 0-70.692-57.309-128-128-128zM64 256c0-106.039 85.961-192 192-192s192 85.961 192 192c0 41.466-13.146 79.863-35.498 111.248l154.125 154.125c12.496 12.496 12.496 32.758 0 45.254s-32.758 12.496-45.254 0L367.248 412.502C335.862 434.854 297.467 448 256 448c-106.039 0-192-85.962-192-192z' fill='rgba(17, 35, 55, 0.65)'/%3E%3C/svg%3E");
-												--gf-label-space-y-secondary: var(--gf-label-space-y-md-secondary);
-												--gf-ctrl-border-color: #686e77;
-												--gf-ctrl-size: var(--gf-ctrl-size-md);
-												--gf-ctrl-label-color-primary: #112337;
-												--gf-ctrl-label-color-secondary: #112337;
-												--gf-ctrl-choice-size: var(--gf-ctrl-choice-size-md);
-												--gf-ctrl-checkbox-check-size: var(--gf-ctrl-checkbox-check-size-md);
-												--gf-ctrl-radio-check-size: var(--gf-ctrl-radio-check-size-md);
-												--gf-ctrl-btn-font-size: var(--gf-ctrl-btn-font-size-md);
-												--gf-ctrl-btn-padding-x: var(--gf-ctrl-btn-padding-x-md);
-												--gf-ctrl-btn-size: var(--gf-ctrl-btn-size-md);
-												--gf-ctrl-btn-border-color-secondary: #686e77;
-												--gf-ctrl-file-btn-bg-color-hover: #EBEBEB;
-												--gf-field-img-choice-size: var(--gf-field-img-choice-size-md);
-												--gf-field-img-choice-card-space: var(--gf-field-img-choice-card-space-md);
-												--gf-field-img-choice-check-ind-size: var(--gf-field-img-choice-check-ind-size-md);
-												--gf-field-img-choice-check-ind-icon-size: var(--gf-field-img-choice-check-ind-icon-size-md);
-												--gf-field-pg-steps-number-color: rgba(17, 35, 55, 0.8);
-											}
-										</style>
-										<div id='gf_1' class='gform_anchor' tabindex='-1'></div>
-										<div class='gform_heading'>
-											<p class='gform_description'></p>
-											<p class='gform_required_legend'>&quot;<span
-													class="gfield_required gfield_required_asterisk">*</span>&quot;
-												indicates required fields</p>
-										</div>
-										<form method='post' enctype='multipart/form-data' target='gform_ajax_frame_1'
-											id='gform_1' action='/#gf_1' data-formid='1' novalidate>
-											<div class='gform-body gform_body'>
-												<div id='gform_fields_1'
-													class='gform_fields top_label form_sublabel_below description_below validation_below'>
-													<fieldset id="field_1_1"
-														class="gfield gfield--type-name gfield--width-half gfield_contains_required field_sublabel_below gfield--no-description field_description_below field_validation_below gfield_visibility_visible">
-														<legend
-															class='gfield_label gform-field-label gfield_label_before_complex'>
-															First name<span class="gfield_required"><span
-																	class="gfield_required gfield_required_asterisk">*</span></span>
-														</legend>
-														<div class='ginput_complex ginput_container ginput_container--name no_prefix has_first_name no_middle_name no_last_name no_suffix gf_name_has_1 ginput_container_name gform-grid-row'
-															id='input_1_1'>
-
-															<span id='input_1_1_3_container'
-																class='name_first gform-grid-col gform-grid-col--size-auto'>
-																<input type='text' name='input_1.3' id='input_1_1_3'
-																	value='' aria-required='true'
-																	placeholder='First name' />
-																<label for='input_1_1_3'
-																	class='gform-field-label gform-field-label--type-sub '>First</label>
-															</span>
-
-
-
-														</div>
-													</fieldset>
-													<fieldset id="field_1_4"
-														class="gfield gfield--type-name gfield--width-half gfield_contains_required field_sublabel_below gfield--no-description field_description_below field_validation_below gfield_visibility_visible">
-														<legend
-															class='gfield_label gform-field-label gfield_label_before_complex'>
-															Last name<span class="gfield_required"><span
-																	class="gfield_required gfield_required_asterisk">*</span></span>
-														</legend>
-														<div class='ginput_complex ginput_container ginput_container--name no_prefix no_first_name no_middle_name has_last_name no_suffix gf_name_has_1 ginput_container_name gform-grid-row'
-															id='input_1_4'>
-
-
-
-															<span id='input_1_4_6_container'
-																class='name_last gform-grid-col gform-grid-col--size-auto'>
-																<input type='text' name='input_4.6' id='input_1_4_6'
-																	value='' aria-required='true'
-																	placeholder='Last name' />
-																<label for='input_1_4_6'
-																	class='gform-field-label gform-field-label--type-sub '>Last</label>
-															</span>
-
-														</div>
-													</fieldset>
-													<div id="field_1_3"
-														class="gfield gfield--type-email gfield--width-full gfield_contains_required field_sublabel_below gfield--no-description field_description_below field_validation_below gfield_visibility_visible">
-														<label class='gfield_label gform-field-label'
-															for='input_1_3'>Email<span class="gfield_required"><span
-																	class="gfield_required gfield_required_asterisk">*</span></span></label>
-														<div class='ginput_container ginput_container_email'>
-															<input name='input_3' id='input_1_3' type='email' value=''
-																class='large' placeholder='name@email.com'
-																aria-required="true" aria-invalid="false" />
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class='gform-footer gform_footer top_label'> <input type='submit'
-													id='gform_submit_button_1' class='gform_button button'
-													onclick='gform.submission.handleButtonClick(this);'
-													data-submission-type='submit' value='Submit' /> <input type='hidden'
-													name='gform_ajax'
-													value='form_id=1&amp;title=&amp;description=1&amp;tabindex=0&amp;theme=orbital&amp;styles=[]&amp;hash=366c47a385ab96d49f465e15e04a7728' />
-												<input type='hidden' class='gform_hidden' name='gform_submission_method'
-													data-js='gform_submission_method_1' value='iframe' />
-												<input type='hidden' class='gform_hidden' name='gform_theme'
-													data-js='gform_theme_1' id='gform_theme_1' value='orbital' />
-												<input type='hidden' class='gform_hidden' name='gform_style_settings'
-													data-js='gform_style_settings_1' id='gform_style_settings_1'
-													value='[]' />
-												<input type='hidden' class='gform_hidden' name='is_submit_1'
-													value='1' />
-												<input type='hidden' class='gform_hidden' name='gform_submit'
-													value='1' />
-
-												<input type='hidden' class='gform_hidden' name='gform_currency'
-													data-currency='USD'
-													value='EpUetiQoDtOIgDn+eaZWEspSnI+M/2XyO2WbVqm+YVMVHwON4Gc9o8pI7WznqEnwF3LIF0BgCAxKoV1nvA502g17Vbroehg4icHkLdIY4pNrjrE=' />
-												<input type='hidden' class='gform_hidden' name='gform_unique_id'
-													value='' />
-												<input type='hidden' class='gform_hidden' name='state_1'
-													value='WyJbXSIsImUxM2RjOTMxZTViOGFlMjk4MmIwNTk0MzFkMTExZjI3Il0=' />
-												<input type='hidden' autocomplete='off' class='gform_hidden'
-													name='gform_target_page_number_1' id='gform_target_page_number_1'
-													value='0' />
-												<input type='hidden' autocomplete='off' class='gform_hidden'
-													name='gform_source_page_number_1' id='gform_source_page_number_1'
-													value='1' />
-												<input type='hidden' name='gform_field_values' value='' />
-
-											</div>
-										</form>
-									</div>
-									<iframe style='display:none;width:0px;height:0px;' src='about:blank'
-										name='gform_ajax_frame_1' id='gform_ajax_frame_1'
-										title='This iframe contains the logic required to handle Ajax powered Gravity Forms.'></iframe>
-									<script type="text/javascript">
-										/* <![CDATA[ */
-										gform.initializeOnLoaded(function () { gformInitSpinner(1, './wp-content/plugins/gravityforms/images/spinner.svg', false); jQuery('#gform_ajax_frame_1').on('load', function () { var contents = jQuery(this).contents().find('*').html(); var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0; if (!is_postback) { return; } var form_content = jQuery(this).contents().find('#gform_wrapper_1'); var is_confirmation = jQuery(this).contents().find('#gform_confirmation_wrapper_1').length > 0; var is_redirect = contents.indexOf('gformRedirect(){') >= 0; var is_form = form_content.length > 0 && !is_redirect && !is_confirmation; var mt = parseInt(jQuery('html').css('margin-top'), 10) + parseInt(jQuery('body').css('margin-top'), 10) + 100; if (is_form) { jQuery('#gform_wrapper_1').html(form_content.html()); if (form_content.hasClass('gform_validation_error')) { jQuery('#gform_wrapper_1').addClass('gform_validation_error'); } else { jQuery('#gform_wrapper_1').removeClass('gform_validation_error'); } setTimeout(function () { /* delay the scroll by 50 milliseconds to fix a bug in chrome */ jQuery(document).scrollTop(jQuery('#gform_wrapper_1').offset().top - mt); }, 50); if (window['gformInitDatepicker']) { gformInitDatepicker(); } if (window['gformInitPriceFields']) { gformInitPriceFields(); } var current_page = jQuery('#gform_source_page_number_1').val(); gformInitSpinner(1, './wp-content/plugins/gravityforms/images/spinner.svg', false); jQuery(document).trigger('gform_page_loaded', [1, current_page]); window['gf_submitting_1'] = false; } else if (!is_redirect) { var confirmation_content = jQuery(this).contents().find('.GF_AJAX_POSTBACK').html(); if (!confirmation_content) { confirmation_content = contents; } jQuery('#gform_wrapper_1').replaceWith(confirmation_content); jQuery(document).scrollTop(jQuery('#gf_1').offset().top - mt); jQuery(document).trigger('gform_confirmation_loaded', [1]); window['gf_submitting_1'] = false; wp.a11y.speak(jQuery('#gform_confirmation_message_1').text()); } else { jQuery('#gform_1').append(contents); if (window['gformRedirect']) { gformRedirect(); } } jQuery(document).trigger("gform_pre_post_render", [{ formId: "1", currentPage: "current_page", abort: function () { this.preventDefault(); } }]); if (event && event.defaultPrevented) { return; } const gformWrapperDiv = document.getElementById("gform_wrapper_1"); if (gformWrapperDiv) { const visibilitySpan = document.createElement("span"); visibilitySpan.id = "gform_visibility_test_1"; gformWrapperDiv.insertAdjacentElement("afterend", visibilitySpan); } const visibilityTestDiv = document.getElementById("gform_visibility_test_1"); let postRenderFired = false; function triggerPostRender() { if (postRenderFired) { return; } postRenderFired = true; gform.core.triggerPostRenderEvents(1, current_page); if (visibilityTestDiv) { visibilityTestDiv.parentNode.removeChild(visibilityTestDiv); } } function debounce(func, wait, immediate) { var timeout; return function () { var context = this, args = arguments; var later = function () { timeout = null; if (!immediate) func.apply(context, args); }; var callNow = immediate && !timeout; clearTimeout(timeout); timeout = setTimeout(later, wait); if (callNow) func.apply(context, args); }; } const debouncedTriggerPostRender = debounce(function () { triggerPostRender(); }, 200); if (visibilityTestDiv && visibilityTestDiv.offsetParent === null) { const observer = new MutationObserver((mutations) => { mutations.forEach((mutation) => { if (mutation.type === 'attributes' && visibilityTestDiv.offsetParent !== null) { debouncedTriggerPostRender(); observer.disconnect(); } }); }); observer.observe(document.body, { attributes: true, childList: false, subtree: true, attributeFilter: ['style', 'class'], }); } else { triggerPostRender(); } }); });
-										/* ]]> */
-									</script>
-
-								</div>
-							</div>
-							<div
-								class="pt-7 pb-4 mini:pt-10 mini:pb-4 border-t border-dashed border-brown text-xs flex gap-4 tablet:gap-2 tablet:items-center max-tablet:flex-col tablet:justify-between">
-								<span class="w-full">
-								</span>
-
-								<div
-									class="flex flex-row gap-4 w-full tablet:items-center tablet:justify-center text-brown ">
-									<div class="nav-link">
-										<a href="https://thestart.com.au/terms-conditions/" class="btn-text">Terms &amp;
-											conditions</a>
-									</div>
-									<div class="h-3 w-[1px] bg-brown"></div>
-									<div class="nav-link">
-										<a href="https://thestart.com.au/privacy/" class="btn-text">Privacy policy</a>
-									</div>
-								</div>
-								<a href="https://thestart.com.au" target="_blank"
-									class="w-full flex tablet:justify-end text-brown nav-link">
-									<span class="btn-text">
-										Built for Brainvoice AI
-									</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</footer>
+				<div id="site-footer-mount"></div>
+				<script src="includes/load-site-footer.js" defer></script>
 			</div>
 
 			<script type="speculationrules">
@@ -2840,14 +3196,60 @@
 	</div>
 	<script>
 
-		function changeVideo(url) {
+		const BRAINVOICE_DEFAULT_VIDEO_ID = 'HkycZVwPqkU';
 
-			const videoId = url.split("v=")[1].split("&")[0];
-
-			document.getElementById("brainvoiceVideo").src =
-				"https://www.youtube.com/embed/" + videoId;
-
+		function extractYouTubeId(urlOrId) {
+			if (!urlOrId) return null;
+			const value = String(urlOrId).trim();
+			if (/^[a-zA-Z0-9_-]{11}$/.test(value)) return value;
+			try {
+				const url = new URL(value.startsWith('http') ? value : 'https://' + value);
+				if (url.hostname.includes('youtu.be')) {
+					return url.pathname.replace(/^\//, '').split('/')[0] || null;
+				}
+				const v = url.searchParams.get('v');
+				if (v) return v;
+				const embedMatch = url.pathname.match(/\/embed\/([a-zA-Z0-9_-]{11})/);
+				if (embedMatch) return embedMatch[1];
+			} catch (e) { /* not a URL */ }
+			const match = value.match(/(?:v=|\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+			return match ? match[1] : null;
 		}
+
+		function buildYouTubeEmbedUrl(videoId) {
+			const params = new URLSearchParams({
+				enablejsapi: '1',
+				rel: '0',
+				modestbranding: '1',
+				playsinline: '1'
+			});
+			if (window.location.origin && window.location.origin !== 'null') {
+				params.set('origin', window.location.origin);
+			}
+			return 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?' + params.toString();
+		}
+
+		function changeVideo(urlOrId) {
+			const videoId = extractYouTubeId(urlOrId);
+			if (!videoId || /^VIDEO\d+$/i.test(videoId)) {
+				return;
+			}
+			const iframe = document.getElementById('brainvoiceVideo');
+			if (!iframe) return;
+			iframe.src = buildYouTubeEmbedUrl(videoId);
+			document.querySelectorAll('.video-list-btn').forEach(function (btn) {
+				btn.classList.toggle('is-active', btn.dataset.videoId === videoId);
+			});
+		}
+
+		document.addEventListener('DOMContentLoaded', function () {
+			document.querySelectorAll('.video-list-btn[data-video-id]').forEach(function (btn) {
+				btn.addEventListener('click', function () {
+					changeVideo(btn.dataset.videoId);
+				});
+			});
+			changeVideo(BRAINVOICE_DEFAULT_VIDEO_ID);
+		});
 
 	</script>
 	<script>
@@ -2883,6 +3285,12 @@
 					mobileMenuBtn.addEventListener('click', (e) => {
 						e.stopPropagation();
 						navLinks.classList.toggle('active');
+					});
+
+					navLinks.querySelectorAll('a').forEach((link) => {
+						link.addEventListener('click', () => {
+							navLinks.classList.remove('active');
+						});
 					});
 
 					// Close mobile menu when clicking outside

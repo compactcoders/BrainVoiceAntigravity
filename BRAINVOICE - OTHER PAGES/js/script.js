@@ -246,7 +246,7 @@ console.log('Brainvoice Global JS loaded successfully');
 
 // Mobile Not Supported Overlay Injector
 (function() {
-  if (window.innerWidth <= 1024) {
+  if (false && window.innerWidth <= 1024) {
     const overlay = document.createElement('div');
     overlay.id = 'mobile-not-supported-overlay';
     overlay.innerHTML = `
