@@ -275,20 +275,70 @@
 	}
 
 	.footer-resources-form-row {
-		flex: 1 1 100%;
-		width: 100%;
-		flex-direction: column !important;
-		gap: 1.5rem !important;
+		display: flex !important;
+		flex-direction: row !important;
+		flex-wrap: nowrap !important;
+		align-items: flex-start !important;
+		justify-content: space-between !important;
+		gap: 1rem !important;
+		width: 100% !important;
 	}
 
 	.footer-col-resources {
-		flex: 1 1 100% !important;
-		max-width: 100% !important;
+		flex: 1 1 42% !important;
+		max-width: 48% !important;
 	}
 
 	.footer-col-get-started {
-		flex: 1 1 100% !important;
-		max-width: 100% !important;
+		flex: 1 1 58% !important;
+		max-width: 52% !important;
+	}
+
+	.footer-col-resources .bv-site-footer__heading,
+	.footer-col-get-started .bv-site-footer__heading {
+		font-size: clamp(1rem, 4.5vw, 1.35rem) !important;
+		white-space: nowrap !important;
+	}
+
+	.footer-social-links {
+		display: flex !important;
+		flex-direction: row !important;
+		flex-wrap: wrap !important;
+		align-items: center !important;
+		justify-content: flex-start !important;
+		gap: 0.5rem !important;
+		width: 100% !important;
+	}
+
+	.footer-social-links>a {
+		flex-shrink: 0 !important;
+	}
+
+	.footer-legal {
+		display: flex !important;
+		flex-direction: column !important;
+		align-items: center !important;
+		justify-content: center !important;
+		gap: 0.65rem !important;
+		width: 100% !important;
+		text-align: center !important;
+	}
+
+	.footer-legal__links {
+		display: flex !important;
+		flex-direction: row !important;
+		flex-wrap: nowrap !important;
+		align-items: center !important;
+		justify-content: center !important;
+		gap: 0.75rem !important;
+		width: 100% !important;
+		margin-top: 0.75rem !important;
+	}
+
+	.footer-legal__credit {
+		display: block !important;
+		width: 100% !important;
+		text-align: center !important;
 	}
 }
 
@@ -365,13 +415,5 @@
 	}
 }
 
-@media (max-width: 480px) {
-	.footer-legal__links {
-		flex-direction: column !important;
-		gap: 0.4rem !important;
-	}
-	.footer-legal__divider {
-		display: none !important;
-	}
-}
+
 
