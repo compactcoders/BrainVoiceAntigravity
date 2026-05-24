@@ -1,5 +1,7 @@
 // Contact Page Specific JavaScript
 
+const WEB3FORMS_ACCESS_KEY = '66d77104-7dfb-4961-b5b2-d83058045a3a';
+
 document.addEventListener('DOMContentLoaded', function() {
   // FAQ Accordion
   setupFAQAccordion();
@@ -9,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Auto-populate office field (if needed)
   autoPopulateOffice();
+  
+  // Pre-fill form fields from URL parameters (e.g. from footer redirection)
+  prefillFromQueryParams();
 });
 
 // Setup FAQ Accordion
@@ -38,6 +43,27 @@ function autoPopulateOffice() {
   if (officeField) {
     // You can dynamically set this based on user location or selection
     // For now, it's already set in HTML
+  }
+}
+
+// Pre-fill from URL parameters (e.g., when redirected from footer)
+function prefillFromQueryParams() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const firstName = urlParams.get('first_name');
+  const lastName = urlParams.get('last_name');
+  const emailParam = urlParams.get('email');
+  
+  if (firstName || lastName) {
+    const nameField = document.getElementById('name');
+    if (nameField) {
+      nameField.value = [firstName, lastName].filter(Boolean).join(' ');
+    }
+  }
+  if (emailParam) {
+    const emailField = document.getElementById('email');
+    if (emailField) {
+      emailField.value = emailParam;
+    }
   }
 }
 
@@ -97,25 +123,52 @@ function setupFormSubmission() {
       }
       
       if (isValid) {
+        // Show loading state
+        const submitBtn = form.querySelector('.submit-btn');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+        
         // Collect form data
         const formData = {
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: 'New Contact Message from ' + document.getElementById('name').value,
           name: document.getElementById('name').value,
           company: document.getElementById('company').value,
           email: document.getElementById('email').value,
           phone: document.getElementById('phone').value,
           role: document.getElementById('role').value,
-          message: document.getElementById('message').value,
-          timestamp: new Date().toISOString()
+          office: document.getElementById('office').value,
+          message: document.getElementById('message').value
         };
         
-        // Simulate API call
-        console.log('Form submitted:', formData);
-        
-        // Show success message
-        showNotification('Message sent successfully! We\'ll get back to you within 24 hours.', 'success');
-        
-        // Reset form
-        form.reset();
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(async (response) => {
+          let json = await response.json();
+          if (response.status == 200) {
+            showNotification('Message sent successfully! We\'ll get back to you within 24 hours.', 'success');
+            form.reset();
+          } else {
+            console.log(response);
+            showNotification(json.message || 'Something went wrong. Please try again.', 'error');
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          showNotification('Form submission failed. Please check your internet connection.', 'error');
+        })
+        .then(() => {
+          // Reset button state
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+        });
       } else {
         showNotification('Please fill in all required fields correctly.', 'error');
       }

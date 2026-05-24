@@ -44,36 +44,36 @@
             <div class="form-row two-columns">
               <div class="form-group">
                 <label for="firstName">First Name</label>
-                <input type="text" id="firstName" placeholder="Enter your first name">
+                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name">
               </div>
               <div class="form-group">
                 <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" placeholder="Enter your last name">
+                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name">
               </div>
             </div>
 
             <div class="form-row two-columns">
               <div class="form-group">
                 <label for="email">Email <span class="required">*</span></label>
-                <input type="email" id="email" placeholder="Enter your email address" required>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
               </div>
               <div class="form-group">
                 <label for="phone">Phone Number <span class="required">*</span></label>
-                <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
               </div>
             </div>
 
             <div class="form-row full-width">
               <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" id="address" placeholder="Enter your address">
+                <input type="text" id="address" name="address" placeholder="Enter your address">
               </div>
             </div>
 
             <div class="form-row full-width">
               <div class="form-group">
                 <label for="location">Location</label>
-                <select id="location">
+                <select id="location" name="location">
                   <option value="">Select your location</option>
                   <option value="india">India</option>
                   <option value="singapore">Singapore</option>
@@ -87,7 +87,7 @@
             <div class="form-row full-width">
               <div class="form-group">
                 <label for="linkedin">LinkedIn Profile</label>
-                <input type="url" id="linkedin" placeholder="https://linkedin.com/in/username">
+                <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/username">
               </div>
             </div>
 
@@ -95,7 +95,7 @@
               <div class="form-group">
                 <label for="resume">Upload Resume <span class="required">*</span></label>
                 <div class="file-input-wrapper">
-                  <input type="file" id="resume" accept=".pdf,.doc,.docx" required>
+                  <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
                   <div class="file-input-placeholder">
                     <i class="fas fa-upload"></i>
                     <span id="resumeFileName">Choose File</span>
@@ -106,7 +106,7 @@
               <div class="form-group">
                 <label for="coverLetter">Upload Cover Letter / Portfolio</label>
                 <div class="file-input-wrapper">
-                  <input type="file" id="coverLetter" accept=".pdf,.doc,.docx,.jpg,.png">
+                  <input type="file" id="coverLetter" name="coverLetter" accept=".pdf,.doc,.docx,.jpg,.png">
                   <div class="file-input-placeholder">
                     <i class="fas fa-upload"></i>
                     <span id="coverLetterFileName">Choose File</span>
@@ -178,5 +178,6 @@
 	<script src="../includes/load-site-footer.js" defer></script>
 
   <script src="js/script.js"></script>
+  <script src="js/careers.js"></script>
 </body>
 </html>

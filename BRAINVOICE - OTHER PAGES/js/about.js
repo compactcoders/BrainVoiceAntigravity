@@ -60,13 +60,49 @@ function handleSubscribe(e) {
     showNotification('Please enter a valid email address', 'error');
     emailInput.focus();
   } else {
-    showNotification('Thanks for subscribing! We\'ll send updates to ' + email, 'success');
-    emailInput.value = '';
+    // Show loading state
+    const originalBtnText = subBtn ? subBtn.innerHTML : 'Subscribe';
+    if (subBtn) {
+      subBtn.disabled = true;
+      subBtn.innerHTML = 'Subscribing... <i class="fas fa-spinner fa-spin"></i>';
+    }
     
-    // Store in localStorage for demo
-    const subscribers = JSON.parse(localStorage.getItem('subscribers') || '[]');
-    subscribers.push({ email, date: new Date().toISOString() });
-    localStorage.setItem('subscribers', JSON.stringify(subscribers));
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        access_key: '66d77104-7dfb-4961-b5b2-d83058045a3a',
+        subject: 'New Newsletter Subscription',
+        email: email
+      })
+    })
+    .then(async (response) => {
+      let json = await response.json();
+      if (response.status == 200) {
+        showNotification('Thanks for subscribing! We\'ll send updates to ' + email, 'success');
+        emailInput.value = '';
+        
+        // Store in localStorage for demo
+        const subscribers = JSON.parse(localStorage.getItem('subscribers') || '[]');
+        subscribers.push({ email, date: new Date().toISOString() });
+        localStorage.setItem('subscribers', JSON.stringify(subscribers));
+      } else {
+        showNotification(json.message || 'Something went wrong. Please try again.', 'error');
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      showNotification('Subscription failed. Please check your internet connection.', 'error');
+    })
+    .then(() => {
+      if (subBtn) {
+        subBtn.disabled = false;
+        subBtn.innerHTML = originalBtnText;
+      }
+    });
   }
 }
 
