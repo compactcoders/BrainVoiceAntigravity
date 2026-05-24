@@ -3,31 +3,8 @@
 const WEB3FORMS_ACCESS_KEY = '66d77104-7dfb-4961-b5b2-d83058045a3a';
 
 document.addEventListener('DOMContentLoaded', function() {
-  setupFileUploads();
   setupCareerFormSubmission();
 });
-
-// Update label on file selection
-function setupFileUploads() {
-  const resumeInput = document.getElementById('resume');
-  const coverLetterInput = document.getElementById('coverLetter');
-  
-  if (resumeInput) {
-    resumeInput.addEventListener('change', function() {
-      const fileName = this.files[0] ? this.files[0].name : 'Choose File';
-      const placeholder = document.getElementById('resumeFileName');
-      if (placeholder) placeholder.textContent = fileName;
-    });
-  }
-  
-  if (coverLetterInput) {
-    coverLetterInput.addEventListener('change', function() {
-      const fileName = this.files[0] ? this.files[0].name : 'Choose File';
-      const placeholder = document.getElementById('coverLetterFileName');
-      if (placeholder) placeholder.textContent = fileName;
-    });
-  }
-}
 
 // Form Validation & Submission
 function setupCareerFormSubmission() {
@@ -42,26 +19,13 @@ function setupCareerFormSubmission() {
     let isValid = true;
     
     requiredFields.forEach(field => {
-      if (field.type === 'file') {
-        if (!field.files || field.files.length === 0) {
-          isValid = false;
-          const wrapper = field.parentNode.querySelector('.file-input-wrapper') || field;
-          wrapper.style.borderColor = '#ff4444';
-          showFieldError(field, 'Please upload the required file');
-        } else {
-          const wrapper = field.parentNode.querySelector('.file-input-wrapper') || field;
-          wrapper.style.borderColor = '';
-          removeFieldError(field);
-        }
+      if (!field.value.trim()) {
+        isValid = false;
+        field.style.borderColor = '#ff4444';
+        showFieldError(field, 'This field is required');
       } else {
-        if (!field.value.trim()) {
-          isValid = false;
-          field.style.borderColor = '#ff4444';
-          showFieldError(field, 'This field is required');
-        } else {
-          field.style.borderColor = '';
-          removeFieldError(field);
-        }
+        field.style.borderColor = '';
+        removeFieldError(field);
       }
     });
     
@@ -83,7 +47,7 @@ function setupCareerFormSubmission() {
       const lastName = document.getElementById('lastName').value;
       const fullName = [firstName, lastName].filter(Boolean).join(' ');
       
-      // Use FormData to support file uploads to Web3Forms
+      // Use FormData to support form data submission to Web3Forms
       const formData = new FormData(form);
       formData.append('access_key', WEB3FORMS_ACCESS_KEY);
       formData.append('subject', 'New Job Application: ' + (fullName || 'Unknown Candidate'));
@@ -97,11 +61,6 @@ function setupCareerFormSubmission() {
         if (response.status == 200) {
           showNotification('Application submitted successfully! We\'ll review it and get back to you.', 'success');
           form.reset();
-          // Reset file placeholders
-          const resumeLabel = document.getElementById('resumeFileName');
-          if (resumeLabel) resumeLabel.textContent = 'Choose File';
-          const coverLetterLabel = document.getElementById('coverLetterFileName');
-          if (coverLetterLabel) coverLetterLabel.textContent = 'Choose File';
         } else {
           console.error(response);
           showNotification(json.message || 'Something went wrong. Please try again.', 'error');
