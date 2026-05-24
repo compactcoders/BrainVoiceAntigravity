@@ -147,39 +147,4 @@ function isValidEmail(email) {
   return re.test(email);
 }
 
-function showNotification(message, type = 'info') {
-  if (typeof window.showNotification === 'function') {
-    window.showNotification(message, type);
-  } else {
-    // Fallback notification
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    const colors = {
-      success: '#51C186',
-      error: '#ff4444',
-      info: '#13B0CB'
-    };
-    notification.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: ${colors[type] || colors.info};
-      color: white;
-      padding: 1rem 1.5rem;
-      border-radius: 50px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      animation: slideIn 0.3s ease;
-      font-weight: 500;
-    `;
-    notification.innerHTML = `<span>${message}</span>`;
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-      notification.remove();
-    }, 3000);
-  }
-}
+

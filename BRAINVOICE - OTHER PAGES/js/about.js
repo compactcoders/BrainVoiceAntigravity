@@ -148,59 +148,7 @@ function animateCounter(element, target, suffix = '') {
   }, 20);
 }
 
-// Notification system
-function showNotification(message, type = 'info') {
-  const existingNotification = document.querySelector('.notification');
-  if (existingNotification) {
-    existingNotification.remove();
-  }
-  
-  const notification = document.createElement('div');
-  notification.className = `notification notification-${type}`;
-  
-  let icon = 'fa-info-circle';
-  if (type === 'success') icon = 'fa-check-circle';
-  if (type === 'error') icon = 'fa-exclamation-circle';
-  
-  notification.innerHTML = `
-    <i class="fas ${icon}"></i>
-    <span>${message}</span>
-  `;
-  
-  const colors = {
-    success: { bg: '#51C186' },
-    error: { bg: '#ff4444' },
-    info: { bg: '#13B0CB' }
-  };
-  
-  notification.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: ${colors[type].bg};
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 50px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    animation: slideIn 0.3s ease;
-    font-weight: 500;
-  `;
-  
-  document.body.appendChild(notification);
-  
-  setTimeout(() => {
-    notification.style.animation = 'slideOut 0.3s ease';
-    setTimeout(() => {
-      if (notification.parentNode) {
-        notification.remove();
-      }
-    }, 300);
-  }, 3000);
-}
+
 
 // Add animation keyframes if not exists
 if (!document.querySelector('#notification-keyframes')) {
