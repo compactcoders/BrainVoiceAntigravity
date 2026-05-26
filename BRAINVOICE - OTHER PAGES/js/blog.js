@@ -95,24 +95,25 @@ function createBlogCard(entry) {
   card.className = 'blog-card';
   card.setAttribute('data-id', entry.id);
   
+  const color = entry.color || '#13B0CB';
   // Create gradient style based on entry color
-  const gradientStyle = `linear-gradient(135deg, ${entry.color}, ${adjustColor(entry.color, 20)})`;
+  const gradientStyle = `linear-gradient(135deg, ${color}, ${adjustColor(color, 20)})`;
   
   card.innerHTML = `
     <div class="card-img" style="background: ${gradientStyle}">
-      <i class="fas ${entry.icon} fa-3x"></i>
-      <span class="card-tag">${entry.category}</span>
+      <i class="fas ${entry.icon || 'fa-pen-nib'} fa-3x"></i>
+      <span class="card-tag">${entry.category || 'Insight'}</span>
     </div>
     <div class="blog-content">
       <div class="blog-meta">
-        <span>${entry.date}</span>
+        <span>${entry.date || 'Recent'}</span>
         <span>✧</span>
-        <span>${entry.readTime}</span>
+        <span>${entry.readTime || '3 min read'}</span>
       </div>
-      <h3 class="blog-title">${entry.title}</h3>
-      <p class="blog-excerpt">${entry.excerpt}</p>
+      <h3 class="blog-title">${entry.title || 'Untitled'}</h3>
+      <p class="blog-excerpt">${entry.excerpt || ''}</p>
       <div class="blog-footer">
-        <span class="blog-author">By ${entry.author}</span>
+        <span class="blog-author">By ${entry.author || 'Brainvoice Team'}</span>
         <button class="read-more-btn" data-id="${entry.id}">
           Read article <i class="fas fa-arrow-right"></i>
         </button>
@@ -142,23 +143,24 @@ function createPostCard(post) {
   const card = document.createElement('div');
   card.className = 'post-card';
   card.setAttribute('data-id', post.id);
-  card.setAttribute('data-category', post.tag.toLowerCase());
+  card.setAttribute('data-category', (post.tag || 'Insight').toLowerCase());
   
+  const color = post.color || '#13B0CB';
   // Create gradient style based on post color
-  const gradientStyle = `linear-gradient(135deg, ${post.color}, ${adjustColor(post.color, 20)})`;
+  const gradientStyle = `linear-gradient(135deg, ${color}, ${adjustColor(color, 20)})`;
   
   card.innerHTML = `
     <div class="post-img" style="background: ${gradientStyle}">
-      <i class="fas ${post.icon} fa-3x"></i>
+      <i class="fas ${post.icon || 'fa-pen-nib'} fa-3x"></i>
     </div>
     <div class="post-content">
-      <span class="post-tag">${post.tag}</span>
-      <h3 class="post-title">${post.title}</h3>
-      <p class="post-desc">${post.desc}</p>
+      <span class="post-tag">${post.tag || 'Insight'}</span>
+      <h3 class="post-title">${post.title || 'Untitled'}</h3>
+      <p class="post-desc">${post.desc || ''}</p>
       <div class="post-footer">
         <div class="post-meta">
-          <span class="post-author">${post.author}</span>
-          <span class="post-date">${post.date}</span>
+          <span class="post-author">${post.author || 'Brainvoice Team'}</span>
+          <span class="post-date">${post.date || 'Recent'}</span>
         </div>
         <button class="read-post-btn" data-id="${post.id}">Read →</button>
       </div>
@@ -205,7 +207,7 @@ function populatePostsGrid(filter = 'all') {
   let filteredPosts = postsData;
   if (filter !== 'all') {
     filteredPosts = postsData.filter(post => 
-      post.tag.toLowerCase() === filter.toLowerCase()
+      (post.tag || '').toLowerCase() === filter.toLowerCase()
     );
   }
   
@@ -227,16 +229,23 @@ function populatePostsGrid(filter = 'all') {
 
 // Helper function to adjust color brightness for gradients
 function adjustColor(hex, percent) {
-  const num = parseInt(hex.replace('#', ''), 16);
-  const r = (num >> 16) + percent;
-  const g = ((num >> 8) & 0x00FF) + percent;
-  const b = (num & 0x0000FF) + percent;
-  
-  const newR = Math.min(255, Math.max(0, r));
-  const newG = Math.min(255, Math.max(0, g));
-  const newB = Math.min(255, Math.max(0, b));
-  
-  return `#${((1 << 24) + (newR << 16) + (newG << 8) + newB).toString(16).slice(1)}`;
+  if (!hex || typeof hex !== 'string' || !hex.startsWith('#')) {
+    return '#13B0CB';
+  }
+  try {
+    const num = parseInt(hex.replace('#', ''), 16);
+    const r = (num >> 16) + percent;
+    const g = ((num >> 8) & 0x00FF) + percent;
+    const b = (num & 0x0000FF) + percent;
+    
+    const newR = Math.min(255, Math.max(0, r));
+    const newG = Math.min(255, Math.max(0, g));
+    const newB = Math.min(255, Math.max(0, b));
+    
+    return `#${((1 << 24) + (newR << 16) + (newG << 8) + newB).toString(16).slice(1)}`;
+  } catch (e) {
+    return hex;
+  }
 }
 
 // Setup event listeners
