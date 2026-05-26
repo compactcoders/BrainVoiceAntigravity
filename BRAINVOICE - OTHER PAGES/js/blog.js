@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
   setupEventListeners();
 });
 
-// Fetch blog data from JSON file
+// Fetch blog data from Sanity CMS
 async function fetchBlogData() {
   try {
     // Show loading state
@@ -28,12 +28,22 @@ async function fetchBlogData() {
       grid.innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i><p>Loading posts...</p></div>';
     }
     
-    // Fetch the JSON file
-    const response = await fetch('blog-data.json');
+    // Fetch from Sanity Content Delivery API
+    const projectId = 'vurt722v';
+    const dataset = 'production';
+    const query = encodeURIComponent('*[_type == "post"] | order(date desc)');
+    const url = `https://${projectId}.api.sanity.io/v2021-10-21/data/query/${dataset}?query=${query}`;
+    
+    const response = await fetch(url);
     const data = await response.json();
     
     // Assign data to global variables
-    blogEntries = data.posts;
+    blogEntries = data.result || [];
+    // Ensure every entry has a consistent id property (using slug)
+    blogEntries.forEach(entry => {
+      entry.id = entry.slug?.current || entry.id || entry._id;
+    });
+    
     postsData = blogEntries.map(entry => ({
       id: entry.id,
       title: entry.title,
@@ -57,7 +67,7 @@ async function fetchBlogData() {
     }
     
   } catch (error) {
-    console.error('Error loading blog data:', error);
+    console.error('Error loading blog data from Sanity:', error);
     if (grid) {
       grid.innerHTML = `
         <div class="error-container">
@@ -175,7 +185,7 @@ function createPostCard(post) {
 // Open post in new tab
 function openPostInNewTab(postId) {
   // Find the post data
-  const post = blogEntries.find(p => p.id === postId);
+  const post = blogEntries.find(p => String(p.id) === String(postId));
   
   if (post) {
     // Store post data in sessionStorage for the new tab to access

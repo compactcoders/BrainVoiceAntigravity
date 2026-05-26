@@ -228,17 +228,25 @@
         loadLatestPosts(postId);
       } else {
         try {
-          const response = await fetch('blog-data.json');
+          const projectId = 'vurt722v';
+          const dataset = 'production';
+          const query = encodeURIComponent(`*[_type == "post" && (slug.current == "${postId}" || string(id) == "${postId}")][0]`);
+          const url = `https://${projectId}.api.sanity.io/v2021-10-21/data/query/${dataset}?query=${query}`;
+          
+          const response = await fetch(url);
           const data = await response.json();
-          const post = data.posts.find((entry) => String(entry.id) === String(postId));
+          const post = data.result;
 
           if (post) {
+            // Normalize ID for sessionStorage and routing consistency
+            post.id = post.slug?.current || post.id || post._id;
             renderPost(post);
-            loadLatestPosts(postId);
+            loadLatestPosts(post.id);
           } else {
             showError('Post not found');
           }
         } catch (error) {
+          console.error('Error fetching post from Sanity:', error);
           showError('Unable to load this post right now.');
         }
       }
@@ -251,6 +259,13 @@
     function renderPost(post) {
       const container = document.getElementById('postContainer');
       const color = post.color || '#13B0CB';
+
+      const introText = post.introduction || post.excerpt || '';
+      const sectionsHtml = (post.sections || []).map(sec => `
+        <h2>${sec.title}</h2>
+        ${(sec.paragraphs || []).map(p => `<p>${p}</p>`).join('')}
+      `).join('');
+      const conclusionHtml = post.conclusion ? `<p>${post.conclusion}</p>` : '';
 
       container.innerHTML = `
         <button class="back-button" onclick="goBackToBlog()">
@@ -273,16 +288,13 @@
             </div>
             <div class="post-author-info">
               <h3>${post.author || 'Brainvoice Team'}</h3>
-              <p>Brainvoice editorial</p>
+              <p>${post.authorTitle || 'Brainvoice editorial'}</p>
             </div>
           </div>
           <div class="post-content">
-            <p class="intro">${post.excerpt || 'A practical look at how modern AI systems can support better decision-making.'}</p>
-            <p>${post.content || post.excerpt || 'This article explores the delivery principles, user experience expectations, and operational foundations that help AI products move from pilot to everyday use.'}</p>
-            <h2>What matters in practice</h2>
-            <p>Successful AI programs balance model performance with workflow fit, team trust, and speed of action. The strongest results usually come from solving one meaningful operational problem well and expanding from there.</p>
-            <h2>Why it works</h2>
-            <p>When insights are easy to find, easy to verify, and connected to an existing process, adoption improves dramatically. That is where thoughtful product design and strong implementation discipline make the difference.</p>
+            ${introText ? `<p class="intro">${introText}</p>` : ''}
+            ${sectionsHtml}
+            ${conclusionHtml}
           </div>
         </article>
         <section class="comments-section">
@@ -306,25 +318,41 @@
     }
 
     function loadLatestPosts(currentId) {
-      fetch('blog-data.json')
+      const projectId = 'vurt722v';
+      const dataset = 'production';
+      const query = encodeURIComponent('*[_type == "post"] | order(date desc)[0...4]{_id, id, slug, title, readTime, color, icon}');
+      const url = `https://${projectId}.api.sanity.io/v2021-10-21/data/query/${dataset}?query=${query}`;
+
+      fetch(url)
         .then((response) => response.json())
         .then((data) => {
           const latestContainer = document.getElementById('latestPosts');
           if (!latestContainer) return;
 
-          const posts = data.posts.filter((entry) => String(entry.id) !== String(currentId)).slice(0, 3);
-          latestContainer.innerHTML = posts.map((entry) => `
-            <div class="side-post" onclick="openRelatedPost(${entry.id})">
-              <div class="side-post-img" style="background: linear-gradient(135deg, ${entry.color || '#13B0CB'}, #51C186)">
-                <i class="fas ${entry.icon || 'fa-pen-nib'}"></i>
+          const rawPosts = data.result || [];
+          const posts = rawPosts
+            .filter((entry) => {
+              const entryId = entry.slug?.current || entry.id || entry._id;
+              return String(entryId) !== String(currentId);
+            })
+            .slice(0, 3);
+
+          latestContainer.innerHTML = posts.map((entry) => {
+            const entryId = entry.slug?.current || entry.id || entry._id;
+            return `
+              <div class="side-post" onclick="openRelatedPost('${entryId}')">
+                <div class="side-post-img" style="background: linear-gradient(135deg, ${entry.color || '#13B0CB'}, #51C186)">
+                  <i class="fas ${entry.icon || 'fa-pen-nib'}"></i>
+                </div>
+                <div class="side-post-content">
+                  <h4>${entry.title}</h4>
+                  <p>${entry.readTime || '5 min read'}</p>
+                </div>
               </div>
-              <div class="side-post-content">
-                <h4>${entry.title}</h4>
-                <p>${entry.readTime || '5 min read'}</p>
-              </div>
-            </div>
-          `).join('');
-        });
+            `;
+          }).join('');
+        })
+        .catch(err => console.error("Error loading latest posts from Sanity:", err));
     }
 
     function openRelatedPost(postId) {
