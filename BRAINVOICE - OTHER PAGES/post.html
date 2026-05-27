@@ -7,179 +7,770 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="css/blog.css">
   <style>
-    .post-container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 2rem;
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --post-accent: #13B0CB;
+      --post-accent-bg: rgba(19, 176, 203, 0.08);
+      --post-accent-border: rgba(19, 176, 203, 0.2);
     }
-    .post-header {
+
+    body {
+      background: var(--bg-gradient);
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* READING PROGRESS BAR */
+    .progress-bar-container {
+      position: fixed;
+      top: 72px; /* Height of the sticky navbar */
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      z-index: 101; /* Above navbar box shadow */
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--post-accent), #51C186);
+      box-shadow: 0 0 10px var(--post-accent);
+      transition: width 0.1s ease-out;
+    }
+
+    /* HERO BANNER FOR POST */
+    .post-hero {
+      position: relative;
+      background: linear-gradient(135deg, rgba(26, 26, 26, 0.03), rgba(26, 26, 26, 0.07));
+      border-bottom: 1px solid var(--border-light);
+      padding: 4rem 0 3rem;
+      margin-bottom: 3rem;
+      overflow: hidden;
+    }
+    
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, var(--post-accent-bg) 0%, transparent 60%);
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .post-hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .back-btn-wrapper {
       margin-bottom: 2rem;
     }
-    .post-header h1 {
-      font-size: 2.5rem;
-      line-height: 1.2;
-      margin: 1rem 0;
-      color: var(--black);
-    }
-    .post-meta {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      color: var(--text-light);
-      font-size: 0.9rem;
-      flex-wrap: wrap;
-    }
-    .post-author-card {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.5rem;
-      background: linear-gradient(135deg, #f8fafc, #ffffff);
-      border-radius: 16px;
-      margin: 2rem 0;
-      border: 1px solid var(--border-light);
-    }
-    .post-author-info h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.25rem;
-    }
-    .post-author-info p {
-      color: var(--text-light);
-      font-size: 0.9rem;
-    }
-    .post-content {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: var(--text-dark);
-    }
-    .post-content h2 {
-      font-size: 1.8rem;
-      margin: 2rem 0 1rem;
-      color: var(--black);
-    }
-    .post-content p {
-      margin-bottom: 1.5rem;
-    }
-    .post-content .intro {
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--color-6);
-      border-left: 4px solid var(--color-6);
-      padding-left: 1.5rem;
-      margin: 2rem 0;
-    }
+
     .back-button {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      color: var(--text-light);
+      gap: 0.75rem;
+      color: var(--text-medium);
       text-decoration: none;
-      margin-bottom: 1rem;
-      transition: all 0.2s;
-      padding: 0.5rem 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0.6rem 1.25rem;
       border-radius: 50px;
-      background: var(--white);
+      background: rgba(255, 255, 255, 0.8);
       border: 1px solid var(--border-light);
       cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(8px);
     }
+    
     .back-button:hover {
-      color: var(--color-6);
-      border-color: var(--color-6);
-      transform: translateX(-4px);
+      color: var(--post-accent);
+      border-color: var(--post-accent);
+      transform: translateX(-6px);
+      box-shadow: 0 4px 15px var(--post-accent-bg);
     }
-    .comments-section {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border-light);
+
+    .post-category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: var(--post-accent-bg);
+      color: var(--post-accent);
+      border: 1px solid var(--post-accent-border);
+      margin-bottom: 1.5rem;
+      font-family: 'Orbitron', sans-serif;
+      box-shadow: 0 2px 8px var(--post-accent-bg);
     }
-    .comment-form {
+
+    .post-hero-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--black);
+      letter-spacing: -0.02em;
+    }
+
+    .post-hero-meta {
       display: flex;
-      gap: 1rem;
-      margin-bottom: 2rem;
+      align-items: center;
+      gap: 2rem;
+      color: var(--text-medium);
+      font-size: 0.95rem;
       flex-wrap: wrap;
     }
-    .comment-form input {
-      flex: 1;
-      padding: 1rem;
-      border: 1px solid var(--border-light);
-      border-radius: 50px;
-      font-size: 1rem;
-      min-width: 250px;
+
+    .post-hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    .comment-form button {
-      background: var(--gradient-primary);
-      color: white;
-      border: none;
+
+    .post-hero-meta i {
+      color: var(--post-accent);
+    }
+
+    /* MAIN PAGE GRID LAYOUT */
+    .post-container {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
       padding: 0 2rem;
-      border-radius: 50px;
+    }
+
+    .post-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .post-main {
+      min-width: 0; /* Prevents flex/grid blowouts */
+    }
+
+    /* POST SHELL & CONTENT */
+    .post-shell {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 28px;
+      padding: 3rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 3rem;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .post-shell:hover {
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+    }
+
+    .post-content {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #2d3748; /* Premium charcoal */
+    }
+
+    .post-content h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 3rem 0 1.25rem;
+      color: var(--black);
+      position: relative;
+      letter-spacing: -0.01em;
+    }
+
+    .post-content h2::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--post-accent), #51C186);
+      border-radius: 2px;
+    }
+
+    .post-content p {
+      margin-bottom: 1.75rem;
+    }
+
+    .post-content .intro {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.3rem;
+      line-height: 1.8;
+      font-weight: 500;
+      color: #1a202c;
+      border-left: 5px solid var(--post-accent);
+      padding: 0.5rem 0 0.5rem 1.75rem;
+      margin: 2.5rem 0;
+      background: var(--post-accent-bg);
+      border-radius: 0 16px 16px 0;
+    }
+
+    /* SIDEBAR & STICKY CONTAINERS */
+    .post-sidebar {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .sidebar-widget {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02);
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-widget:hover {
+      border-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.04);
+      transform: translateY(-2px);
+    }
+
+    .widget-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .widget-title i {
+      color: var(--post-accent);
+    }
+
+    /* AUTHOR CARD */
+    .post-author-card-sidebar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .author-avatar-container {
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+
+    .author-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--post-accent), #51C186);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.25rem;
+      box-shadow: 0 8px 20px var(--post-accent-bg);
+      border: 4px solid var(--white);
+    }
+
+    .author-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--black);
+    }
+
+    .author-role {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .author-bio {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-medium);
+      margin-bottom: 1.25rem;
+    }
+
+    .author-socials {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .author-social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--text-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .author-social-link:hover {
+      background: var(--post-accent);
+      color: var(--white);
+      border-color: var(--post-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 12px var(--post-accent-bg);
+    }
+
+    /* DYNAMIC TABLE OF CONTENTS (ToC) */
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .toc-item {
+      position: relative;
+    }
+
+    .toc-link {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-medium);
+      text-decoration: none;
+      transition: all 0.25s ease;
+      display: inline-block;
+      padding-left: 1.25rem;
+      border-left: 2px solid var(--border-light);
+      line-height: 1.4;
+    }
+
+    .toc-link:hover {
+      color: var(--post-accent);
+      border-left-color: var(--post-accent);
+    }
+
+    .toc-link.active {
+      color: var(--post-accent);
+      border-left-color: var(--post-accent);
+      font-weight: 600;
+    }
+
+    /* SHARE WIDGET */
+    .share-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .share-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 0.5rem;
+      border-radius: 16px;
+      border: 1px solid var(--border-light);
+      background: var(--white);
       cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--text-medium);
     }
-    .latest-posts-side {
-      margin-top: 3rem;
+
+    .share-btn:hover {
+      background: var(--post-accent-bg);
+      border-color: var(--post-accent);
+      color: var(--post-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px var(--post-accent-bg);
     }
+
+    .share-btn i {
+      font-size: 1.15rem;
+    }
+
+    /* LATEST POSTS SIDEBAR WIDGET */
+    .sidebar-latest-posts {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
     .side-post {
       display: flex;
       gap: 1rem;
-      margin-bottom: 1.5rem;
-      padding: 1rem;
+      padding: 0.85rem;
       background: var(--white);
-      border-radius: 12px;
+      border-radius: 16px;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.3s ease;
       border: 1px solid var(--border-light);
+      align-items: center;
     }
+
     .side-post:hover {
-      transform: translateX(4px);
+      transform: translateY(-2px) translateX(2px);
       box-shadow: var(--shadow-sm);
-      border-color: var(--color-3);
+      border-color: var(--post-accent);
     }
+
     .side-post-img {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       flex-shrink: 0;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
+
+    .side-post-content {
+      flex: 1;
+      min-width: 0;
+    }
+
     .side-post-content h4 {
-      font-size: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
       margin-bottom: 0.25rem;
       color: var(--black);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+
     .side-post-content p {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    /* COMMENTS SECTION ENHANCED */
+    .comments-section {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 28px;
+      padding: 3rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .comments-section h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .comments-section h3 i {
+      color: var(--post-accent);
+    }
+
+    .comment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .comment-inputs-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .comment-form input,
+    .comment-form textarea {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.95rem;
+      background: var(--white);
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .comment-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .comment-form input:focus,
+    .comment-form textarea:focus {
+      border-color: var(--post-accent);
+      box-shadow: 0 0 0 3px var(--post-accent-bg);
+      background: var(--white);
+    }
+
+    .comment-submit-btn {
+      align-self: flex-start;
+      background: linear-gradient(135deg, var(--post-accent), #51C186);
+      color: white;
+      border: none;
+      padding: 0.9rem 2.25rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px var(--post-accent-bg);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .comment-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(19, 176, 203, 0.4);
+    }
+
+    .comment-submit-btn i {
+      transition: transform 0.2s;
+    }
+
+    .comment-submit-btn:hover i {
+      transform: translate(2px, -2px);
+    }
+
+    /* DYNAMIC COMMENTS FEED */
+    .comments-list-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1.25rem;
+      color: var(--black);
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 0.75rem;
+    }
+
+    .comments-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .comment-item {
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      animation: commentFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      display: flex;
+      gap: 1rem;
+    }
+
+    @keyframes commentFadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .comment-avatar-bubble {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--post-accent-bg);
+      color: var(--post-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+      border: 1px solid var(--post-accent-border);
+    }
+
+    .comment-body {
+      flex: 1;
+    }
+
+    .comment-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .comment-author-name {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--black);
+    }
+
+    .comment-date {
+      font-size: 0.75rem;
       color: var(--text-light);
     }
+
+    .comment-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #4a5568;
+    }
+
+    .no-comments-prompt {
+      text-align: center;
+      padding: 2.5rem;
+      color: var(--text-light);
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      border: 1px dashed var(--border-light);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.95rem;
+    }
+
+    /* LOADING SPINNER & ERRORS */
     .loading-spinner,
     .error-container {
       text-align: center;
-      padding: 3rem;
+      padding: 5rem 2rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: var(--shadow-sm);
+      max-width: 800px;
+      margin: 4rem auto;
     }
+    
     .loading-spinner i,
     .error-container i {
-      font-size: 3rem;
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--post-accent, var(--color-6)), #51C186);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .loading-spinner p {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      color: var(--text-medium);
+      font-size: 1.1rem;
+    }
+
+    .error-container h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.75rem;
+      color: var(--black);
       margin-bottom: 1rem;
-      color: var(--color-6);
     }
-    .error-container {
-      background: var(--white);
-      border-radius: 24px;
-      border: 1px solid var(--border-light);
+
+    .error-container p {
+      color: var(--text-light);
+      margin-bottom: 2rem;
     }
-    @media (max-width: 600px) {
-      .post-header h1 {
+
+    /* RESPONSIVE DESIGN (LAPTOP & MOBILE) */
+    @media (max-width: 1024px) {
+      .post-hero-title {
+        font-size: 2.5rem;
+      }
+      .post-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .post-sidebar {
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem 2rem;
+      }
+      .post-hero {
+        padding: 3rem 0 2rem;
+      }
+      .post-hero-title {
         font-size: 2rem;
       }
-      .post-author-card,
-      .comment-form {
-        flex-direction: column;
+      .post-shell,
+      .comments-section {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+      }
+      .comment-inputs-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .post-hero-title {
+        font-size: 1.75rem;
+      }
+      .post-hero-meta {
+        gap: 1rem;
+        font-size: 0.85rem;
+      }
+      .post-content {
+        font-size: 1.05rem;
+      }
+      .comment-submit-btn {
+        width: 100%;
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
   <nav class="navbar">
     <a class="logo-container" href="../index.html" aria-label="Brainvoice landing page">
       <img src="images/BrainVoice-logo.svg" alt="Brainvoice" class="logo-img">
@@ -211,6 +802,8 @@
 
   <script src="js/script.js"></script>
   <script>
+    const COMMENTS_STORAGE_KEY = 'brainvoice_comments';
+
     document.addEventListener('DOMContentLoaded', async function() {
       const urlParams = new URLSearchParams(window.location.search);
       const postId = urlParams.get('id');
@@ -262,61 +855,386 @@
       const container = document.getElementById('postContainer');
       const color = post.color || '#13B0CB';
 
+      // Set custom variables for dynamic styling
+      document.documentElement.style.setProperty('--post-accent', color);
+      document.documentElement.style.setProperty('--post-accent-bg', color + '12'); // ~7% opacity
+      document.documentElement.style.setProperty('--post-accent-border', color + '30'); // ~18% opacity
+
       const introText = post.introduction || post.excerpt || '';
-      const sectionsHtml = (post.sections || []).map(sec => `
-        <h2>${sec.title}</h2>
+      const sectionsHtml = (post.sections || []).map((sec, idx) => `
+        <h2 id="heading-${idx}">${sec.title}</h2>
         ${(sec.paragraphs || []).map(p => `<p>${p}</p>`).join('')}
       `).join('');
-      const conclusionHtml = post.conclusion ? `<p>${post.conclusion}</p>` : '';
+      const conclusionHtml = post.conclusion ? `
+        <h2 id="heading-conclusion">Conclusion</h2>
+        <p>${post.conclusion}</p>
+      ` : '';
 
       container.innerHTML = `
-        <button class="back-button" onclick="goBackToBlog()">
-          <i class="fas fa-arrow-left"></i> Back to Blog
-        </button>
-        <article class="post-shell">
-          <header class="post-header">
-            <div class="post-meta">
-              <span>${post.category || 'Insight'}</span>
-              <span>•</span>
-              <span>${post.date || 'Recent'}</span>
-              <span>•</span>
-              <span>${post.readTime || '5 min read'}</span>
+        <!-- Hero Header Section -->
+        <div class="post-hero">
+          <div class="post-hero-container">
+            <div class="back-btn-wrapper">
+              <button class="back-button" onclick="goBackToBlog()">
+                <i class="fas fa-arrow-left"></i> Back to Blog
+              </button>
             </div>
-            <h1>${post.title}</h1>
-          </header>
-          <div class="post-author-card">
-            <div class="side-post-img" style="background: linear-gradient(135deg, ${color}, #51C186)">
-              <i class="fas ${post.icon || 'fa-pen-nib'}"></i>
+            <div class="post-category-badge">
+              <i class="fas ${post.icon || 'fa-wave-square'}"></i> ${post.category || 'Insight'}
             </div>
-            <div class="post-author-info">
-              <h3>${post.author || 'Brainvoice Team'}</h3>
-              <p>${post.authorTitle || 'Brainvoice editorial'}</p>
+            <h1 class="post-hero-title">${post.title}</h1>
+            <div class="post-hero-meta">
+              <span><i class="far fa-calendar-alt"></i> ${post.date || 'Recent'}</span>
+              <span><i class="far fa-clock"></i> ${post.readTime || '5 min read'}</span>
+              <span><i class="far fa-user"></i> By ${post.author || 'Brainvoice Team'}</span>
             </div>
           </div>
-          <div class="post-content">
-            ${introText ? `<p class="intro">${introText}</p>` : ''}
-            ${sectionsHtml}
-            ${conclusionHtml}
+        </div>
+
+        <!-- 2-Column Responsive Layout -->
+        <div class="post-layout">
+          <!-- Main Content Column -->
+          <div class="post-main">
+            <article class="post-shell">
+              <div class="post-content">
+                ${introText ? `<p class="intro">${introText}</p>` : ''}
+                ${sectionsHtml}
+                ${conclusionHtml}
+              </div>
+            </article>
+
+            <!-- Comments Section -->
+            <section class="comments-section">
+              <h3><i class="far fa-comments"></i> Discussion</h3>
+              <form class="comment-form" id="commentForm">
+                <div class="comment-inputs-row">
+                  <input type="text" id="commentName" placeholder="Your Name" required>
+                  <input type="email" id="commentEmail" placeholder="Your Email (won't be published)" required>
+                </div>
+                <textarea id="commentText" placeholder="Join the discussion... Share your thoughts." required></textarea>
+                <button type="submit" class="comment-submit-btn">
+                  Post Comment <i class="fas fa-paper-plane"></i>
+                </button>
+              </form>
+
+              <h4 class="comments-list-title">Comments</h4>
+              <div class="comments-feed" id="commentsFeed">
+                <!-- Comments dynamically populated -->
+              </div>
+            </section>
           </div>
-        </article>
-        <section class="comments-section">
-          <h3>Leave a Comment</h3>
-          <form class="comment-form">
-            <input type="text" placeholder="Share your thoughts">
-            <button type="submit">Post</button>
-          </form>
-          <div class="latest-posts-side">
-            <h3>Latest Posts</h3>
-            <div id="latestPosts"></div>
-          </div>
-        </section>
+
+          <!-- Sidebar Column -->
+          <aside class="post-sidebar">
+            <!-- Author Card Widget -->
+            <div class="sidebar-widget">
+              <div class="post-author-card-sidebar">
+                <div class="author-avatar-container">
+                  <div class="author-avatar" style="background: linear-gradient(135deg, ${color}, #51C186)">
+                    <i class="fas ${post.icon || 'fa-pen-nib'}"></i>
+                  </div>
+                </div>
+                <h3 class="author-name">${post.author || 'Brainvoice Team'}</h3>
+                <div class="author-role">${post.authorTitle || 'Brainvoice Editorial'}</div>
+                <p class="author-bio">Sharing insights, research, and analysis on transcription accuracy, QA workflows, voice AI, and next-generation speech operations.</p>
+                <div class="author-socials">
+                  <a href="#" class="author-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="author-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#" class="author-social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Table of Contents Widget -->
+            <div class="sidebar-widget widget-toc" id="tocWidget">
+              <h3 class="widget-title"><i class="fas fa-list-ul"></i> Table of Contents</h3>
+              <ul class="toc-list" id="tocList">
+                <!-- Dynamically populated -->
+              </ul>
+            </div>
+
+            <!-- Share Article Widget -->
+            <div class="sidebar-widget widget-share">
+              <h3 class="widget-title"><i class="fas fa-share-alt"></i> Share Article</h3>
+              <div class="share-buttons">
+                <button class="share-btn" onclick="shareArticle('twitter')" aria-label="Share on X">
+                  <i class="fab fa-twitter"></i>
+                  <span>X</span>
+                </button>
+                <button class="share-btn" onclick="shareArticle('linkedin')" aria-label="Share on LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                  <span>LinkedIn</span>
+                </button>
+                <button class="share-btn" id="copyLinkBtn" onclick="shareArticle('copy')" aria-label="Copy Link">
+                  <i class="fas fa-link"></i>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Latest Posts Widget -->
+            <div class="sidebar-widget widget-latest">
+              <h3 class="widget-title"><i class="fas fa-bolt"></i> Latest Posts</h3>
+              <div class="sidebar-latest-posts" id="latestPosts">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+          </aside>
+        </div>
       `;
 
-      container.querySelector('.comment-form').addEventListener('submit', (event) => {
-        event.preventDefault();
-        showNotification('Thanks for your comment.', 'success');
-        event.target.reset();
+      // Set up comments form submit handler
+      const form = document.getElementById('commentForm');
+      if (form) {
+        form.addEventListener('submit', handleCommentSubmit);
+      }
+
+      // Initialize comments feed
+      renderComments(post.id);
+
+      // Generate Table of Contents
+      generateToC(post);
+
+      // Initialize scroll trackers for reading progress and active heading
+      initializeScrollTrackers();
+    }
+
+    function getCommentsForPost(postId) {
+      try {
+        const allComments = JSON.parse(localStorage.getItem(COMMENTS_STORAGE_KEY) || '{}');
+        return allComments[postId] || getPlaceholderComments(postId);
+      } catch (e) {
+        console.error('Error loading comments:', e);
+        return getPlaceholderComments(postId);
+      }
+    }
+
+    function saveCommentsForPost(postId, comments) {
+      try {
+        const allComments = JSON.parse(localStorage.getItem(COMMENTS_STORAGE_KEY) || '{}');
+        allComments[postId] = comments;
+        localStorage.setItem(COMMENTS_STORAGE_KEY, JSON.stringify(allComments));
+      } catch (e) {
+        console.error('Error saving comments:', e);
+      }
+    }
+
+    function getPlaceholderComments(postId) {
+      return [
+        {
+          name: 'Sarah Chen',
+          email: 'sarah@example.com',
+          text: 'This is a fantastic and well-researched article. The breakdown of QA workflows and AI voice discovery is highly relevant to our current tech roadmap.',
+          date: '2 days ago'
+        },
+        {
+          name: 'David Miller',
+          email: 'david@example.com',
+          text: 'Excellent points on the trade-offs of speech technology. Looking forward to seeing more insights on Voice AI implementation from the team.',
+          date: '1 day ago'
+        }
+      ];
+    }
+
+    function renderComments(postId) {
+      const feed = document.getElementById('commentsFeed');
+      if (!feed) return;
+
+      const comments = getCommentsForPost(postId);
+      if (comments.length === 0) {
+        feed.innerHTML = `
+          <div class="no-comments-prompt">
+            <p>No comments yet. Be the first to share your thoughts!</p>
+          </div>
+        `;
+        return;
+      }
+
+      feed.innerHTML = comments.map(c => {
+        const initial = c.name ? c.name.charAt(0).toUpperCase() : 'U';
+        return `
+          <div class="comment-item">
+            <div class="comment-avatar-bubble">
+              ${initial}
+            </div>
+            <div class="comment-body">
+              <div class="comment-meta">
+                <span class="comment-author-name">${c.name}</span>
+                <span class="comment-date">${c.date}</span>
+              </div>
+              <p class="comment-text">${c.text}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function handleCommentSubmit(event) {
+      event.preventDefault();
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const postId = urlParams.get('id');
+      if (!postId) return;
+
+      const nameInput = document.getElementById('commentName');
+      const emailInput = document.getElementById('commentEmail');
+      const textInput = document.getElementById('commentText');
+
+      if (!nameInput || !emailInput || !textInput) return;
+
+      const newComment = {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        text: textInput.value.trim(),
+        date: 'Just now'
+      };
+
+      if (!newComment.name || !newComment.email || !newComment.text) {
+        showNotification('Please fill in all fields.', 'error');
+        return;
+      }
+
+      const comments = getCommentsForPost(postId);
+      comments.unshift(newComment);
+      saveCommentsForPost(postId, comments);
+
+      renderComments(postId);
+      event.target.reset();
+      showNotification('Thanks for your comment! It has been posted below.', 'success');
+    }
+
+    function generateToC(post) {
+      const tocList = document.getElementById('tocList');
+      const tocWidget = document.getElementById('tocWidget');
+      if (!tocList || !tocWidget) return;
+
+      const headings = [];
+      const sections = post.sections || [];
+      
+      sections.forEach((sec, idx) => {
+        headings.push({
+          id: `heading-${idx}`,
+          text: sec.title
+        });
       });
+
+      if (post.conclusion) {
+        headings.push({
+          id: `heading-conclusion`,
+          text: 'Conclusion'
+        });
+      }
+
+      if (headings.length === 0) {
+        tocWidget.style.display = 'none';
+        return;
+      }
+
+      tocList.innerHTML = headings.map(h => `
+        <li class="toc-item">
+          <a href="#${h.id}" class="toc-link" data-target="${h.id}">${h.text}</a>
+        </li>
+      `).join('');
+
+      tocList.querySelectorAll('.toc-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('data-target');
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 80;
+            const targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    }
+
+    function initializeScrollTrackers() {
+      const progressBar = document.getElementById('progressBar');
+      const tocLinks = document.querySelectorAll('.toc-link');
+      const headings = Array.from(document.querySelectorAll('.post-content h2'));
+      const navbar = document.querySelector('.navbar');
+
+      if (navbar && progressBar) {
+        const adjustProgressBarPosition = () => {
+          const navbarHeight = navbar.offsetHeight;
+          const container = progressBar.parentElement;
+          if (container) {
+            container.style.top = `${navbarHeight}px`;
+          }
+        };
+        adjustProgressBarPosition();
+        window.addEventListener('resize', adjustProgressBarPosition);
+      }
+
+      const handleScroll = () => {
+        if (progressBar) {
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrolled = docHeight > 0 ? (window.pageYOffset / docHeight) * 100 : 0;
+          progressBar.style.width = `${scrolled}%`;
+        }
+
+        if (tocLinks.length > 0 && headings.length > 0) {
+          const navbarHeight = navbar?.offsetHeight || 80;
+          let activeHeadingId = null;
+
+          for (let i = 0; i < headings.length; i++) {
+            const rect = headings[i].getBoundingClientRect();
+            if (rect.top <= navbarHeight + 40) {
+              activeHeadingId = headings[i].id;
+            }
+          }
+
+          if ((window.innerHeight + window.pageYOffset) >= document.documentElement.scrollHeight - 50) {
+            activeHeadingId = headings[headings.length - 1].id;
+          }
+
+          tocLinks.forEach(link => {
+            if (link.getAttribute('data-target') === activeHeadingId) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      setTimeout(handleScroll, 100);
+    }
+
+    function shareArticle(platform) {
+      const url = window.location.href;
+      const title = document.querySelector('.post-hero-title')?.innerText || 'Brainvoice Blog';
+
+      if (platform === 'twitter') {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank');
+      } else if (platform === 'linkedin') {
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+      } else if (platform === 'copy') {
+        navigator.clipboard.writeText(url).then(() => {
+          showNotification('Link copied to clipboard!', 'success');
+          const btn = document.getElementById('copyLinkBtn');
+          if (btn) {
+            const origHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            btn.style.borderColor = '#51C186';
+            btn.style.color = '#51C186';
+            setTimeout(() => {
+              btn.innerHTML = origHTML;
+              btn.style.borderColor = '';
+              btn.style.color = '';
+            }, 2000);
+          }
+        }).catch(err => {
+          console.error('Could not copy link:', err);
+          showNotification('Failed to copy link.', 'error');
+        });
+      }
     }
 
     function loadLatestPosts(currentId) {
@@ -375,6 +1293,7 @@
 
     window.goBackToBlog = goBackToBlog;
     window.openRelatedPost = openRelatedPost;
+    window.shareArticle = shareArticle;
   </script>
 </body>
 </html>
