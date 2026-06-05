@@ -38311,33 +38311,10 @@ void main() {
         roughness: 1,
         color: 0x14b8a6
       });
-      loader.load(
-        "/wp-content/themes/startdigital/static/models/BRAINVOICE.glb",
-        (gltf) => {
-          this.model = gltf.scene;
-          this.model.traverse((child) => {
-           if (child.isMesh) {
-           child.material = pbrMaterial;
-           }
-          });
-          this.model.rotation.set(0, Math.PI*4, 0);;
-          this.model.position.y = 0.25;
-          this.scale = 0.30;
-          if (this.width < 768) {
-            this.scale = 0.08; // Small scale only for Mobile
-            this.model.position.y = 0.30;
-          }
-          this.model.scale.set(this.scale, this.scale, this.scale);
-          this.scene.add(this.model);
-          checkComplete();
-        },
-        (xhr) => {
-        },
-        (error) => {
-          console.error("An error happened with the logo:", error);
-          checkComplete();
-        }
-      );
+      // Brain model loading bypassed
+      this.model = new Group();
+      this.scene.add(this.model);
+      checkComplete();
       loader.load(
         "/wp-content/themes/startdigital/static/models/solias_button_2.glb",
         (gltf) => {
@@ -39044,33 +39021,23 @@ void main() {
       });
     }
     updateOutlineSelection(progress) {
-      if (!this.model)
-        return;
       const highlights = [
         { index: 1, start: 0.01, end: 0.33 },
         { index: 3, start: 0.34, end: 0.65 },
         { index: 5, start: 0.66, end: 0.99 }
       ];
-      const selectedObjects = [];
       let activeHighlight = null;
       for (const highlight of highlights) {
-        if (progress >= highlight.start && progress < highlight.end) {
+        const labelElement = document.getElementById(`label-${highlight.index}`);
+        const isActive = progress >= highlight.start && progress < highlight.end;
+        if (labelElement) {
+          labelElement.classList.toggle("is-active", isActive);
+        }
+        if (isActive) {
           activeHighlight = highlight;
-          break;
         }
       }
-      this.model.traverse((child) => {
-        if (child.isMesh) {
-          let index = parseInt(child.userData.name.replace(/\D/g, ""), 10);
-          if (activeHighlight && index === activeHighlight.index) {
-            selectedObjects.push(child);
-            this.updateLabels(child, index, true);
-          } else {
-            this.updateLabels(child, index, false);
-          }
-        }
-      });
-      this.outlinePass.selectedObjects = selectedObjects;
+      this.outlinePass.selectedObjects = [];
 
       // Toggle between initial description and active label cards
       const mobilePara = document.querySelector('.mobile-hero-para');
@@ -39390,15 +39357,18 @@ void main() {
             }
           }
         });
-        tl.to(meshes, {
-          y: (i) => `+=${positions[i].y * 1.5}`,
-          z: (i) => `+=${positions[i].z * 1.5}`,
-          duration: 0.25
-        }).to(meshes, {
-          y: (i) => `-=${positions[i].y * 1.5}`,
-          z: (i) => `-=${positions[i].z * 1.5}`,
-          duration: 0.25
-        }).to(
+        if (meshes.length > 0) {
+          tl.to(meshes, {
+            y: (i) => `+=${positions[i].y * 1.5}`,
+            z: (i) => `+=${positions[i].z * 1.5}`,
+            duration: 0.25
+          }).to(meshes, {
+            y: (i) => `-=${positions[i].y * 1.5}`,
+            z: (i) => `-=${positions[i].z * 1.5}`,
+            duration: 0.25
+          });
+        }
+        tl.to(
           ".hero-text",
           {
             opacity: 0,
